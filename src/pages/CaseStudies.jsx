@@ -1,32 +1,33 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import useScrollReveal from '../hooks/useScrollReveal'
+import useTilt3D from '../hooks/useTilt3D'
 
 const cases = [
   {
     img: '/images/zoom3.png',
-    tag: 'Meeting Intelligence · SaaS Company',
-    h: 'Automated 100% of Post-Meeting Work for a SaaS Team',
-    p: 'A SaaS company spent 3+ hours weekly on meeting notes. We built a Zoom pipeline that classifies, transcribes, summarizes, and emails stakeholders — in under 5 minutes of meeting end.',
-    results: [['3 hrs', 'Saved weekly'], ['100%', 'Automated'], ['<5 min', 'Delivery']],
+    tag: 'Meeting Intelligence · B2B SaaS Startup, Bengaluru',
+    h: 'Post-Meeting Chaos → Automated Summaries in Under 5 Minutes',
+    p: 'A 12-person B2B SaaS team in Bengaluru was spending 3+ hours every week manually writing meeting notes, assigning follow-ups, and emailing stakeholders. Calls slipped through the cracks. We built a Zoom → OpenAI → Gmail pipeline that auto-classifies the meeting type, transcribes the full call, generates a structured summary with action items, and emails the right stakeholders — all within 5 minutes of the meeting ending.',
+    results: [['3 hrs', 'Saved weekly'], ['100%', 'Follow-ups captured'], ['<5 min', 'Delivery time']],
     tools: ['Zoom', 'OpenAI', 'Pinecone', 'Gmail', 'Make.com'],
     rev: false
   },
   {
     img: '/images/lead1.png',
-    tag: 'CRM Automation · Digital Agency',
-    h: 'Zero-Touch Lead Management That Doubled Pipeline Visibility',
-    p: 'Manual CRM entry was causing lost leads. We built an AI pipeline that instantly logs, qualifies, and routes every lead into Pipedrive with AI notes — response time dropped from hours to seconds.',
-    results: [['2×', 'Pipeline visibility'], ['<10s', 'Lead entry'], ['0', 'Leads missed']],
+    tag: 'CRM & Lead Automation · Digital Agency, Mumbai',
+    h: 'From 6-Hour Lead Delays to 10-Second CRM Entry — Zero Touch',
+    p: 'A Mumbai-based performance marketing agency was losing leads because their sales team manually entered every inbound enquiry into Pipedrive — often hours later, sometimes never. We built an AI-powered webhook pipeline that instantly captures every lead, runs it through OpenAI for qualification scoring and notes, creates a Pipedrive deal, and pings the right salesperson on MS Teams with a full brief — in under 10 seconds.',
+    results: [['2×', 'Pipeline visibility'], ['<10s', 'Lead-to-CRM time'], ['0', 'Leads slipping through']],
     tools: ['Webhook', 'Pipedrive', 'OpenAI', 'MS Teams'],
     rev: true
   },
   {
     img: '/images/hotel1.png',
-    tag: 'Property Management · Hospitality',
-    h: 'Full Automation of a Multi-Property Hotel — Booking to Invoice',
-    p: '20+ hours weekly of manual bookings, payments, and invoicing — fully eliminated. We built a system handling all Airbnb and Gather bookings with automatic QuickBooks invoicing.',
-    results: [['20 hrs', 'Saved weekly'], ['3', 'Platforms unified'], ['100%', 'Invoice accuracy']],
+    tag: 'Property Management · Hospitality Business, Goa',
+    h: '20 Hours of Manual Hotel Admin — Fully Eliminated in One Week',
+    p: 'A Goa-based operator managing 6 Airbnb properties was manually handling every booking confirmation, guest payment, and invoice across three disconnected platforms. 20+ hours of admin per week, and frequent billing errors. We built a unified Make.com system that pulls every Airbnb and Gather booking, generates the correct QuickBooks invoice automatically, and sends a confirmation to the guest — no human in the loop.',
+    results: [['20 hrs', 'Reclaimed weekly'], ['3', 'Platforms unified'], ['100%', 'Invoice accuracy']],
     tools: ['Airbnb', 'Gather', 'QuickBooks', 'Make.com'],
     rev: false
   }
@@ -34,6 +35,7 @@ const cases = [
 
 export default function CaseStudies() {
   useScrollReveal()
+  useTilt3D()
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
@@ -43,10 +45,10 @@ export default function CaseStudies() {
         <div className="mw">
           <div className="lbl" style={{ color: 'var(--gl)' }}>Case Studies</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(2.8rem,4.8vw,4.2rem)', fontWeight: 700, color: 'var(--cream)', lineHeight: 1.1, marginBottom: '20px' }}>
-            How We've Transformed <em style={{ color: 'var(--gl)', fontStyle: 'italic' }}>Real Businesses</em>
+            Real Founders. Real Problems.<br/><em style={{ color: 'var(--gl)', fontStyle: 'italic' }}>Real Outcomes.</em>
           </h1>
-          <p style={{ color: 'rgba(253,248,240,0.7)', fontSize: '1.07rem', lineHeight: 1.8, maxWidth: '560px', margin: '0 auto', fontWeight: 300 }}>
-            Measurable outcomes, documented results, real client workflows.
+          <p style={{ color: 'rgba(253,248,240,0.7)', fontSize: '1.07rem', lineHeight: 1.8, maxWidth: '600px', margin: '0 auto', fontWeight: 300 }}>
+            Every case study includes the exact client context, the tools we used, and the measurable result — not just "hours saved" with no story behind it.
           </p>
         </div>
       </section>
@@ -55,7 +57,7 @@ export default function CaseStudies() {
       <section style={{ background: 'var(--white)', padding: '108px 5%' }}>
         <div className="mw">
           {cases.map((c, i) => (
-            <article key={i} className="fu" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '56px', alignItems: 'center', padding: '52px', background: 'var(--cream)', border: '1px solid var(--bdr)', borderRadius: '24px', marginBottom: '28px', direction: c.rev ? 'rtl' : 'ltr' }}>
+            <article key={i} className="fu tilt3d" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '56px', alignItems: 'center', padding: '52px', background: 'var(--cream)', border: '1px solid var(--bdr)', borderRadius: '24px', marginBottom: '28px', direction: c.rev ? 'rtl' : 'ltr' }}>
               <div style={{ borderRadius: '16px', overflow: 'hidden', height: '290px', direction: 'ltr' }}>
                 <img src={c.img} alt={c.h} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>

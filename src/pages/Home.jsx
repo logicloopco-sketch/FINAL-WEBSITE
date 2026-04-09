@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import useTilt3D from '../hooks/useTilt3D'
 
 /* ─── Scroll-reveal hook ─────────────────────────────────── */
 function useReveal() {
@@ -92,18 +93,48 @@ function GridLines() {
   )
 }
 
+/* ─── Platform logo chip ─────────────────────────────────── */
+function PlatformChip({ slug, name }) {
+  const [err, setErr] = useState(false)
+  const url = slug ? `https://cdn.simpleicons.org/${slug}/ffffff` : null
+  return (
+    <div style={{ background:'rgba(253,248,240,0.07)', border:'1px solid rgba(253,248,240,0.11)', borderRadius:'10px', padding:'10px 18px', fontSize:'0.81rem', fontWeight:500, whiteSpace:'nowrap', color:'rgba(253,248,240,0.7)', display:'flex', alignItems:'center', gap:'9px', flexShrink:0 }}>
+      {url && !err
+        ? <img src={url} alt={name} width={16} height={16} style={{ objectFit:'contain', flexShrink:0, opacity:0.9 }} onError={() => setErr(true)} />
+        : <span style={{ width:16, height:16, borderRadius:4, background:'linear-gradient(135deg,rgba(201,150,58,0.7),rgba(122,28,28,0.7))', display:'inline-flex', alignItems:'center', justifyContent:'center', fontSize:'0.48rem', fontWeight:800, color:'#fff', flexShrink:0, letterSpacing:'0.3px' }}>
+            {name.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}
+          </span>
+      }
+      {name}
+    </div>
+  )
+}
+
 /* ─── HOME PAGE ──────────────────────────────────────────── */
 export default function Home({ openModal }) {
   useReveal()
+  useTilt3D()
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
-  const p1 = [['🔧','Make.com'],['🔄','n8n'],['⚡','Zapier'],['🤖','OpenAI'],['📊','Pipedrive'],['🏆','GoHighLevel'],['🟠','HubSpot'],['☁️','Salesforce'],['📋','Google Sheets'],['📹','Zoom'],['💬','Slack'],['👥','MS Teams'],['📧','Outlook'],['✉️','Gmail'],['🔵','Pinecone'],['💼','Xero'],['📒','QuickBooks'],['💳','Stripe'],['🎯','Apollo.io'],['🕷️','Apify']]
-  const p2 = [['📨','Instantly'],['📦','Airtable'],['📝','Notion'],['📅','Monday.com'],['✅','Asana'],['🎫','Jira'],['🛍️','Shopify'],['🛒','WooCommerce'],['📱','Twilio'],['📤','SendGrid'],['📰','Mailchimp'],['📋','Typeform'],['📆','Calendly'],['🏠','Airbnb'],['🔍','Perplexity AI'],['🧠','Anthropic'],['📁','Google Drive'],['💧','Dropbox'],['☁️','AWS S3'],['🔗','Webhooks']]
+  const p1 = [
+    ['make','Make.com'], ['n8n','n8n'], ['zapier','Zapier'], ['openai','OpenAI'],
+    ['pipedrive','Pipedrive'], ['gohighlevel','GoHighLevel'], ['hubspot','HubSpot'],
+    ['salesforce','Salesforce'], ['googlesheets','Google Sheets'], ['zoom','Zoom'],
+    ['slack','Slack'], ['microsoftteams','MS Teams'], ['microsoftoutlook','Outlook'],
+    ['gmail','Gmail'], ['pinecone','Pinecone'], ['xero','Xero'],
+    ['intuit','QuickBooks'], ['stripe','Stripe'], ['','Apollo.io'], ['apify','Apify'],
+  ]
+  const p2 = [
+    ['','Instantly'], ['airtable','Airtable'], ['notion','Notion'], ['monday','Monday.com'],
+    ['asana','Asana'], ['jira','Jira'], ['shopify','Shopify'], ['woocommerce','WooCommerce'],
+    ['twilio','Twilio'], ['sendgrid','SendGrid'], ['mailchimp','Mailchimp'],
+    ['typeform','Typeform'], ['calendly','Calendly'], ['airbnb','Airbnb'],
+    ['perplexity','Perplexity AI'], ['anthropic','Anthropic'], ['googledrive','Google Drive'],
+    ['dropbox','Dropbox'], ['amazonaws','AWS S3'], ['','Webhooks'],
+  ]
 
-  const chips = (items) => [...items, ...items].map(([e, n], i) => (
-    <div key={i} style={{ background:'rgba(253,248,240,0.05)', border:'1px solid rgba(253,248,240,0.09)', borderRadius:'10px', padding:'10px 17px', fontSize:'0.81rem', fontWeight:500, whiteSpace:'nowrap', color:'rgba(253,248,240,0.65)', display:'flex', alignItems:'center', gap:'8px', flexShrink:0, transition:'all 0.2s' }}>
-      <span>{e}</span>{n}
-    </div>
+  const chips = (items) => [...items, ...items].map(([slug, name], i) => (
+    <PlatformChip key={`${slug}-${i}`} slug={slug} name={name} />
   ))
 
   return (
@@ -119,6 +150,17 @@ export default function Home({ openModal }) {
         @keyframes imgReveal { from{opacity:0;transform:scale(1.08) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
         @keyframes lineGrow  { from{width:0} to{width:100%} }
         @keyframes floatY    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+        /* ── 3D decorative shapes ── */
+        @keyframes ringOrbit  { 0%{transform:rotateX(68deg) rotateZ(0deg)} 100%{transform:rotateX(68deg) rotateZ(360deg)} }
+        @keyframes ringOrbit2 { 0%{transform:rotateX(55deg) rotateZ(0deg)} 100%{transform:rotateX(55deg) rotateZ(-360deg)} }
+        @keyframes spinCube   { 0%{transform:rotateX(0deg) rotateY(0deg)} 100%{transform:rotateX(360deg) rotateY(360deg)} }
+        @keyframes diamondSpin{ 0%{transform:rotate(0deg) rotateY(0deg)} 50%{transform:rotate(180deg) rotateY(90deg)} 100%{transform:rotate(360deg) rotateY(0deg)} }
+        @keyframes depth3d    { 0%,100%{transform:perspective(400px) rotateX(0deg) translateY(0)} 50%{transform:perspective(400px) rotateX(8deg) translateY(-12px)} }
+
+        /* ── Step badge hover spin ── */
+        .step-badge { transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1); transform-style: preserve-3d; }
+        .step-badge:hover { transform: rotateY(360deg) scale(1.1) !important; }
 
         /* ── Scroll reveals ── */
         .reveal {
@@ -216,20 +258,20 @@ export default function Home({ openModal }) {
               {/* Badge */}
               <div style={{ display:'inline-flex', alignItems:'center', gap:10, background:'rgba(201,150,58,0.1)', border:'1px solid rgba(201,150,58,0.3)', padding:'8px 20px', borderRadius:100, fontSize:'0.73rem', fontWeight:700, color:'var(--gl)', marginBottom:28, letterSpacing:'1.5px', textTransform:'uppercase', animation:'badgePop 0.6s 0.2s ease both' }}>
                 <span style={{ width:7, height:7, borderRadius:'50%', background:'var(--gl)', display:'inline-block', animation:'pulseGlow 2s infinite' }}/>
-                Make.com · n8n · Zapier · AI Agents
+                AI Automation for SaaS &amp; D2C Founders
               </div>
 
               {/* H1 */}
               <h1 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(3rem,5vw,5rem)', fontWeight:700, lineHeight:1.04, color:'var(--cream)', marginBottom:24, animation:'heroFadeUp 0.9s 0.35s ease both' }}>
-                We Build<br/>
-                <em className="gold-line" style={{ color:'var(--gl)', fontStyle:'italic' }}>AI Automations</em><br/>
-                That Work While<br/>You Sleep
+                Your Leads.<br/>
+                <em className="gold-line" style={{ color:'var(--gl)', fontStyle:'italic' }}>Your Ops.</em><br/>
+                Your Outreach.<br/>All Automated.
               </h1>
 
               {/* Sub */}
               <p style={{ color:'rgba(253,248,240,0.68)', fontSize:'1.05rem', lineHeight:1.85, marginBottom:40, maxWidth:500, fontWeight:300, animation:'heroFadeUp 0.9s 0.5s ease both' }}>
-                Logic Loops AI designs and deploys intelligent automation workflows that eliminate repetitive work, scale your operations, and connect 500+ business tools.{' '}
-                <strong style={{ color:'rgba(253,248,240,0.92)', fontWeight:600 }}>Where Logic Meets Limitless AI.</strong>
+                We build Make.com, n8n, and AI agent systems that take the repetitive work off your plate — permanently.{' '}
+                <strong style={{ color:'rgba(253,248,240,0.92)', fontWeight:600 }}>48-hour delays become 5-minute responses. Live in 2 weeks.</strong>
               </p>
 
               {/* Buttons */}
@@ -248,7 +290,7 @@ export default function Home({ openModal }) {
 
               {/* Stats */}
               <div className="stats-row" style={{ display:'flex', gap:48, animation:'heroFadeUp 0.9s 0.8s ease both' }}>
-                {[['500', '+', 'Platforms Integrated'],['9', '+', 'Automations Delivered'],['24', '/7', 'Workflows Running']].map(([n,s,l]) => (
+                {[['500', '+', 'Platforms Integrated'],['2', '-Week', 'Live Delivery'],['24', '/7', 'Workflows Running']].map(([n,s,l]) => (
                   <div key={l}>
                     <div className="stat-num" style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'2.8rem', fontWeight:700, color:'var(--gl)', lineHeight:1 }}>
                       <Counter to={n} suffix={s}/>
@@ -311,15 +353,18 @@ export default function Home({ openModal }) {
       </section>
 
       {/* ═══════════════════════ SERVICES ══ */}
-      <section style={{ background:'var(--white)', padding:'120px 5%' }}>
+      <section style={{ background:'var(--white)', padding:'120px 5%', position:'relative', overflow:'hidden' }}>
+        {/* Decorative 3D ring */}
+        <div style={{ position:'absolute', top:'8%', right:'-60px', width:320, height:320, border:'1px solid rgba(201,150,58,0.12)', borderRadius:'50%', animation:'ringOrbit 18s linear infinite', pointerEvents:'none', zIndex:0 }}/>
+        <div style={{ position:'absolute', bottom:'5%', left:'-40px', width:200, height:200, border:'1px solid rgba(122,28,28,0.1)', borderRadius:'50%', animation:'ringOrbit2 24s linear infinite', pointerEvents:'none', zIndex:0 }}/>
         <div style={{ maxWidth:1280, margin:'0 auto' }}>
           <div className="reveal" style={{ textAlign:'center', marginBottom:72 }}>
-            <div style={{ fontSize:'0.67rem', fontWeight:700, letterSpacing:'4px', color:'var(--gold)', textTransform:'uppercase', marginBottom:14 }}>What We Do</div>
+            <div style={{ fontSize:'0.67rem', fontWeight:700, letterSpacing:'4px', color:'var(--gold)', textTransform:'uppercase', marginBottom:14 }}>What We Build</div>
             <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(2.2rem,3.6vw,3.2rem)', fontWeight:700, color:'var(--text)', lineHeight:1.1, marginBottom:16 }}>
-              Expert AI Automation Services<br/>Built for <em style={{ fontStyle:'italic', color:'var(--maroon)' }}>Modern Business</em>
+              The AI Systems That Replace<br/><em style={{ fontStyle:'italic', color:'var(--maroon)' }}>Your Repetitive Work</em>
             </h2>
             <p style={{ color:'var(--mut)', fontSize:'0.97rem', lineHeight:1.8, maxWidth:560, margin:'0 auto', fontWeight:300 }}>
-              From simple task automation to complex multi-step AI pipelines — using Make.com, n8n, Zapier and custom AI agents.
+              Every service is outcome-first. We measure success in hours saved, leads closed, and revenue unlocked — not just workflows shipped.
             </p>
           </div>
 
@@ -332,7 +377,7 @@ export default function Home({ openModal }) {
               ['📧','AI Cold Email Outreach','Research prospects with Perplexity, generate personalized emails with ChatGPT, run Instantly campaigns automatically.',['Apollo.io','Instantly','Perplexity AI'],'0.45s'],
               ['💰','Finance & Invoice Automation','Auto-create invoices in Xero and QuickBooks triggered from any event. Streamline billing entirely.',['Xero','QuickBooks','Google Sheets'],'0.55s'],
             ].map(([ic,h,p,tags,delay]) => (
-              <article key={h} className={`reveal srv3d`} style={{ transitionDelay:delay, background:'var(--cream)', border:'1px solid var(--bdr)', borderRadius:18, padding:'34px 30px', position:'relative', overflow:'hidden' }}>
+              <article key={h} className={`reveal srv3d tilt3d`} style={{ transitionDelay:delay, background:'var(--cream)', border:'1px solid var(--bdr)', borderRadius:18, padding:'34px 30px', position:'relative', overflow:'hidden' }}>
                 <div style={{ width:52, height:52, borderRadius:13, background:'linear-gradient(135deg,rgba(122,28,28,0.08),rgba(201,150,58,0.1))', border:'1px solid rgba(122,28,28,0.1)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.35rem', marginBottom:20 }}>{ic}</div>
                 <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.22rem', fontWeight:700, marginBottom:11 }}>{h}</h3>
                 <p style={{ color:'var(--mut)', fontSize:'0.86rem', lineHeight:1.73, fontWeight:300 }}>{p}</p>
@@ -351,6 +396,61 @@ export default function Home({ openModal }) {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* ═══════════════════════ HOW WE DELIVER ══ */}
+      <section style={{ background:'var(--cream)', padding:'120px 5%', position:'relative', overflow:'hidden' }}>
+        {/* Decorative 3D spinning shapes */}
+        <div style={{ position:'absolute', top:'12%', left:'2%', width:100, height:100, border:'1.5px solid rgba(201,150,58,0.15)', transform:'rotateX(45deg) rotateZ(45deg)', animation:'spinCube 28s linear infinite', pointerEvents:'none', zIndex:0 }}/>
+        <div style={{ position:'absolute', bottom:'10%', right:'3%', width:64, height:64, border:'1.5px solid rgba(122,28,28,0.12)', transform:'rotate(45deg)', animation:'diamondSpin 16s linear infinite', pointerEvents:'none', zIndex:0 }}/>
+        <div style={{ position:'absolute', top:'40%', right:'-80px', width:280, height:280, border:'1px solid rgba(201,150,58,0.09)', borderRadius:'50%', animation:'ringOrbit 22s linear infinite reverse', pointerEvents:'none', zIndex:0 }}/>
+        <div style={{ maxWidth:1280, margin:'0 auto' }}>
+          <div className="reveal" style={{ textAlign:'center', marginBottom:72 }}>
+            <div style={{ fontSize:'0.67rem', fontWeight:700, letterSpacing:'4px', color:'var(--gold)', textTransform:'uppercase', marginBottom:14 }}>Our Process</div>
+            <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(2.2rem,3.6vw,3.2rem)', fontWeight:700, color:'var(--text)', lineHeight:1.1, marginBottom:16 }}>
+              How We Deliver Your<br/><em style={{ fontStyle:'italic', color:'var(--maroon)' }}>AI Automation Project</em>
+            </h2>
+            <p style={{ color:'var(--mut)', fontSize:'0.97rem', lineHeight:1.8, maxWidth:540, margin:'0 auto', fontWeight:300 }}>
+              No black boxes. No surprise timelines. Here's exactly what working with us looks like — from first call to live workflow.
+            </p>
+          </div>
+
+          <div className="process-resp" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:22 }}>
+            {[
+              { step:'01', h:'Discovery & Goal Setting',     items:['A focused 30-min call to understand your pain points and current tools (CRM, Shopify, Slack, etc.).','We identify what\'s eating your team\'s time and where automation has the highest ROI.','You leave with a clear picture of what\'s possible — before any commitment.'], delay:'0.05s' },
+              { step:'02', h:'Process Mapping',              items:['We map your existing manual workflow step by step — exactly as it runs today.','We find the bottlenecks, the repetitive handoffs, and the decision points AI can handle.','You get a visual map of what will be automated and why.'], delay:'0.15s' },
+              { step:'03', h:'Design & Scope',               items:['We define each automated step (e.g., lead → qualify → CRM → follow-up) with clear logic.','We agree on success metrics upfront — time saved, error rate, response speed.','You approve the scope and timeline before a single line of automation is built.'], delay:'0.25s' },
+              { step:'04', h:'Build & Test',                 items:['We build in a staging environment using Make.com, n8n, or Zapier — plus AI agents where they add real value.','Every workflow is tested with real-world data, edge cases, and error scenarios.','You review the workflow before it touches your live systems.'], delay:'0.35s' },
+              { step:'05', h:'Go Live & Handover',           items:['We connect everything to your live tools and run a final end-to-end test together.','We walk you through every trigger, step, and output so you understand exactly what\'s running.','You get a simple playbook — what the workflow does, how to monitor it, and when to flag an issue.'], delay:'0.45s' },
+              { step:'06', h:'Ongoing Support & Iteration',  items:['As your business grows, your automations can grow with it — we offer light-touch monthly support.','We check in periodically to catch issues before they become problems.','Need a new trigger, a new tool integration, or a logic change? We\'re a message away.'], delay:'0.55s' },
+            ].map(({ step, h, items, delay }) => (
+              <article key={step} className="reveal srv3d tilt3d" style={{ transitionDelay:delay, background:'var(--white)', border:'1px solid var(--bdr)', borderRadius:18, padding:'34px 30px', position:'relative', overflow:'hidden' }}>
+                <div className="step-badge" style={{ display:'inline-flex', alignItems:'center', gap:7, background:'linear-gradient(135deg,var(--maroon),rgba(122,28,28,0.75))', color:'var(--cream)', padding:'5px 16px', borderRadius:100, fontSize:'0.72rem', fontWeight:700, letterSpacing:'1.5px', textTransform:'uppercase', marginBottom:18, cursor:'default' }}>
+                  <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1rem', fontWeight:700, lineHeight:1 }}>{step}</span>
+                  Step
+                </div>
+                <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.2rem', fontWeight:700, color:'var(--text)', marginBottom:16, lineHeight:1.25 }}>{h}</h3>
+                <ul style={{ listStyle:'none', padding:0, margin:0 }}>
+                  {items.map((item, i) => (
+                    <li key={i} style={{ display:'flex', alignItems:'flex-start', gap:10, marginBottom:10, fontSize:'0.86rem', color:'var(--mut)', lineHeight:1.7, fontWeight:300 }}>
+                      <span style={{ color:'var(--gold)', fontWeight:700, marginTop:1, flexShrink:0 }}>→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div className="reveal delay-3" style={{ textAlign:'center', marginTop:52 }}>
+            <Link to="/contact" style={{ background:'linear-gradient(135deg,var(--gold),var(--gl))', color:'var(--md)', padding:'15px 38px', borderRadius:12, fontWeight:700, fontSize:'0.97rem', textDecoration:'none', display:'inline-flex', alignItems:'center', gap:9, transition:'all 0.2s', boxShadow:'0 8px 30px rgba(201,150,58,0.28)' }}
+              onMouseEnter={e=>e.currentTarget.style.transform='translateY(-3px)'}
+              onMouseLeave={e=>e.currentTarget.style.transform='none'}>
+              🚀 Book Free Automation Audit
+            </Link>
+          </div>
+        </div>
+        <style>{`@media(max-width:1100px){.process-resp{grid-template-columns:repeat(2,1fr)!important;}} @media(max-width:768px){.process-resp{grid-template-columns:1fr!important;}}`}</style>
       </section>
 
       {/* ═══════════════════════ PORTFOLIO PREVIEW ══ */}
@@ -372,7 +472,7 @@ export default function Home({ openModal }) {
               { key:'seo',     img:'/images/seo1.png',    img2:null,                cat:'Content Automation',   h:'AI SEO Content Pipeline',          tools:['RSS','ChatGPT','Slack'],       delay:'0.45s' },
               { key:'apollo',  img:'/images/apollo1.png', img2:null,                cat:'Lead Generation',      h:'Apollo + Apify → CRM Pipeline',    tools:['Apollo.io','Apify','Pipedrive'],delay:'0.55s' },
             ].map(({ key, img, img2, cat, h, tools, delay }) => (
-              <article key={key} className="reveal proj3d" style={{ transitionDelay:delay, background:'var(--white)', border:'1px solid var(--bdr)', borderRadius:20, overflow:'hidden', boxShadow:'var(--sh)' }}
+              <article key={key} className="reveal proj3d tilt3d" style={{ transitionDelay:delay, background:'var(--white)', border:'1px solid var(--bdr)', borderRadius:20, overflow:'hidden', boxShadow:'var(--sh)' }}
                 onClick={() => openModal(key)}>
                 <div style={{ position:'relative', height:200, overflow:'hidden', background:'var(--c2)' }}>
                   {img2 ? (
@@ -446,19 +546,24 @@ export default function Home({ openModal }) {
 
           <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:22 }} className="stats-cards-resp">
             {[
-              { n:'3 hrs', l:'Saved weekly', desc:'SaaS team — post-meeting work fully automated with Zoom AI pipeline', img:'/images/zoom3.png', delay:'0.05s' },
-              { n:'20 hrs', l:'Saved weekly', desc:'Hotel management — bookings, payments, invoicing across Airbnb & QuickBooks', img:'/images/hotel1.png', delay:'0.2s' },
-              { n:'2×', l:'Pipeline visibility', desc:'Digital agency — zero-touch CRM lead management with instant AI routing', img:'/images/lead1.png', delay:'0.35s' },
-            ].map(({ n, l, desc, img, delay }) => (
-              <div key={l} className="reveal scale-in" style={{ transitionDelay:delay, position:'relative', borderRadius:20, overflow:'hidden', border:'1px solid var(--bdr)', boxShadow:'var(--sh)' }}>
-                <div style={{ height:160, overflow:'hidden' }}>
-                  <img src={img} alt={l} style={{ width:'100%', height:'100%', objectFit:'cover' }}/>
-                  <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top, rgba(80,16,16,0.9) 40%, rgba(80,16,16,0.2) 100%)' }}/>
+              { n:'3 hrs', l:'Saved Weekly', tag:'Meeting Intelligence', desc:'SaaS team — post-meeting work fully automated with Zoom AI pipeline', img:'/images/zoom3.png', delay:'0.05s' },
+              { n:'20 hrs', l:'Saved Weekly', tag:'Property Management', desc:'Hotel — bookings, payments, invoicing across Airbnb & QuickBooks fully eliminated', img:'/images/hotel1.png', delay:'0.2s' },
+              { n:'2×', l:'Pipeline Visibility', tag:'CRM Automation', desc:'Digital agency — zero-touch lead management with instant AI routing to CRM', img:'/images/lead1.png', delay:'0.35s' },
+            ].map(({ n, l, tag, desc, img, delay }) => (
+              <div key={l} className="reveal scale-in tilt3d" style={{ transitionDelay:delay, borderRadius:20, overflow:'hidden', border:'1px solid var(--bdr)', boxShadow:'var(--sh)', background:'var(--cream)' }}>
+                {/* Image */}
+                <div style={{ position:'relative', height:180, overflow:'hidden' }}>
+                  <img src={img} alt={l} style={{ width:'100%', height:'100%', objectFit:'cover', transition:'transform 0.45s' }}/>
+                  <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, transparent 40%, rgba(80,16,16,0.55) 100%)' }}/>
+                  <div style={{ position:'absolute', bottom:14, left:16, fontSize:'0.63rem', fontWeight:700, letterSpacing:'2px', color:'var(--gl)', textTransform:'uppercase', background:'rgba(80,16,16,0.65)', backdropFilter:'blur(6px)', padding:'4px 12px', borderRadius:100 }}>{tag}</div>
                 </div>
-                <div style={{ padding:'28px 28px 32px', position:'relative', zIndex:1 }}>
-                  <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'3.2rem', fontWeight:700, color:'var(--maroon)', lineHeight:1 }}>{n}</div>
-                  <div style={{ fontSize:'0.75rem', fontWeight:700, letterSpacing:'1.5px', color:'var(--gold)', textTransform:'uppercase', marginBottom:10, marginTop:4 }}>{l}</div>
-                  <p style={{ color:'var(--mut)', fontSize:'0.85rem', lineHeight:1.65, fontWeight:300 }}>{desc}</p>
+                {/* Text */}
+                <div style={{ padding:'24px 26px 28px' }}>
+                  <div style={{ display:'flex', alignItems:'baseline', gap:8, marginBottom:6 }}>
+                    <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'3rem', fontWeight:700, color:'var(--maroon)', lineHeight:1 }}>{n}</span>
+                    <span style={{ fontSize:'0.72rem', fontWeight:700, letterSpacing:'1.5px', color:'var(--gold)', textTransform:'uppercase' }}>{l}</span>
+                  </div>
+                  <p style={{ color:'var(--mut)', fontSize:'0.84rem', lineHeight:1.65, fontWeight:300, margin:0 }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -473,6 +578,147 @@ export default function Home({ openModal }) {
           </div>
         </div>
         <style>{`@media(max-width:1100px){.stats-cards-resp{grid-template-columns:repeat(2,1fr)!important;}} @media(max-width:768px){.stats-cards-resp{grid-template-columns:1fr!important;}}`}</style>
+      </section>
+
+      {/* ═══════════════════════ WHY LOGIC LOOPS ══ */}
+      <section style={{ background:'var(--cream)', padding:'120px 5%', position:'relative', overflow:'hidden' }}>
+        <div style={{ position:'absolute', top:'5%', right:'4%', width:140, height:140, border:'1.5px solid rgba(201,150,58,0.13)', borderRadius:'50%', animation:'ringOrbit2 20s linear infinite', pointerEvents:'none', zIndex:0 }}/>
+        <div style={{ position:'absolute', bottom:'8%', left:'1%', width:88, height:88, border:'1.5px solid rgba(122,28,28,0.1)', transform:'rotate(45deg)', animation:'diamondSpin 22s linear infinite reverse', pointerEvents:'none', zIndex:0 }}/>
+        <div style={{ maxWidth:1280, margin:'0 auto' }}>
+          <div className="reveal" style={{ textAlign:'center', marginBottom:72 }}>
+            <div style={{ fontSize:'0.67rem', fontWeight:700, letterSpacing:'4px', color:'var(--gold)', textTransform:'uppercase', marginBottom:14 }}>Why Logic Loops</div>
+            <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(2.2rem,3.6vw,3.2rem)', fontWeight:700, color:'var(--text)', lineHeight:1.1 }}>
+              Built for Founders.<br/><em style={{ fontStyle:'italic', color:'var(--maroon)' }}>Not Enterprise Procurement.</em>
+            </h2>
+            <p style={{ color:'var(--mut)', fontSize:'0.97rem', lineHeight:1.8, maxWidth:540, margin:'16px auto 0', fontWeight:300 }}>
+              We're not a ticket-based automation factory. We work directly with you, move fast, and build systems that are made to last.
+            </p>
+          </div>
+
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:24 }} className="why-resp">
+            {[
+              { ic:'🎯', h:'Niche Over Volume', p:'We focus on SaaS, D2C, and digital agencies — not every vertical under the sun. That means sharper solutions, faster turnarounds, and zero "we\'ll figure it out" energy.', delay:'0.05s' },
+              { ic:'⚡', h:'2-Week Live Delivery', p:'Most automation agencies take months. We scope, build, and ship production-ready workflows in 2 weeks — with proper error handling, monitoring, and docs included.', delay:'0.15s' },
+              { ic:'🤝', h:'You Talk to the Builder', p:'No account managers, no junior handoffs. You work directly with the person building your automation — which means faster decisions and better outcomes.', delay:'0.25s' },
+              { ic:'🔩', h:'Opinion-Driven Stack', p:"We'll tell you when Make.com is overkill and n8n saves you ₹50K/year. Or when a simple Zapier chain beats a custom AI agent. You get honest advice, not upsells.", delay:'0.35s' },
+              { ic:'📖', h:'Story-Driven Results', p:'Every case study we share includes the real problem, the exact stack used, and the measurable outcome — not vague "40+ hours saved" claims with no context.', delay:'0.45s' },
+              { ic:'🇮🇳', h:'India-First Pricing', p:'Our pricing is structured for Indian SaaS and D2C teams — competitive, transparent, and without the USD sticker shock you get from global agencies.', delay:'0.55s' },
+            ].map(({ ic, h, p, delay }) => (
+              <article key={h} className="reveal tilt3d" style={{ transitionDelay:delay, display:'flex', gap:22, background:'var(--white)', border:'1px solid var(--bdr)', borderRadius:18, padding:'32px 30px' }}>
+                <div style={{ width:52, height:52, borderRadius:13, background:'linear-gradient(135deg,rgba(122,28,28,0.08),rgba(201,150,58,0.1))', border:'1px solid rgba(122,28,28,0.1)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.4rem', flexShrink:0 }}>{ic}</div>
+                <div>
+                  <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.18rem', fontWeight:700, marginBottom:9 }}>{h}</h3>
+                  <p style={{ color:'var(--mut)', fontSize:'0.87rem', lineHeight:1.73, fontWeight:300, margin:0 }}>{p}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <style>{`@media(max-width:900px){.why-resp{grid-template-columns:1fr!important;}}`}</style>
+      </section>
+
+      {/* ═══════════════════════ PRICING ══ */}
+      <section style={{ background:'var(--white)', padding:'120px 5%', position:'relative', overflow:'hidden' }}>
+        <div style={{ position:'absolute', top:'10%', left:'-50px', width:260, height:260, border:'1px solid rgba(201,150,58,0.1)', borderRadius:'50%', animation:'ringOrbit 30s linear infinite', pointerEvents:'none', zIndex:0 }}/>
+        <div style={{ position:'absolute', bottom:'15%', right:'-30px', width:120, height:120, border:'1.5px solid rgba(122,28,28,0.08)', transform:'rotate(45deg)', animation:'spinCube 20s linear infinite reverse', pointerEvents:'none', zIndex:0 }}/>
+        <div style={{ maxWidth:1280, margin:'0 auto' }}>
+          <div className="reveal" style={{ textAlign:'center', marginBottom:72 }}>
+            <div style={{ fontSize:'0.67rem', fontWeight:700, letterSpacing:'4px', color:'var(--gold)', textTransform:'uppercase', marginBottom:14 }}>Packages</div>
+            <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(2.2rem,3.6vw,3.2rem)', fontWeight:700, color:'var(--text)', lineHeight:1.1 }}>
+              Pick a Starting Point.<br/><em style={{ fontStyle:'italic', color:'var(--maroon)' }}>We'll Scale From There.</em>
+            </h2>
+            <p style={{ color:'var(--mut)', fontSize:'0.97rem', lineHeight:1.8, maxWidth:500, margin:'16px auto 0', fontWeight:300 }}>
+              All packages start with a free 30-min Workflow Audit — a slide deck showing exactly what to automate first and the ROI to expect.
+            </p>
+          </div>
+
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:24 }} className="pkg-resp">
+            {[
+              {
+                name:'Starter',
+                tagline:'One workflow, zero friction.',
+                color:'var(--bdr)',
+                accent:'var(--maroon)',
+                badge:null,
+                items:[
+                  '1 end-to-end automation workflow',
+                  'Make.com, n8n, or Zapier (we recommend)',
+                  'Error handling + monitoring setup',
+                  '2-week delivery guarantee',
+                  '2 weeks post-launch support',
+                ],
+                cta:'Start Automating →',
+                delay:'0.05s',
+              },
+              {
+                name:'Growth',
+                tagline:'Multi-system AI automation.',
+                color:'var(--maroon)',
+                accent:'var(--gold)',
+                badge:'Most Popular',
+                items:[
+                  'Up to 4 connected automation workflows',
+                  'AI agent integration (OpenAI / Anthropic)',
+                  'CRM, email, and lead pipeline setup',
+                  'Custom dashboard or reporting',
+                  '30 days post-launch support + iteration',
+                ],
+                cta:'Book Your Audit →',
+                delay:'0.15s',
+              },
+              {
+                name:'Scale',
+                tagline:'Your entire ops on autopilot.',
+                color:'var(--bdr)',
+                accent:'var(--maroon)',
+                badge:null,
+                items:[
+                  'Unlimited workflows for one business area',
+                  'Multi-agent AI system architecture',
+                  'Full stack: CRM + ops + outreach + finance',
+                  'Monthly retainer with iteration sprints',
+                  'Dedicated async support channel',
+                ],
+                cta:'Let\'s Scope It →',
+                delay:'0.25s',
+              },
+            ].map(({ name, tagline, color, accent, badge, items, cta, delay }) => (
+              <article key={name} className="reveal tilt3d" style={{ transitionDelay:delay, background: badge ? 'var(--md)' : 'var(--cream)', border:`2px solid ${badge ? 'var(--gold)' : color}`, borderRadius:20, padding:'38px 32px', position:'relative', display:'flex', flexDirection:'column' }}>
+                {badge && (
+                  <div style={{ position:'absolute', top:-14, left:'50%', transform:'translateX(-50%)', background:'linear-gradient(135deg,var(--gold),var(--gl))', color:'var(--md)', padding:'4px 18px', borderRadius:100, fontSize:'0.67rem', fontWeight:700, letterSpacing:'1.5px', textTransform:'uppercase', whiteSpace:'nowrap' }}>{badge}</div>
+                )}
+                <div style={{ marginBottom:24 }}>
+                  <div style={{ fontSize:'0.67rem', fontWeight:700, letterSpacing:'3px', color: badge ? 'var(--gl)' : 'var(--gold)', textTransform:'uppercase', marginBottom:8 }}>{name}</div>
+                  <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.5rem', fontWeight:700, color: badge ? 'var(--cream)' : 'var(--text)', marginBottom:6 }}>{tagline}</h3>
+                </div>
+                <ul style={{ listStyle:'none', padding:0, margin:'0 0 32px', flex:1 }}>
+                  {items.map(item => (
+                    <li key={item} style={{ display:'flex', alignItems:'flex-start', gap:10, marginBottom:12, fontSize:'0.87rem', color: badge ? 'rgba(253,248,240,0.75)' : 'var(--mut)', lineHeight:1.5, fontWeight:300 }}>
+                      <span style={{ color: badge ? 'var(--gl)' : accent, fontWeight:700, marginTop:1, flexShrink:0 }}>✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link to="/contact" style={{ background: badge ? 'linear-gradient(135deg,var(--gold),var(--gl))' : 'transparent', color: badge ? 'var(--md)' : accent, padding:'13px 24px', borderRadius:11, fontWeight:700, fontSize:'0.9rem', textDecoration:'none', display:'block', textAlign:'center', border: badge ? 'none' : `2px solid ${accent}`, transition:'all 0.2s' }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)' }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'none' }}>
+                  {cta}
+                </Link>
+              </article>
+            ))}
+          </div>
+
+          <div className="reveal delay-2" style={{ marginTop:40, background:'linear-gradient(135deg,rgba(122,28,28,0.04),rgba(201,150,58,0.06))', border:'1px solid rgba(201,150,58,0.2)', borderRadius:16, padding:'28px 36px', display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:20 }}>
+            <div>
+              <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.25rem', fontWeight:700, marginBottom:6 }}>Free Workflow Audit</div>
+              <p style={{ color:'var(--mut)', fontSize:'0.87rem', lineHeight:1.6, fontWeight:300, margin:0 }}>30-minute call + a slide deck showing your top 3 automation opportunities and the ROI estimate for each. No commitment required.</p>
+            </div>
+            <Link to="/contact" style={{ background:'linear-gradient(135deg,var(--gold),var(--gl))', color:'var(--md)', padding:'13px 28px', borderRadius:11, fontWeight:700, fontSize:'0.9rem', textDecoration:'none', whiteSpace:'nowrap', flexShrink:0, boxShadow:'0 6px 20px rgba(201,150,58,0.3)' }}>
+              Claim Free Audit →
+            </Link>
+          </div>
+        </div>
+        <style>{`@media(max-width:1100px){.pkg-resp{grid-template-columns:repeat(2,1fr)!important;}} @media(max-width:700px){.pkg-resp{grid-template-columns:1fr!important;}}`}</style>
       </section>
 
       {/* ═══════════════════════ CTA BANNER ══ */}
