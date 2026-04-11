@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import useTilt3D from '../hooks/useTilt3D'
 import useFlipReveal from '../hooks/useFlipReveal'
 import NodeCanvas from '../animations/NodeCanvas'
@@ -144,6 +145,14 @@ export default function Home({ openModal }) {
 
   return (
     <>
+      <Helmet>
+        <title>Logic Loops AI | #1 AI Automation Agency | Make.com, n8n, Zapier Experts</title>
+        <meta name="description" content="India's #1 AI Automation Agency. We build Make.com, n8n, Zapier, and AI agent systems that automate your leads, ops, and outreach — permanently. 2-week live delivery. Serving US, UK, AU, CA." />
+        <link rel="canonical" href="https://logicloopsai.com/" />
+        <meta property="og:title" content="Logic Loops AI | #1 AI Automation Agency" />
+        <meta property="og:description" content="We build Make.com, n8n, and AI agent systems that automate your leads, ops, and outreach — permanently. India's #1 AI automation agency." />
+        <meta property="og:url" content="https://logicloopsai.com/" />
+      </Helmet>
       <style>{`
         /* ── Keyframes ── */
         @keyframes orbFloat  { from{transform:translateY(0) scale(1)} to{transform:translateY(-40px) scale(1.06)} }

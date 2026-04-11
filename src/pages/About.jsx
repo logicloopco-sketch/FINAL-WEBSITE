@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 export default function About() {
@@ -8,6 +9,14 @@ export default function About() {
 
   return (
     <>
+      <Helmet>
+        <title>About Logic Loops AI | India's #1 AI Automation Agency | Indore</title>
+        <meta name="description" content="Learn about Logic Loops AI — India's #1 AI automation agency based in Indore. We're founder-direct, delivery-obsessed, and specialise in Make.com, n8n, Zapier, and AI agent systems for SaaS and D2C businesses." />
+        <link rel="canonical" href="https://logicloopsai.com/about" />
+        <meta property="og:title" content="About Logic Loops AI | Indore, India" />
+        <meta property="og:description" content="Founder-direct AI automation agency in Indore. We build Make.com, n8n, and AI agent systems with 2-week delivery. Serving US, UK, AU, CA clients globally." />
+        <meta property="og:url" content="https://logicloopsai.com/about" />
+      </Helmet>
       {/* PAGE HERO */}
       <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
         <div className="mw">

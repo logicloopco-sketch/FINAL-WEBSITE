@@ -1,5 +1,59 @@
+# Logic Loops AI — robots.txt
+# https://logicloopsai.com
 
+# ── Standard crawlers ──────────────────────────────────────
 User-agent: *
-Disallow: 
+Allow: /
 Disallow: /cgi-bin/
-Sitemap: https://ai.logicloopsai.com
+Disallow: /*.json$
+Disallow: /node_modules/
+
+# ── Google ─────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Google AI (Bard / Gemini training)
+User-agent: Google-Extended
+Allow: /
+
+# ── OpenAI / ChatGPT ───────────────────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# ── Perplexity AI ──────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+# ── Anthropic / Claude ─────────────────────────────────────
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# ── Meta AI ────────────────────────────────────────────────
+User-agent: FacebookBot
+Allow: /
+
+# ── Microsoft / Bing / Copilot ─────────────────────────────
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# ── Common SEO tools ───────────────────────────────────────
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+# ── Sitemap ────────────────────────────────────────────────
+Sitemap: https://logicloopsai.com/sitemap.xml

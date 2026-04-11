@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 import useTilt3D from '../hooks/useTilt3D'
 
@@ -22,6 +23,14 @@ export default function Services() {
 
   return (
     <>
+      <Helmet>
+        <title>AI Automation Services | Make.com, n8n, Zapier Experts | Logic Loops AI</title>
+        <meta name="description" content="Explore Logic Loops AI services: Make.com automation, n8n workflows, Zapier integrations, AI agent development, CRM automation, cold email outreach, meeting intelligence, and finance automation." />
+        <link rel="canonical" href="https://logicloopsai.com/services" />
+        <meta property="og:title" content="AI Automation Services | Logic Loops AI" />
+        <meta property="og:description" content="Make.com, n8n, Zapier experts. AI agents, CRM automation, cold email outreach, meeting intelligence and more. 2-week delivery guaranteed." />
+        <meta property="og:url" content="https://logicloopsai.com/services" />
+      </Helmet>
       {/* PAGE HERO */}
       <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
         <div className="mw">

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 const WEBHOOK_URL = 'https://hook.eu2.make.com/u29nnwprpsk7c3zujr4aih8pbj32ntuj'
@@ -87,6 +88,14 @@ export default function Contact() {
 
   return (
     <>
+      <Helmet>
+        <title>Book a Free Automation Audit | Contact Logic Loops AI</title>
+        <meta name="description" content="Book your free 30-minute Automation Audit with Logic Loops AI. We'll map your top automation opportunities and show you the ROI to expect — no commitment, no hard sell." />
+        <link rel="canonical" href="https://logicloopsai.com/contact" />
+        <meta property="og:title" content="Contact Logic Loops AI | Free Automation Audit" />
+        <meta property="og:description" content="Book a free 30-min call. We'll identify your top 3 automation opportunities and give you an ROI estimate — before any commitment." />
+        <meta property="og:url" content="https://logicloopsai.com/contact" />
+      </Helmet>
       {/* PAGE HERO */}
       <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
         <div className="mw">

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 import useTilt3D from '../hooks/useTilt3D'
 
@@ -40,6 +41,14 @@ export default function CaseStudies() {
 
   return (
     <>
+      <Helmet>
+        <title>AI Automation Case Studies | Real Results | Logic Loops AI</title>
+        <meta name="description" content="See how Logic Loops AI automated workflows for SaaS startups in Bengaluru, agencies in Mumbai, and hospitality businesses in Goa. Real clients, real outcomes, documented results." />
+        <link rel="canonical" href="https://logicloopsai.com/case-studies" />
+        <meta property="og:title" content="AI Automation Case Studies | Logic Loops AI" />
+        <meta property="og:description" content="Real automation results: 20 hrs/week saved, 2x pipeline visibility, 100% invoice accuracy. See how we've transformed Indian SaaS, D2C, and hospitality businesses." />
+        <meta property="og:url" content="https://logicloopsai.com/case-studies" />
+      </Helmet>
       {/* PAGE HERO */}
       <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
         <div className="mw">

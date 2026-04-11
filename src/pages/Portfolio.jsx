@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 const projects = [
@@ -20,6 +21,14 @@ export default function Portfolio({ openModal }) {
 
   return (
     <>
+      <Helmet>
+        <title>AI Automation Portfolio | Workflow Projects | Logic Loops AI</title>
+        <meta name="description" content="Browse Logic Loops AI's automation portfolio: Zoom meeting intelligence, AI lead management, cold email outreach, hotel booking automation, Xero invoicing, and Apollo lead generation — all built with Make.com, n8n, and AI agents." />
+        <link rel="canonical" href="https://logicloopsai.com/portfolio" />
+        <meta property="og:title" content="AI Automation Portfolio | Logic Loops AI" />
+        <meta property="og:description" content="Real automation projects: Zoom AI pipeline, CRM automation, cold email outreach, hotel management, invoice automation, and more." />
+        <meta property="og:url" content="https://logicloopsai.com/portfolio" />
+      </Helmet>
       {/* PAGE HERO */}
       <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
         <div className="mw">
