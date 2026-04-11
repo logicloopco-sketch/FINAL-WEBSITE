@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import useTilt3D from '../hooks/useTilt3D'
+import useFlipReveal from '../hooks/useFlipReveal'
+import NodeCanvas from '../animations/NodeCanvas'
+import Particles from '../animations/Particles'
+import '../styles/animations.css'
 
 /* ─── Scroll-reveal hook ─────────────────────────────────── */
 function useReveal() {
@@ -98,7 +102,7 @@ function PlatformChip({ slug, name }) {
   const [err, setErr] = useState(false)
   const url = slug ? `https://cdn.simpleicons.org/${slug}/ffffff` : null
   return (
-    <div style={{ background:'rgba(253,248,240,0.07)', border:'1px solid rgba(253,248,240,0.11)', borderRadius:'10px', padding:'10px 18px', fontSize:'0.81rem', fontWeight:500, whiteSpace:'nowrap', color:'rgba(253,248,240,0.7)', display:'flex', alignItems:'center', gap:'9px', flexShrink:0 }}>
+    <div className="platform-chip" style={{ background:'rgba(253,248,240,0.07)', border:'1px solid rgba(253,248,240,0.11)', borderRadius:'10px', padding:'10px 18px', fontSize:'0.81rem', fontWeight:500, whiteSpace:'nowrap', color:'rgba(253,248,240,0.7)', display:'flex', alignItems:'center', gap:'9px', flexShrink:0 }}>
       {url && !err
         ? <img src={url} alt={name} width={16} height={16} style={{ objectFit:'contain', flexShrink:0, opacity:0.9 }} onError={() => setErr(true)} />
         : <span style={{ width:16, height:16, borderRadius:4, background:'linear-gradient(135deg,rgba(201,150,58,0.7),rgba(122,28,28,0.7))', display:'inline-flex', alignItems:'center', justifyContent:'center', fontSize:'0.48rem', fontWeight:800, color:'#fff', flexShrink:0, letterSpacing:'0.3px' }}>
@@ -114,6 +118,7 @@ function PlatformChip({ slug, name }) {
 export default function Home({ openModal }) {
   useReveal()
   useTilt3D()
+  useFlipReveal()
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   const p1 = [
@@ -233,6 +238,9 @@ export default function Home({ openModal }) {
 
       {/* ═══════════════════════════════════════ HERO ══ */}
       <section style={{ minHeight:'100vh', position:'relative', display:'flex', alignItems:'center', padding:'140px 5% 100px', overflow:'hidden', background:'var(--md)' }}>
+
+        {/* Animation 1 — floating connected nodes */}
+        <NodeCanvas />
 
         {/* Background image */}
         <div className="hero-bg-img" />
@@ -423,8 +431,8 @@ export default function Home({ openModal }) {
               { step:'04', h:'Build & Test',                 items:['We build in a staging environment using Make.com, n8n, or Zapier — plus AI agents where they add real value.','Every workflow is tested with real-world data, edge cases, and error scenarios.','You review the workflow before it touches your live systems.'], delay:'0.35s' },
               { step:'05', h:'Go Live & Handover',           items:['We connect everything to your live tools and run a final end-to-end test together.','We walk you through every trigger, step, and output so you understand exactly what\'s running.','You get a simple playbook — what the workflow does, how to monitor it, and when to flag an issue.'], delay:'0.45s' },
               { step:'06', h:'Ongoing Support & Iteration',  items:['As your business grows, your automations can grow with it — we offer light-touch monthly support.','We check in periodically to catch issues before they become problems.','Need a new trigger, a new tool integration, or a logic change? We\'re a message away.'], delay:'0.55s' },
-            ].map(({ step, h, items, delay }) => (
-              <article key={step} className="reveal srv3d tilt3d" style={{ transitionDelay:delay, background:'var(--white)', border:'1px solid var(--bdr)', borderRadius:18, padding:'34px 30px', position:'relative', overflow:'hidden' }}>
+            ].map(({ step, h, items }) => (
+              <article key={step} className="flip-reveal tilt3d" style={{ background:'var(--white)', border:'1px solid var(--bdr)', borderRadius:18, padding:'34px 30px', position:'relative', overflow:'hidden' }}>
                 <div className="step-badge" style={{ display:'inline-flex', alignItems:'center', gap:7, background:'linear-gradient(135deg,var(--maroon),rgba(122,28,28,0.75))', color:'var(--cream)', padding:'5px 16px', borderRadius:100, fontSize:'0.72rem', fontWeight:700, letterSpacing:'1.5px', textTransform:'uppercase', marginBottom:18, cursor:'default' }}>
                   <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1rem', fontWeight:700, lineHeight:1 }}>{step}</span>
                   Step
@@ -510,6 +518,8 @@ export default function Home({ openModal }) {
 
       {/* ═══════════════════════ PLATFORMS ══ */}
       <section style={{ background:'var(--md)', padding:'120px 5%', position:'relative', overflow:'hidden' }}>
+        {/* Animation 5 — drifting particles */}
+        <Particles />
         <Orbs />
         <div style={{ maxWidth:1280, margin:'0 auto', position:'relative', zIndex:1 }}>
           <div className="reveal" style={{ textAlign:'center', marginBottom:64 }}>
@@ -723,6 +733,7 @@ export default function Home({ openModal }) {
 
       {/* ═══════════════════════ CTA BANNER ══ */}
       <section style={{ background:'linear-gradient(135deg,var(--md) 0%,var(--maroon) 100%)', padding:'120px 5%', textAlign:'center', position:'relative', overflow:'hidden' }}>
+        <Particles />
         <GridLines />
         <Orbs />
         <div style={{ maxWidth:800, margin:'0 auto', position:'relative', zIndex:1 }}>
