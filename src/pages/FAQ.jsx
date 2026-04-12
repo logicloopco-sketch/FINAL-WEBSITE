@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import FAQSection from '../components/FAQSection'
 import useScrollReveal from '../hooks/useScrollReveal'
 
 const faqs = [
   {
     q: 'What is Logic Loops AI and what do you do?',
-    a: 'Logic Loops AI is a premier AI automation agency specializing in Make.com, n8n, Zapier, and custom AI agent workflows. We design and deploy intelligent automation systems that eliminate manual work, connect your business tools, and scale your operations — no traditional software development needed.'
+    a: 'Logic Loops AI is a premier AI automation agency specialising in Make.com, n8n, Zapier, and custom AI agent workflows. We design and deploy intelligent automation systems that eliminate manual work, connect your business tools, and scale your operations — no traditional software development needed.'
   },
   {
-    q: 'Which automation platforms do you specialize in?',
+    q: 'Which automation platforms do you specialise in?',
     a: 'We have deep expertise in Make.com, n8n, and Zapier. We also work with OpenAI, Anthropic, LangChain, and 500+ other platforms including Pipedrive, GoHighLevel, HubSpot, Zoom, Xero, QuickBooks, Google Workspace, Microsoft 365, and many more.'
   },
   {
@@ -47,11 +48,8 @@ const faqs = [
 ]
 
 export default function FAQ() {
-  const [open, setOpen] = useState(null)
   useScrollReveal()
   useEffect(() => { window.scrollTo(0, 0) }, [])
-
-  const toggle = (i) => setOpen(open === i ? null : i)
 
   return (
     <>
@@ -63,6 +61,7 @@ export default function FAQ() {
         <meta property="og:description" content="Got questions about AI automation? We answer everything — tools, timelines, pricing, and how we serve global clients from Indore, India." />
         <meta property="og:url" content="https://logicloopsai.com/faq" />
       </Helmet>
+
       {/* PAGE HERO */}
       <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
         <div className="mw">
@@ -76,27 +75,8 @@ export default function FAQ() {
         </div>
       </section>
 
-      {/* FAQ LIST */}
-      <section style={{ background: 'var(--cream)', padding: '108px 5%' }}>
-        <div className="mw">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', maxWidth: '820px', margin: '0 auto' }}>
-            {faqs.map((faq, i) => (
-              <div key={i} className="fu" style={{ background: 'var(--white)', border: '1px solid var(--bdr)', borderRadius: '14px', overflow: 'hidden' }}>
-                <button
-                  onClick={() => toggle(i)}
-                  style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: '22px 26px', fontFamily: "'Cormorant Garamond',serif", fontSize: '1.05rem', fontWeight: 700, color: 'var(--text)', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}
-                >
-                  {faq.q}
-                  <span style={{ width: '28px', height: '28px', borderRadius: '50%', background: 'rgba(122,28,28,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', color: 'var(--maroon)', flexShrink: 0, transition: 'transform 0.3s', transform: open === i ? 'rotate(45deg)' : 'none' }}>+</span>
-                </button>
-                <div style={{ maxHeight: open === i ? '300px' : '0', overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
-                  <p style={{ padding: '0 26px 22px', color: 'var(--mut)', fontSize: '0.9rem', lineHeight: 1.78, fontWeight: 300 }}>{faq.a}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ ACCORDION — shared component injects FAQPage JSON-LD schema */}
+      <FAQSection faqs={faqs} title={<>Your Questions, <em>Answered</em></>} />
 
       {/* CTA */}
       <section style={{ background: 'var(--white)', padding: '108px 5%', textAlign: 'center' }}>

@@ -3,6 +3,30 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 import useTilt3D from '../hooks/useTilt3D'
+import FAQSection from '../components/FAQSection'
+
+const servicesFaqs = [
+  {
+    q: 'Which automation platform is right for my business — Make.com, n8n, or Zapier?',
+    a: 'Zapier suits simple, linear automations between popular apps. Make.com excels at visual, multi-branch workflows with advanced logic. n8n is ideal when you need self-hosted, highly customisable pipelines with no usage limits. We recommend the right tool after understanding your workflow and data volume during the free discovery call.'
+  },
+  {
+    q: 'What is an AI agent and how is it different from a standard automation?',
+    a: 'A standard automation follows fixed rules — if X happens, do Y. An AI agent uses a language model (like GPT-4 or Claude) to reason, make decisions, and take multi-step actions based on context. AI agents handle unstructured inputs such as emails, documents, and voice notes that traditional automations cannot process.'
+  },
+  {
+    q: 'Can you integrate my CRM with all my other business tools?',
+    a: 'Yes. We have experience integrating HubSpot, Pipedrive, GoHighLevel, Salesforce, and other CRMs with tools across marketing, finance, communication, and operations. We support 500+ platforms via native integrations and APIs.'
+  },
+  {
+    q: 'Do you handle the full build or do I need a technical team on my side?',
+    a: 'We handle everything — scoping, building, testing, deploying, and documenting. You do not need a technical team. All we need from you is a description of your current process and the outcome you want to achieve.'
+  },
+  {
+    q: 'What does ongoing maintenance include?',
+    a: 'Our maintenance retainers cover monitoring your automations for failures, updating workflows when APIs or connected apps change, adding logic improvements as your process evolves, and providing priority support for any issues. You focus on your business — we keep the automations running.'
+  },
+]
 
 const services = [
   { ic: '⚡', h: 'Workflow Automation', p: 'End-to-end workflows on Make.com, n8n, and Zapier. Custom logic, error handling, multi-step pipelines built to scale. We design every workflow to handle edge cases, retries, and errors gracefully.', tags: ['Make.com', 'n8n', 'Zapier'] },
@@ -192,6 +216,9 @@ export default function Services() {
           @media(max-width:768px){.process-resp{grid-template-columns:1fr!important;}}
         `}</style>
       </section>
+
+      {/* FAQ */}
+      <FAQSection faqs={servicesFaqs} title={<>Services Questions, <em>Answered</em></>} bg="var(--cream)" />
 
       {/* CTA */}
       <section style={{ background: 'var(--md)', padding: '108px 5%', textAlign: 'center' }}>

@@ -3,6 +3,30 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 import useTilt3D from '../hooks/useTilt3D'
+import FAQSection from '../components/FAQSection'
+
+const caseStudiesFaqs = [
+  {
+    q: 'How much time can AI automation realistically save my team each week?',
+    a: 'Our case studies show savings ranging from 3 hours per week for lean teams to 20+ hours per week for operations-heavy businesses. The actual saving depends on the volume and complexity of your manual tasks. During the discovery call we estimate your specific time saving before any work begins.'
+  },
+  {
+    q: 'What ROI can I expect from an AI automation project?',
+    a: 'ROI varies by project, but most clients recover their investment within 60–90 days through reduced labour costs, faster lead response times, and fewer operational errors. A business saving 10 hours per week at $30/hour generates $15,600 in annual value — far exceeding typical project costs.'
+  },
+  {
+    q: 'How do you measure the success of an automation after it goes live?',
+    a: 'We define success metrics before we build — time saved, error reduction, lead response speed, cost per action, or revenue influenced. After go-live we track these metrics and share a summary. You always know exactly what the automation is doing and the value it delivers.'
+  },
+  {
+    q: 'Can a small business achieve the same results as a larger company?',
+    a: 'Yes. Many of our strongest results come from small businesses and solo operators where automation has the highest proportional impact. A founder saving 15 hours per week gains back two full workdays — the equivalent of hiring a part-time employee at a fraction of the cost.'
+  },
+  {
+    q: 'How long after go-live do results typically appear?',
+    a: 'Most automations deliver measurable results from day one — the first automated lead entry, the first report generated, the first invoice sent. Cumulative savings compound over weeks and months. You will see value immediately, not after a long bedding-in period.'
+  },
+]
 
 const cases = [
   {
@@ -94,6 +118,9 @@ export default function CaseStudies() {
           @media(max-width:768px){article.fu[style*="padding: 52px"]{padding:28px!important;} .case-img-box{height:200px!important;}}
         `}</style>
       </section>
+
+      {/* FAQ */}
+      <FAQSection faqs={caseStudiesFaqs} title={<>Results Questions, <em>Honestly Answered</em></>} bg="var(--white)" />
 
       {/* CTA */}
       <section style={{ background: 'var(--cream)', padding: '108px 5%', textAlign: 'center' }}>

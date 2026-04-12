@@ -1,6 +1,30 @@
 import { useState, useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
+import FAQSection from '../components/FAQSection'
+
+const contactFaqs = [
+  {
+    q: 'What happens immediately after I submit the contact form?',
+    a: 'Your submission is received instantly via our automated pipeline. You will get a confirmation email within minutes and a personal reply from our team within 24 hours to schedule your free 30-minute consultation call.'
+  },
+  {
+    q: 'Is the discovery call genuinely free with no obligation?',
+    a: 'Yes, completely free and no obligation. We will discuss your workflow, identify automation opportunities, and explain what is possible — you decide afterwards if you want to proceed. No pressure, no hard sell.'
+  },
+  {
+    q: 'What should I prepare before the consultation call?',
+    a: 'Just think through your current process: what tools you use, which tasks are repetitive or manual, and what outcome you want to achieve. A rough idea of volume (e.g. how many leads per day, invoices per month) is helpful but not required. We guide the conversation.'
+  },
+  {
+    q: 'Can I start with a small pilot project before committing to a larger engagement?',
+    a: 'Absolutely. A small pilot is often the smartest first step. It lets you experience our process and quality with minimal investment, and gives us a chance to understand your business deeply before tackling larger workflows.'
+  },
+  {
+    q: 'Do you work with clients who are not technical and have never used automation before?',
+    a: 'Yes — the majority of our clients come to us with no automation experience. You do not need to know anything about Make.com, n8n, or APIs. We handle all the technical work and explain everything in plain language throughout the project.'
+  },
+]
 
 const WEBHOOK_URL = 'https://hook.eu2.make.com/u29nnwprpsk7c3zujr4aih8pbj32ntuj'
 
@@ -212,6 +236,9 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FAQSection faqs={contactFaqs} title={<>Before You <em>Reach Out</em></>} bg="var(--cream)" />
 
       <style>{`
         @media(max-width:1100px){.contact-resp{grid-template-columns:1fr!important;}}

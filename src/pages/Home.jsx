@@ -5,7 +5,31 @@ import useTilt3D from '../hooks/useTilt3D'
 import useFlipReveal from '../hooks/useFlipReveal'
 import NodeCanvas from '../animations/NodeCanvas'
 import Particles from '../animations/Particles'
+import FAQSection from '../components/FAQSection'
 import '../styles/animations.css'
+
+const homeFaqs = [
+  {
+    q: 'What types of businesses benefit most from AI automation?',
+    a: 'Any business with repetitive, rule-based tasks benefits — agencies, SaaS companies, e-commerce stores, real estate firms, hospitality groups, and professional service providers. If your team spends time on manual data entry, follow-ups, reporting, or connecting tools, automation can eliminate that work entirely.'
+  },
+  {
+    q: 'How is working with Logic Loops AI different from hiring a developer or freelancer?',
+    a: 'Developers build custom code that requires ongoing maintenance and technical knowledge. We use no-code and low-code automation platforms (Make.com, n8n, Zapier) meaning faster delivery, lower cost, and workflows your team can monitor and understand — no black-box code dependencies.'
+  },
+  {
+    q: 'Will automation break my existing tools or disrupt my operations?',
+    a: 'No. We build automations that connect to your existing stack via APIs — nothing is replaced or disrupted. Your team continues using the same tools while the automation handles the manual steps running silently in the background.'
+  },
+  {
+    q: 'Do I need to sign a long-term contract?',
+    a: 'No long-term contracts are required for project work. We deliver your automation, you pay on completion. For ongoing maintenance retainers, we offer flexible monthly arrangements with no lock-in periods.'
+  },
+  {
+    q: 'How quickly can I see my automation running?',
+    a: 'Simple automations can be live in as little as 3–5 business days. Most projects go live within 1–2 weeks. We prioritise fast, clean delivery because we know your time has value.'
+  },
+]
 
 /* ─── Scroll-reveal hook ─────────────────────────────────── */
 function useReveal() {
@@ -739,6 +763,9 @@ export default function Home({ openModal }) {
         </div>
         <style>{`@media(max-width:1100px){.pkg-resp{grid-template-columns:repeat(2,1fr)!important;}} @media(max-width:700px){.pkg-resp{grid-template-columns:1fr!important;}}`}</style>
       </section>
+
+      {/* ═══════════════════════ FAQ ══ */}
+      <FAQSection faqs={homeFaqs} title={<>Common Questions, <em>Clearly Answered</em></>} bg="var(--cream)" />
 
       {/* ═══════════════════════ CTA BANNER ══ */}
       <section style={{ background:'linear-gradient(135deg,var(--md) 0%,var(--maroon) 100%)', padding:'120px 5%', textAlign:'center', position:'relative', overflow:'hidden' }}>

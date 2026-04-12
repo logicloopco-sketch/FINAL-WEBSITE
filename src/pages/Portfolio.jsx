@@ -2,6 +2,30 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
+import FAQSection from '../components/FAQSection'
+
+const portfolioFaqs = [
+  {
+    q: 'What exactly do I receive when an automation project is delivered?',
+    a: 'You receive a fully tested, live automation on your chosen platform (Make.com, n8n, or Zapier), a walkthrough video explaining how it works, documentation of the logic and connected tools, and a post-delivery support window to handle any adjustments needed after go-live.'
+  },
+  {
+    q: 'Can I request a custom automation based on a portfolio project I have seen?',
+    a: 'Absolutely. Every portfolio project can be adapted for your specific tools, data structure, and business logic. Share the project you have seen and describe your workflow — we will scope exactly what changes are needed.'
+  },
+  {
+    q: 'Are all the portfolio projects real, production automations?',
+    a: 'Yes. Every project shown is a live automation built for a real client. Names and identifying details may be omitted for confidentiality, but the workflows, tools, and results are genuine.'
+  },
+  {
+    q: 'How do I know which type of automation is right for my business?',
+    a: 'That is exactly what our free discovery call is for. We will map your current workflow, identify the highest-impact automation opportunities, and recommend the right approach — no generic templates, only purpose-built solutions.'
+  },
+  {
+    q: 'Will I be able to manage the automation myself after delivery?',
+    a: 'Yes. We build on visual platforms like Make.com and n8n that are designed for non-technical users. We also provide documentation and a walkthrough so you can monitor the automation, understand its logic, and make simple edits if needed.'
+  },
+]
 
 const projects = [
   { key: 'zoom', thumb: ['/images/zoom1.png', '/images/zoom2.png'], cat: 'Meeting Intelligence', h: 'Zoom Meeting AI Processing Pipeline', p: 'Auto-transcribes, summarizes, and stores every Zoom meeting by type — delivered to your inbox in minutes.', tools: ['Zoom', 'OpenAI', 'Pinecone', 'Gmail'] },
@@ -81,6 +105,9 @@ export default function Portfolio({ openModal }) {
           @media(max-width:768px){.proj-resp{grid-template-columns:1fr!important;}}
         `}</style>
       </section>
+
+      {/* FAQ */}
+      <FAQSection faqs={portfolioFaqs} title={<>About Our <em>Project Deliverables</em></>} bg="var(--cream)" />
 
       {/* CTA */}
       <section style={{ background: 'var(--md)', padding: '108px 5%', textAlign: 'center' }}>

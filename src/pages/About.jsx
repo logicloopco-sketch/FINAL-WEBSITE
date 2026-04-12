@@ -2,6 +2,30 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
+import FAQSection from '../components/FAQSection'
+
+const aboutFaqs = [
+  {
+    q: 'Who founded Logic Loops AI and what is their background?',
+    a: 'Logic Loops AI was founded by an automation specialist with hands-on experience building workflows across Make.com, n8n, Zapier, and custom AI integrations. Every client engagement is led directly by our founder — you are never handed off to a junior team member or account manager.'
+  },
+  {
+    q: 'Why should I trust an automation agency based in India with my business processes?',
+    a: 'Our client base spans the US, UK, Australia, and Europe. We operate with full transparency — you receive detailed documentation, walkthrough videos, and direct communication throughout every project. Our results speak for themselves: see our case studies for verified outcomes from global clients.'
+  },
+  {
+    q: 'Do you sign NDAs before we discuss our workflows and internal processes?',
+    a: 'Yes. We sign an NDA before any detailed workflow discussion if you require one. Protecting your business processes and data is a non-negotiable part of how we operate. Simply request one before the discovery call and we will send it for signature immediately.'
+  },
+  {
+    q: 'Do you work on one-off projects or long-term partnerships?',
+    a: 'Both. Some clients come to us for a single, specific automation. Others engage us as their ongoing automation partner — building new workflows, maintaining existing ones, and expanding their automation stack over time. We are happy with either arrangement.'
+  },
+  {
+    q: 'How many platforms and tools can you integrate with?',
+    a: 'We support 500+ platforms natively through Make.com, n8n, and Zapier, plus any platform that exposes a REST API or webhook. If a tool exists and has any form of connectivity, we can almost certainly integrate it into your automation.'
+  },
+]
 
 export default function About() {
   useScrollReveal()
@@ -161,6 +185,9 @@ export default function About() {
           @media(max-width:768px){.why-resp,.proc-resp{grid-template-columns:1fr!important;}}
         `}</style>
       </section>
+
+      {/* FAQ */}
+      <FAQSection faqs={aboutFaqs} title={<>About <em>Logic Loops AI</em></>} bg="var(--white)" />
 
       {/* CTA */}
       <section style={{ background: 'var(--cream)', padding: '108px 5%', textAlign: 'center' }}>
