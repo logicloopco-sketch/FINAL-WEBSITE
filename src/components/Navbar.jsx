@@ -27,6 +27,7 @@ export default function Navbar() {
             <NavLink to="/case-studies">Case Studies</NavLink>
             <NavLink to="/about">About Us</NavLink>
             <NavLink to="/faq">FAQ</NavLink>
+            <NavLink to="/blog">Blog</NavLink>
             <NavLink to="/contact" className="nav-cta">Book Free Call</NavLink>
           </div>
           <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">
@@ -41,6 +42,7 @@ export default function Navbar() {
         <Link to="/case-studies">Case Studies</Link>
         <Link to="/about">About Us</Link>
         <Link to="/faq">FAQ</Link>
+        <Link to="/blog">Blog</Link>
         <Link to="/contact" className="nav-cta">Book Free Call</Link>
       </div>
     </>

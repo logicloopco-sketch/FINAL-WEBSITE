@@ -36,6 +36,7 @@ export default function Footer() {
               <li><Link to="/case-studies">Case Studies</Link></li>
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/faq">FAQ</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
               <li><Link to="/contact">Contact</Link></li>
               <li><a href="https://www.logicloopsai.com" target="_blank" rel="noreferrer">logicloopsai.com</a></li>
             </ul>

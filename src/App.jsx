@@ -12,6 +12,8 @@ const CaseStudies = lazy(() => import('./pages/CaseStudies'))
 const About       = lazy(() => import('./pages/About'))
 const FAQ         = lazy(() => import('./pages/FAQ'))
 const Contact     = lazy(() => import('./pages/Contact'))
+const Blog        = lazy(() => import('./pages/Blog'))
+const BlogPost    = lazy(() => import('./pages/BlogPost'))
 
 // Minimal loading fallback — matches the site background so there's no flash
 function PageLoader() {
@@ -50,6 +52,8 @@ export default function App() {
           <Route path="/about"        element={<About />} />
           <Route path="/faq"          element={<FAQ />} />
           <Route path="/contact"      element={<Contact />} />
+          <Route path="/blog"         element={<Blog />} />
+          <Route path="/blog/:slug"   element={<BlogPost />} />
         </Routes>
       </Suspense>
       <Footer />
