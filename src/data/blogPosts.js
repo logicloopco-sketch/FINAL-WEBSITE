@@ -7,6 +7,7 @@ export const blogPosts = [
     date: 'April 8, 2025',
     readTime: '8 min read',
     cover: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80',
+    imageAlt: 'Make.com lead generation automation workflow diagram',
     content: [
       {
         type: 'intro',
@@ -69,6 +70,7 @@ export const blogPosts = [
     date: 'April 2, 2025',
     readTime: '11 min read',
     cover: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80',
+    imageAlt: 'n8n vs Make.com vs Zapier comparison chart 2025',
     content: [
       {
         type: 'intro',
@@ -150,6 +152,7 @@ export const blogPosts = [
     date: 'March 25, 2025',
     readTime: '9 min read',
     cover: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1400&q=80',
+    imageAlt: 'AI agent workflow automation saving 20 hours per week',
     content: [
       {
         type: 'intro',
@@ -209,6 +212,7 @@ export const blogPosts = [
     date: 'March 18, 2025',
     readTime: '7 min read',
     cover: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=80',
+    imageAlt: 'CRM automation recovering lost leads with Make.com and HubSpot',
     content: [
       {
         type: 'intro',
@@ -270,6 +274,7 @@ export const blogPosts = [
     date: 'March 10, 2025',
     readTime: '12 min read',
     cover: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=1400&q=80',
+    imageAlt: 'AI powered cold email outreach automation pipeline',
     content: [
       {
         type: 'intro',
@@ -341,6 +346,7 @@ export const blogPosts = [
     date: 'March 3, 2025',
     readTime: '6 min read',
     cover: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=80',
+    imageAlt: 'Workflow automation ROI calculator for businesses',
     content: [
       {
         type: 'intro',

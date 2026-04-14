@@ -102,7 +102,7 @@ export default function Blog() {
                   <div style={{ position: 'relative', height: '192px', overflow: 'hidden', borderRadius: '18px 18px 0 0' }}>
                     <img
                       src={post.cover}
-                      alt={post.title}
+                      alt={`${post.title} - Logic Loops AI`}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                       loading="lazy"
                     />

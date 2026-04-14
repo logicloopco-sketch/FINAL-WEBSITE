@@ -93,6 +93,17 @@ export default function BlogPost() {
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:url" content={`https://logicloopsai.com/blog/${post.slug}`} />
         <meta property="og:type" content="article" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": post.title,
+          "image": post.cover,
+          "author": { "@type": "Organization", "name": "Logic Loops AI" },
+          "publisher": { "@type": "Organization", "name": "Logic Loops AI", "url": "https://logicloopsai.com" },
+          "datePublished": post.date,
+          "description": post.excerpt,
+          "url": `https://logicloopsai.com/blog/${post.slug}`
+        })}</script>
       </Helmet>
 
       {/* HERO */}
@@ -141,7 +152,7 @@ export default function BlogPost() {
           <div style={{ maxWidth: '820px', margin: '0 auto', transform: 'translateY(-36px)' }}>
             <img
               src={post.cover}
-              alt={post.title}
+              alt={post.imageAlt || post.title}
               style={{
                 width: '100%',
                 maxHeight: '384px',
@@ -159,8 +170,58 @@ export default function BlogPost() {
       <section style={{ background: 'var(--cream)', padding: post.cover ? '0 5% 100px' : '72px 5% 100px' }}>
         <div style={{ maxWidth: '820px', margin: '0 auto' }}>
           <div className="fu">
-            {post.content.map((block, i) => renderBlock(block, i))}
+            {(() => {
+              let h2Count = 0
+              return post.content.flatMap((block, i) => {
+                const el = renderBlock(block, i)
+                if (block.type === 'h2') {
+                  h2Count++
+                  if (h2Count === 2) {
+                    return [el, (
+                      <div key="inline-cta" style={{ background: 'rgba(122,28,28,0.04)', border: '1px solid rgba(122,28,28,0.12)', borderRadius: '12px', padding: '18px 22px', marginBottom: '28px', fontSize: '0.9rem', color: 'var(--t2)', lineHeight: 1.75 }}>
+                        Want to see how this works for your business? Check our{' '}
+                        <Link to="/services" style={{ color: 'var(--maroon)', fontWeight: 600, textDecoration: 'underline' }}>automation services</Link>{' '}
+                        or view our{' '}
+                        <Link to="/portfolio" style={{ color: 'var(--maroon)', fontWeight: 600, textDecoration: 'underline' }}>live project examples</Link>.
+                      </div>
+                    )]
+                  }
+                }
+                return [el]
+              })
+            })()}
           </div>
+
+          {/* RELATED POSTS */}
+          {(() => {
+            const related = [
+              ...blogPosts.filter(p => p.slug !== slug && p.category === post.category),
+              ...blogPosts.filter(p => p.slug !== slug && p.category !== post.category),
+            ].slice(0, 2)
+            if (related.length === 0) return null
+            return (
+              <div style={{ marginTop: '60px' }}>
+                <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1.4rem', fontWeight: 700, color: 'var(--text)', marginBottom: '20px' }}>Related Posts</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: related.length > 1 ? '1fr 1fr' : '1fr', gap: '20px' }}>
+                  {related.map(rp => (
+                    <Link key={rp.slug} to={`/blog/${rp.slug}`} style={{ textDecoration: 'none' }}>
+                      <div
+                        style={{ background: '#fff', border: '1px solid var(--bdr)', borderRadius: '14px', overflow: 'hidden', transition: 'box-shadow 0.2s' }}
+                        onMouseEnter={e => e.currentTarget.style.boxShadow = 'var(--sh)'}
+                        onMouseLeave={e => e.currentTarget.style.boxShadow = 'none'}
+                      >
+                        <img src={rp.cover} alt={`${rp.title} - Logic Loops AI`} style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                        <div style={{ padding: '16px 18px 18px' }}>
+                          <div style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '2px', color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '6px' }}>{rp.category}</div>
+                          <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1rem', fontWeight: 700, color: 'var(--text)', lineHeight: 1.35 }}>{rp.title}</div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )
+          })()}
 
           {/* AUTHOR CARD */}
           <div style={{

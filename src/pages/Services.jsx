@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { blogPosts } from '../data/blogPosts'
 import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 import useTilt3D from '../hooks/useTilt3D'
@@ -219,6 +220,56 @@ export default function Services() {
 
       {/* FAQ */}
       <FAQSection faqs={servicesFaqs} title={<>Services Questions, <em>Answered</em></>} bg="var(--cream)" />
+
+      {/* LEARN MORE FROM OUR BLOG */}
+      <section style={{ background: 'var(--white)', padding: '80px 5%' }}>
+        <div className="mw">
+          <div className="fu" style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <div className="lbl">From Our Blog</div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, color: 'var(--text)', lineHeight: 1.1, marginBottom: '12px' }}>
+              Learn More From Our <em style={{ fontStyle: 'italic', color: 'var(--maroon)' }}>Automation Blog</em>
+            </h2>
+            <p style={{ color: 'var(--mut)', fontSize: '0.93rem', maxWidth: '480px', margin: '0 auto', fontWeight: 300, lineHeight: 1.7 }}>
+              Deep guides on the exact strategies and tools we use to build client automations.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '22px' }} className="srv-resp">
+            {[
+              { service: 'Workflow Automation', slug: 'make-com-lead-generation-automation' },
+              { service: 'AI Agent Development', slug: '5-ai-agent-workflows-save-20-hours' },
+              { service: 'CRM & Lead Automation', slug: 'crm-automation-recover-lost-leads' },
+              { service: 'AI Cold Email Outreach', slug: 'ai-cold-email-outreach-automation' },
+              { service: 'Platform Comparison', slug: 'n8n-vs-make-vs-zapier-comparison' },
+              { service: 'ROI & Strategy', slug: 'workflow-automation-roi-calculator' },
+            ].map(({ service, slug }) => {
+              const post = blogPosts.find(p => p.slug === slug)
+              if (!post) return null
+              return (
+                <Link key={slug} to={`/blog/${slug}`} style={{ textDecoration: 'none' }}>
+                  <article
+                    className="fu"
+                    style={{ background: 'var(--cream)', border: '1px solid var(--bdr)', borderRadius: '16px', overflow: 'hidden', transition: 'transform 0.22s, box-shadow 0.22s', height: '100%', display: 'flex', flexDirection: 'column' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = 'var(--shl)' }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none' }}
+                  >
+                    <img src={post.cover} alt={post.imageAlt || `${post.title} - Logic Loops AI`} style={{ width: '100%', height: '130px', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                    <div style={{ padding: '18px 20px 20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                      <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '2px', color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '6px' }}>{service}</div>
+                      <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1rem', fontWeight: 700, color: 'var(--text)', lineHeight: 1.35, flex: 1, margin: 0 }}>{post.title}</p>
+                      <div style={{ marginTop: '12px', fontSize: '0.78rem', color: 'var(--maroon)', fontWeight: 700 }}>Read article →</div>
+                    </div>
+                  </article>
+                </Link>
+              )
+            })}
+          </div>
+          <div className="fu" style={{ textAlign: 'center', marginTop: '36px' }}>
+            <Link to="/blog" style={{ color: 'var(--maroon)', fontWeight: 700, fontSize: '0.9rem', textDecoration: 'none', borderBottom: '2px solid var(--maroon)', paddingBottom: '2px' }}>
+              View All Blog Posts →
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section style={{ background: 'var(--md)', padding: '108px 5%', textAlign: 'center' }}>

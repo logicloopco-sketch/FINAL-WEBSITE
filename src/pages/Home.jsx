@@ -6,6 +6,7 @@ import useFlipReveal from '../hooks/useFlipReveal'
 import NodeCanvas from '../animations/NodeCanvas'
 import Particles from '../animations/Particles'
 import FAQSection from '../components/FAQSection'
+import { blogPosts } from '../data/blogPosts'
 import '../styles/animations.css'
 
 const homeFaqs = [
@@ -762,6 +763,55 @@ export default function Home({ openModal }) {
           </div>
         </div>
         <style>{`@media(max-width:1100px){.pkg-resp{grid-template-columns:repeat(2,1fr)!important;}} @media(max-width:700px){.pkg-resp{grid-template-columns:1fr!important;}}`}</style>
+      </section>
+
+      {/* ═══════════════════════ LATEST BLOG ══ */}
+      <section style={{ background: 'var(--cream)', padding: '120px 5%' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
+            <div style={{ fontSize: '0.67rem', fontWeight: 700, letterSpacing: '4px', color: 'var(--gold)', textTransform: 'uppercase', marginBottom: 14 }}>Our Blog</div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(2.2rem,3.6vw,3.2rem)', fontWeight: 700, color: 'var(--text)', lineHeight: 1.1 }}>
+              Latest From <em style={{ fontStyle: 'italic', color: 'var(--maroon)' }}>Our Blog</em>
+            </h2>
+            <p style={{ color: 'var(--mut)', fontSize: '0.97rem', lineHeight: 1.8, maxWidth: 480, margin: '14px auto 0', fontWeight: 300 }}>
+              Real automation guides from real workflows we have deployed for clients.
+            </p>
+          </div>
+
+          <div className="proj-grid-resp" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+            {blogPosts.slice(0, 3).map((post, i) => (
+              <Link key={post.slug} to={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <article
+                  className="reveal"
+                  style={{ transitionDelay: `${i * 0.1}s`, background: '#fff', borderRadius: 18, border: '1px solid var(--bdr)', overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column', transition: 'transform 0.22s, box-shadow 0.22s' }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = 'var(--shl)' }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none' }}
+                >
+                  <div style={{ position: 'relative', height: 180, overflow: 'hidden' }}>
+                    <img src={post.cover} alt={post.imageAlt || `${post.title} - Logic Loops AI`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} loading="lazy" />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(80,16,16,0.15) 0%, rgba(80,16,16,0.42) 100%)' }} />
+                    <span style={{ position: 'absolute', top: 12, left: 12, background: 'rgba(201,150,58,0.22)', color: 'var(--gl)', border: '1px solid rgba(201,150,58,0.4)', borderRadius: 999, padding: '3px 10px', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', backdropFilter: 'blur(4px)' }}>{post.category}</span>
+                  </div>
+                  <div style={{ padding: '22px 24px 26px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1.08rem', fontWeight: 700, color: 'var(--text)', lineHeight: 1.35, marginBottom: 10, flex: 1 }}>{post.title}</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
+                      <span style={{ fontSize: '0.74rem', color: 'var(--mut)' }}>{post.date} · {post.readTime}</span>
+                      <span style={{ fontSize: '0.79rem', color: 'var(--gold)', fontWeight: 700 }}>Read →</span>
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </div>
+
+          <div className="reveal delay-2" style={{ textAlign: 'center', marginTop: 44 }}>
+            <Link to="/blog" style={{ background: 'transparent', color: 'var(--maroon)', padding: '13px 32px', borderRadius: 12, fontWeight: 700, fontSize: '0.93rem', textDecoration: 'none', border: '2px solid var(--maroon)', display: 'inline-flex', alignItems: 'center', gap: 8, transition: 'all 0.2s' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--maroon)'; e.currentTarget.style.color = 'var(--cream)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--maroon)' }}>
+              View All Articles →
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* ═══════════════════════ FAQ ══ */}
