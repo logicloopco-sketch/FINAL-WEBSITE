@@ -66,7 +66,7 @@ export default function CaseStudies() {
   return (
     <>
       <Helmet>
-        <title>AI Automation Case Studies | Real Results | Logic Loops AI</title>
+        <title>Case Studies | Logic Loops AI</title>
         <meta name="description" content="See how Logic Loops AI automated workflows for SaaS startups in Bengaluru, agencies in Mumbai, and hospitality businesses in Goa. Real clients, real outcomes, documented results." />
         <link rel="canonical" href="https://logicloopsai.com/case-studies" />
         <meta property="og:title" content="AI Automation Case Studies | Logic Loops AI" />

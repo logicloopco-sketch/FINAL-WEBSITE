@@ -113,8 +113,8 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Book a Free Automation Audit | Contact Logic Loops AI</title>
-        <meta name="description" content="Book your free 30-minute Automation Audit with Logic Loops AI. We'll map your top automation opportunities and show you the ROI to expect — no commitment, no hard sell." />
+        <title>Contact | Book Free Call | Logic Loops AI</title>
+        <meta name="description" content="Book a free 30-minute discovery call with Logic Loops AI. We will audit your workflow and show you exactly where automation gives highest ROI." />
         <link rel="canonical" href="https://logicloopsai.com/contact" />
         <meta property="og:title" content="Contact Logic Loops AI | Free Automation Audit" />
         <meta property="og:description" content="Book a free 30-min call. We'll identify your top 3 automation opportunities and give you an ROI estimate — before any commitment." />

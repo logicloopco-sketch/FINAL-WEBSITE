@@ -171,7 +171,7 @@ export default function Home({ openModal }) {
   return (
     <>
       <Helmet>
-        <title>Logic Loops AI | #1 AI Automation Agency | Make.com, n8n, Zapier Experts</title>
+        <title>Logic Loops AI | AI Automation Agency</title>
         <meta name="description" content="India's #1 AI Automation Agency. We build Make.com, n8n, Zapier, and AI agent systems that automate your leads, ops, and outreach — permanently. 2-week live delivery. Serving US, UK, AU, CA." />
         <link rel="canonical" href="https://logicloopsai.com/" />
         <meta property="og:title" content="Logic Loops AI | #1 AI Automation Agency" />

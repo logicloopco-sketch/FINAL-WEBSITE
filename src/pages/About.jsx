@@ -34,8 +34,8 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Logic Loops AI | India's #1 AI Automation Agency | Indore</title>
-        <meta name="description" content="Learn about Logic Loops AI — India's #1 AI automation agency based in Indore. We're founder-direct, delivery-obsessed, and specialise in Make.com, n8n, Zapier, and AI agent systems for SaaS and D2C businesses." />
+        <title>About Us | Logic Loops AI</title>
+        <meta name="description" content="Logic Loops AI is India's top AI automation agency based in Indore. We serve US, UK, Australia and Canada clients with expert workflow automation solutions." />
         <link rel="canonical" href="https://logicloopsai.com/about" />
         <meta property="og:title" content="About Logic Loops AI | Indore, India" />
         <meta property="og:description" content="Founder-direct AI automation agency in Indore. We build Make.com, n8n, and AI agent systems with 2-week delivery. Serving US, UK, AU, CA clients globally." />

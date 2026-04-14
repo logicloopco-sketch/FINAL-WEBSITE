@@ -54,7 +54,7 @@ export default function FAQ() {
   return (
     <>
       <Helmet>
-        <title>FAQ — AI Automation Agency | Logic Loops AI</title>
+        <title>FAQ | Logic Loops AI</title>
         <meta name="description" content="Answers to common questions about Logic Loops AI: what we do, which tools we use (Make.com, n8n, Zapier), how long projects take, pricing, and how we work with US, UK, and global clients." />
         <link rel="canonical" href="https://logicloopsai.com/faq" />
         <meta property="og:title" content="FAQ | Logic Loops AI — AI Automation Agency" />

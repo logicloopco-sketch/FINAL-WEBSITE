@@ -46,8 +46,8 @@ export default function Portfolio({ openModal }) {
   return (
     <>
       <Helmet>
-        <title>AI Automation Portfolio | Workflow Projects | Logic Loops AI</title>
-        <meta name="description" content="Browse Logic Loops AI's automation portfolio: Zoom meeting intelligence, AI lead management, cold email outreach, hotel booking automation, Xero invoicing, and Apollo lead generation — all built with Make.com, n8n, and AI agents." />
+        <title>Portfolio | Logic Loops AI</title>
+        <meta name="description" content="View Logic Loops AI automation projects: Zoom AI Pipeline, CRM automation, cold email outreach, lead generation systems built for real businesses." />
         <link rel="canonical" href="https://logicloopsai.com/portfolio" />
         <meta property="og:title" content="AI Automation Portfolio | Logic Loops AI" />
         <meta property="og:description" content="Real automation projects: Zoom AI pipeline, CRM automation, cold email outreach, hotel management, invoice automation, and more." />

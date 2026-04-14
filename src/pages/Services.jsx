@@ -49,8 +49,8 @@ export default function Services() {
   return (
     <>
       <Helmet>
-        <title>AI Automation Services | Make.com, n8n, Zapier Experts | Logic Loops AI</title>
-        <meta name="description" content="Explore Logic Loops AI services: Make.com automation, n8n workflows, Zapier integrations, AI agent development, CRM automation, cold email outreach, meeting intelligence, and finance automation." />
+        <title>AI Automation Services | Logic Loops AI</title>
+        <meta name="description" content="Explore Logic Loops AI services: Make.com, n8n, Zapier automation, AI agents, CRM setup, web scraping and API integrations for businesses globally." />
         <link rel="canonical" href="https://logicloopsai.com/services" />
         <meta property="og:title" content="AI Automation Services | Logic Loops AI" />
         <meta property="og:description" content="Make.com, n8n, Zapier experts. AI agents, CRM automation, cold email outreach, meeting intelligence and more. 2-week delivery guaranteed." />
