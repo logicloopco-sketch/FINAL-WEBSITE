@@ -413,6 +413,75 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    slug: 'make-com-client-lead-generation-case-study',
+    title: 'How We Automated a US Client\'s Lead Generation in 9 Days Using Make.com',
+    excerpt: 'A US SaaS founder was spending 3 hours daily on manual lead tracking. We built a Make.com automation that cut it to 4 minutes. Here is exactly how.',
+    category: 'Case Study',
+    date: 'April 15, 2025',
+    readTime: '6 min read',
+    cover: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'Most businesses lose 60% of their leads because follow-ups happen too late. We recently worked with a SaaS founder in the US who was manually tracking leads in a spreadsheet. His team spent 3 hours daily on data entry, follow-ups, and CRM updates.',
+      },
+      {
+        type: 'h2',
+        text: 'The Problem',
+      },
+      {
+        type: 'p',
+        text: 'Manual lead management has 3 fatal flaws:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Leads fall through the cracks',
+          'Follow-ups are inconsistent',
+          'Sales reps waste time on admin work',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'What We Built',
+      },
+      {
+        type: 'p',
+        text: 'A 5-step Make.com automation pipeline:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Step 1 — Capture: LinkedIn + website form triggers the workflow automatically',
+          'Step 2 — Enrich: Apollo.io pulls company size, industry, and LinkedIn profile data',
+          'Step 3 — Score: Router module qualifies leads based on ICP criteria automatically',
+          'Step 4 — CRM: Auto-creates deal in HubSpot with all enriched data attached',
+          'Step 5 — Notify: Slack alert to sales rep with one-click call link instantly',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'The Result',
+      },
+      {
+        type: 'list',
+        items: [
+          'Before: 3 hours of manual work daily',
+          'After: 4 minutes, fully automated',
+          'Timeline: 9 days from discovery to live',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want This For Your Business?',
+      },
+      {
+        type: 'p',
+        text: 'We have deployed this exact workflow for 15+ clients. Book a free 30-minute call and we will scope it out for you.',
+      },
+    ],
+  },
 ]
 
 export const categories = ['All', 'Make.com', 'Comparison', 'AI Agents', 'Case Study', 'Outreach', 'Strategy']
