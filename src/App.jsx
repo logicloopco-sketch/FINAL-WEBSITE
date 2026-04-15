@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Modal from './components/Modal'
@@ -58,6 +59,7 @@ export default function App() {
       </Suspense>
       <Footer />
       {modalKey && <Modal projectKey={modalKey} onClose={() => setModalKey(null)} />}
+      <Analytics />
     </>
   )
 }
