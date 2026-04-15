@@ -14,7 +14,7 @@ export default function Navbar() {
       <nav className="nav">
         <div className="nav-inner">
           <Link to="/" className="logo">
-            <img src="/images/logo.png" alt="Logic Loops AI Logo" width="46" height="46" />
+            <img src="/images/Copy_of_Untitled_Design__3_-removebg-preview.png" alt="Logic Loops AI Logo" width="46" height="46" />
             <div className="logo-txt">
               <span className="logo-name">Logic Loops AI</span>
               <span className="logo-tag">Where Logic Meets Limitless AI</span>

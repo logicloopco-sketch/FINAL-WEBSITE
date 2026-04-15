@@ -236,7 +236,7 @@ export default function BlogPost() {
             flexWrap: 'wrap',
           }}>
             <img
-              src="/images/logo.png"
+              src="/images/Copy_of_Untitled_Design__3_-removebg-preview.png"
               alt="Logic Loops AI"
               style={{ width: '56px', height: '56px', borderRadius: '10px', objectFit: 'contain', flexShrink: 0 }}
             />

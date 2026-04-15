@@ -65,8 +65,8 @@ body {
 }
 
 .logo img {
-  height: 46px;
-  width: 46px;
+  height: 80px;
+  width: 80px;
   object-fit: contain;
   border-radius: 8px;
 }

@@ -61,7 +61,7 @@ export default function About() {
             {/* MOSAIC */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', height: '480px' }} className="mosaic-resp">
               <div style={{ gridRow: '1/3', background: 'linear-gradient(148deg,var(--md),var(--maroon))', borderRadius: '18px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '32px', color: 'var(--cream)' }}>
-                <img src="/images/logo.png" alt="Logic Loops AI" style={{ width: '64px', height: '64px', objectFit: 'contain', borderRadius: '10px', marginBottom: '20px' }} />
+                <img src="/images/Copy_of_Untitled_Design__3_-removebg-preview.png" alt="Logic Loops AI" style={{ width: '64px', height: '64px', objectFit: 'contain', borderRadius: '10px', marginBottom: '20px' }} />
                 <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '3.8rem', fontWeight: 700, color: 'var(--gl)' }}>500+</div>
                 <p style={{ color: 'rgba(253,248,240,0.62)', fontSize: '0.84rem', marginTop: '5px', fontWeight: 300 }}>Platforms integrated across all client automations</p>
               </div>

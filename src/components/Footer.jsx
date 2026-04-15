@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="footer-top">
           <div className="fb">
             <Link to="/" className="logo">
-              <img src="/images/logo.png" alt="Logic Loops AI" style={{ height: '46px', borderRadius: '8px' }} />
+              <img src="/images/Copy_of_Untitled_Design__3_-removebg-preview.png" alt="Logic Loops AI" style={{ height: '80px', width: '80px', borderRadius: '8px' }} />
               <div className="logo-txt">
                 <span className="logo-name">Logic Loops AI</span>
                 <span className="logo-tag">Where Logic Meets Limitless AI</span>
