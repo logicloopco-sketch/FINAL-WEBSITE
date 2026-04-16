@@ -55,6 +55,32 @@ export default function Services() {
         <meta property="og:title" content="AI Automation Services | Logic Loops AI" />
         <meta property="og:description" content="Make.com, n8n, Zapier experts. AI agents, CRM automation, cold email outreach, meeting intelligence and more. 2-week delivery guaranteed." />
         <meta property="og:url" content="https://logicloopsai.com/services" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "AI Automation",
+          "name": "AI Automation Services",
+          "url": "https://logicloopsai.com/services",
+          "provider": {
+            "@type": "Organization",
+            "name": "Logic Loops AI",
+            "url": "https://logicloopsai.com"
+          },
+          "areaServed": ["US", "GB", "AU", "CA", "IN"],
+          "description": "Make.com, n8n, and Zapier workflow automation, AI agent development, CRM automation, cold email outreach, meeting intelligence, and finance automation for global businesses.",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Logic Loops AI Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Workflow Automation", "description": "End-to-end workflows on Make.com, n8n, and Zapier." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agent Development", "description": "Intelligent AI agents powered by OpenAI and Anthropic." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CRM & Lead Automation", "description": "Automated lead pipelines with Pipedrive, GoHighLevel, HubSpot, Salesforce." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Cold Email Outreach", "description": "Prospect research, personalised email generation, and Instantly campaigns." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meeting Intelligence", "description": "Auto-transcribe, summarise, and route Zoom meetings via AI." } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Finance & Invoice Automation", "description": "Auto-create invoices in Xero and QuickBooks from any trigger." } }
+            ]
+          }
+        })}</script>
       </Helmet>
       {/* PAGE HERO */}
       <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
