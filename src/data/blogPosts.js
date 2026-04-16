@@ -482,6 +482,167 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    slug: 'gohighlevel-crm-automation-agency-setup',
+    title: 'How to Set Up GoHighLevel CRM Automation for Your Agency in 2025',
+    excerpt: 'GoHighLevel is powerful but most agencies only use 20% of it. Here is how we set up full CRM automation for agencies in under 2 weeks.',
+    category: 'CRM Automation',
+    date: 'April 10, 2025',
+    readTime: '7 min read',
+    cover: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'GoHighLevel is the most powerful CRM for agencies — but most people barely scratch the surface. We have set up GHL for 20+ agencies. Here is the exact automation stack we build for every client.',
+      },
+      {
+        type: 'h2',
+        text: 'Why Most Agencies Fail With GHL',
+      },
+      {
+        type: 'p',
+        text: 'They set up pipelines manually, forget automations, and end up with a fancy CRM they never fully use.',
+      },
+      {
+        type: 'h2',
+        text: 'The 6-Step GHL Automation Stack',
+      },
+      {
+        type: 'list',
+        items: [
+          'Step 1 — Lead Capture: Connect all lead sources to one GHL pipeline. Facebook Ads, Google Ads, website forms, LinkedIn — all automatic.',
+          'Step 2 — Instant Follow-up: Trigger SMS + email within 60 seconds of lead coming in. Speed to lead wins.',
+          'Step 3 — AI Appointment Setter: Use GHL\'s AI bot to qualify leads and book calls automatically 24/7.',
+          'Step 4 — Pipeline Automation: Auto-move deals based on actions taken. No manual stage updates ever again.',
+          'Step 5 — Review Automation: After project completion, auto-send review request via SMS and email.',
+          'Step 6 — Reporting Dashboard: Custom dashboard showing leads, conversions, and revenue automatically.',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Results Our Clients Get',
+      },
+      {
+        type: 'list',
+        items: [
+          '40% faster lead response time',
+          '3x more appointments booked',
+          '10 hours saved per week per team member',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want Us To Set This Up For You?',
+      },
+      {
+        type: 'p',
+        text: 'We offer complete GHL setup and automation in 2 weeks. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
+  {
+    slug: 'n8n-self-hosted-automation-guide-2025',
+    title: 'n8n Self-Hosted vs Cloud: Which Should Your Business Choose in 2025?',
+    excerpt: 'n8n gives you Make.com power at a fraction of the cost. But should you self-host or use cloud? Here is the honest breakdown.',
+    category: 'Comparison',
+    date: 'April 5, 2025',
+    readTime: '8 min read',
+    cover: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'n8n is the most powerful open-source automation platform available today. We use it for clients who want Make.com level power without the per-operation pricing model.',
+      },
+      {
+        type: 'h2',
+        text: 'n8n Cloud',
+      },
+      {
+        type: 'list',
+        items: [
+          'No server management needed',
+          'Automatic updates',
+          'Starts at $20/month',
+          'Best for: Small teams, quick start',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'n8n Self-Hosted',
+      },
+      {
+        type: 'list',
+        items: [
+          'Full data control',
+          'Unlimited executions',
+          'One-time server cost (~$5–10/month)',
+          'Best for: Agencies, data-sensitive businesses',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'When We Recommend n8n Over Make.com',
+      },
+      {
+        type: 'p',
+        text: 'Choose n8n when:',
+      },
+      {
+        type: 'list',
+        items: [
+          'You need unlimited workflow executions',
+          'Data privacy is critical',
+          'You want to avoid per-operation costs',
+          'You need custom code nodes',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Choose Make.com when:',
+      },
+      {
+        type: 'list',
+        items: [
+          'You want faster visual building',
+          'Team is non-technical',
+          'Budget is flexible',
+          'Quick deployment needed',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Our n8n Setup Process',
+      },
+      {
+        type: 'list',
+        items: [
+          'Week 1: Server setup, n8n install, SSL certificate, backup configuration',
+          'Week 2: Core workflows built and tested, team training, documentation handoff',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Real Client Example',
+      },
+      {
+        type: 'list',
+        items: [
+          'E-commerce brand processing 50,000 orders/month',
+          'Make.com cost: $800/month',
+          'n8n self-hosted cost: $12/month',
+          'Annual saving: $9,456',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want n8n Set Up For Your Business?',
+      },
+      {
+        type: 'p',
+        text: 'We handle complete n8n setup and automation. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
 ]
 
-export const categories = ['All', 'Make.com', 'Comparison', 'AI Agents', 'Case Study', 'Outreach', 'Strategy']
+export const categories = ['All', 'Make.com', 'Comparison', 'AI Agents', 'Case Study', 'Outreach', 'Strategy', 'CRM Automation']

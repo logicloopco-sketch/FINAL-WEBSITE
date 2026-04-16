@@ -106,4 +106,18 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://logicloopsai.com/blog/gohighlevel-crm-automation-agency-setup</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://logicloopsai.com/blog/n8n-self-hosted-automation-guide-2025</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
