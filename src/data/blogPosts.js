@@ -643,6 +643,201 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    slug: 'zapier-alternatives-make-n8n-comparison-2025',
+    title: 'Zapier Is Too Expensive — Here Are The Best Alternatives in 2025',
+    excerpt: 'Zapier costs 10x more than alternatives. Make.com and n8n do everything Zapier does — and more. Here is the honest comparison.',
+    category: 'Comparison',
+    date: 'April 3, 2025',
+    readTime: '7 min read',
+    cover: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'Zapier was the first automation tool most businesses tried. But in 2025, it is simply too expensive for what you get. We have migrated 30+ clients from Zapier to Make.com or n8n. Here is what we learned.',
+      },
+      {
+        type: 'h2',
+        text: 'Why Clients Leave Zapier',
+      },
+      {
+        type: 'list',
+        items: [
+          'Task-based pricing gets expensive fast',
+          'Limited logic and branching',
+          'No custom code support',
+          'Costs 5–10x more than alternatives',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Pricing Comparison',
+      },
+      {
+        type: 'list',
+        items: [
+          'Zapier: $49–$69/month for 2,000 tasks',
+          'Make.com: $9/month for 10,000 operations',
+          'n8n Cloud: $20/month unlimited workflows',
+          'n8n Self-hosted: $5–10/month server only',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Features Comparison',
+      },
+      {
+        type: 'list',
+        items: [
+          'Zapier: Simple, linear workflows only',
+          'Make.com: Visual, complex branching logic',
+          'n8n: Code nodes, full customization',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Best For',
+      },
+      {
+        type: 'list',
+        items: [
+          'Zapier: Complete beginners, very simple tasks',
+          'Make.com: Most businesses, best value',
+          'n8n: Developers, data-sensitive companies',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Real Migration Example',
+      },
+      {
+        type: 'list',
+        items: [
+          'Client was paying $299/month on Zapier for order processing automation',
+          'We migrated to Make.com in 3 days',
+          'New cost: $16/month',
+          'Annual saving: $3,396',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Should You Switch?',
+      },
+      {
+        type: 'p',
+        text: 'Switch to Make.com if:',
+      },
+      {
+        type: 'list',
+        items: [
+          'You want best value for money',
+          'Need complex multi-step workflows',
+          'Want visual drag-and-drop building',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Switch to n8n if:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Data privacy is critical',
+          'You have a technical team',
+          'Volume is very high',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want Us To Migrate Your Zapier Workflows?',
+      },
+      {
+        type: 'p',
+        text: 'We handle complete Zapier to Make.com or n8n migration. Zero downtime, full testing. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
+  {
+    slug: 'ai-powered-sales-outreach-automation-2025',
+    title: 'How to Build an AI-Powered Sales Outreach System That Gets 30% Reply Rates',
+    excerpt: 'Cold email is not dead. Bad cold email is dead. Here is the exact AI outreach system we built that gets 30%+ reply rates for our clients.',
+    category: 'Outreach',
+    date: 'March 28, 2025',
+    readTime: '9 min read',
+    cover: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'Most cold email campaigns get 2–3% reply rates. Our clients get 25–35%. The difference is not the tool — it is the system behind it.',
+      },
+      {
+        type: 'h2',
+        text: 'Why Most Cold Email Fails',
+      },
+      {
+        type: 'list',
+        items: [
+          'Generic templates sent to everyone',
+          'No personalization beyond first name',
+          'Wrong targeting and bad lead lists',
+          'No follow-up sequence',
+          'Sending from new domains without warm-up',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'The AI Outreach Stack We Build',
+      },
+      {
+        type: 'list',
+        items: [
+          'Step 1 — Lead Research: Apollo.io to find leads matching exact ICP. Filter by: industry, company size, tech stack, recent funding, job title.',
+          'Step 2 — Lead Enrichment: Perplexity AI researches each company. Finds: recent news, pain points, tech stack, growth signals.',
+          'Step 3 — AI Email Writing: ChatGPT writes personalized first lines based on enrichment data for each lead. Every email feels handwritten.',
+          'Step 4 — Email Infrastructure: Instantly.ai manages sending. Warm-up domains before sending. Rotate multiple inboxes automatically.',
+          'Step 5 — Follow-up Sequences: 5-touch sequence over 14 days. Each follow-up adds value, not just bumps.',
+          'Step 6 — CRM Integration: Replies auto-logged in HubSpot or GHL. Interested leads flagged for immediate human follow-up.',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Real Results',
+      },
+      {
+        type: 'list',
+        items: [
+          'Client: Marketing agency in UK',
+          'Leads contacted: 500 per month',
+          'Reply rate: 31%',
+          'Meetings booked: 48 per month',
+          'New clients: 8 per month',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'The Tools We Use',
+      },
+      {
+        type: 'list',
+        items: [
+          'Apollo.io — Lead sourcing',
+          'Perplexity AI — Research',
+          'ChatGPT — Email writing',
+          'Instantly.ai — Sending',
+          'Make.com — Connecting everything',
+          'HubSpot — CRM',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want This System Built For You?',
+      },
+      {
+        type: 'p',
+        text: 'We build complete AI outreach systems in 2 weeks. Full setup, training, and handoff. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
 ]
 
 export const categories = ['All', 'Make.com', 'Comparison', 'AI Agents', 'Case Study', 'Outreach', 'Strategy', 'CRM Automation']
