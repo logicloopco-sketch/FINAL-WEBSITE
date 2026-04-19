@@ -838,6 +838,246 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    slug: 'hubspot-automation-setup-small-business-2025',
+    title: 'HubSpot Automation Setup Guide for Small Businesses in 2025',
+    excerpt: 'HubSpot free plan is powerful but most small businesses never set it up correctly. Here is the exact setup we do for every client.',
+    category: 'CRM Automation',
+    date: 'March 22, 2025',
+    readTime: '8 min read',
+    cover: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'HubSpot has a free plan that is more powerful than most paid CRMs. But 90% of small businesses set it up wrong and never get value from it. We have set up HubSpot for 25+ clients. Here is our exact process.',
+      },
+      {
+        type: 'h2',
+        text: 'Why Most HubSpot Setups Fail',
+      },
+      {
+        type: 'list',
+        items: [
+          'No pipeline stages defined properly',
+          'Missing lead capture forms',
+          'Zero automation sequences',
+          'No deal tracking or reporting',
+          'Team not trained properly',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 1 — Pipeline Setup',
+      },
+      {
+        type: 'p',
+        text: 'Define exact stages matching your sales process: New Lead → Contacted → Qualified → Proposal Sent → Negotiation → Won/Lost. Each stage has clear entry and exit criteria defined upfront.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 2 — Lead Capture Automation',
+      },
+      {
+        type: 'list',
+        items: [
+          'Website contact form',
+          'LinkedIn Lead Gen forms',
+          'Facebook Lead Ads',
+          'Cold email replies',
+          'All auto-create contacts in HubSpot',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 3 — Follow-up Sequences',
+      },
+      {
+        type: 'list',
+        items: [
+          'Day 1: Welcome + value email',
+          'Day 3: Case study or social proof',
+          'Day 7: Direct ask for meeting',
+          'Day 14: Last attempt breakup email',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 4 — Deal Automation',
+      },
+      {
+        type: 'p',
+        text: 'Auto-create deals when lead qualifies. Auto-assign to sales rep based on rules. Auto-notify via Slack or email instantly.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 5 — Reporting Dashboard',
+      },
+      {
+        type: 'list',
+        items: [
+          'Leads by source',
+          'Pipeline value by stage',
+          'Win rate by month',
+          'Revenue forecast',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Results Our Clients Get',
+      },
+      {
+        type: 'list',
+        items: [
+          '50% faster lead response',
+          '3x more deals tracked properly',
+          'Complete visibility on pipeline',
+          'Zero leads falling through cracks',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Tools We Connect To HubSpot',
+      },
+      {
+        type: 'p',
+        text: 'Make.com, n8n, Zapier, Apollo.io, Instantly.ai, Slack, WhatsApp, Google Sheets, Calendly, Typeform',
+      },
+      {
+        type: 'h2',
+        text: 'Want Us To Set Up HubSpot For You?',
+      },
+      {
+        type: 'p',
+        text: 'Complete HubSpot setup and automation in 2 weeks. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
+  {
+    slug: 'ecommerce-automation-shopify-make-com-2025',
+    title: 'The Complete E-commerce Automation Guide for Shopify Stores in 2025',
+    excerpt: 'Shopify store owners waste 4–6 hours daily on tasks that can be 100% automated. Here is the complete automation stack we build for e-commerce brands.',
+    category: 'Make.com',
+    date: 'March 15, 2025',
+    readTime: '9 min read',
+    cover: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'Running a Shopify store manually in 2025 is leaving serious money on the table. We have automated 15+ Shopify stores. Here is the complete automation stack.',
+      },
+      {
+        type: 'h2',
+        text: '1. Order Processing Automation',
+      },
+      {
+        type: 'p',
+        text: 'New order → Update inventory → Send confirmation → Notify warehouse → Create shipping label automatically. Zero manual order processing ever again.',
+      },
+      {
+        type: 'h2',
+        text: '2. Abandoned Cart Recovery',
+      },
+      {
+        type: 'list',
+        items: [
+          'Cart abandoned → Wait 1 hour → Send personalized email with discount',
+          'Wait 24 hours → Send SMS reminder',
+          'Wait 48 hours → Final email with urgency',
+          'Average recovery rate: 15–25% of abandoned carts',
+        ],
+      },
+      {
+        type: 'h2',
+        text: '3. Customer Segmentation',
+      },
+      {
+        type: 'list',
+        items: [
+          'Auto-tag by purchase history',
+          'Auto-tag by order value',
+          'Auto-tag by product categories bought',
+          'Auto-tag by purchase frequency',
+          'Use segments for targeted campaigns',
+        ],
+      },
+      {
+        type: 'h2',
+        text: '4. Review Request Automation',
+      },
+      {
+        type: 'p',
+        text: 'Order delivered → Wait 3 days → Send review request email → If no response, send SMS reminder → Positive reviews auto-posted to site.',
+      },
+      {
+        type: 'h2',
+        text: '5. Inventory Alert System',
+      },
+      {
+        type: 'p',
+        text: 'Stock below threshold → Alert buyer → Create purchase order → Notify supplier → Update product availability on site. Never run out of stock unexpectedly.',
+      },
+      {
+        type: 'h2',
+        text: '6. Return and Refund Automation',
+      },
+      {
+        type: 'p',
+        text: 'Return requested → Send instructions → Track return shipment → Process refund → Update inventory → Send confirmation. Full return flow without human touch.',
+      },
+      {
+        type: 'h2',
+        text: '7. VIP Customer Program',
+      },
+      {
+        type: 'p',
+        text: 'Customer hits spend threshold → Auto-upgrade to VIP tag → Send VIP welcome email with perks → Apply VIP discounts automatically.',
+      },
+      {
+        type: 'h2',
+        text: '8. Cross-sell and Upsell Flows',
+      },
+      {
+        type: 'p',
+        text: 'Post purchase → Analyze order → Send related product recommendations → Track clicks and conversions → Optimize based on data automatically.',
+      },
+      {
+        type: 'h2',
+        text: 'Tools We Use For Shopify Automation',
+      },
+      {
+        type: 'list',
+        items: [
+          'Make.com — Main automation platform',
+          'Klaviyo — Email marketing',
+          'SMSBump — SMS campaigns',
+          'Gorgias — Customer support',
+          'Recharge — Subscriptions',
+          'LoyaltyLion — Loyalty program',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Real Client Result',
+      },
+      {
+        type: 'list',
+        items: [
+          'Shopify store doing 200 orders/month',
+          'Before automation: 5 hours daily manual work',
+          'After automation: 20 minutes daily',
+          'Revenue increase: 34% in 60 days from better cart recovery and upsells',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want Your Shopify Store Automated?',
+      },
+      {
+        type: 'p',
+        text: 'We build complete Shopify automation stacks in 2 weeks. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
 ]
 
 export const categories = ['All', 'Make.com', 'Comparison', 'AI Agents', 'Case Study', 'Outreach', 'Strategy', 'CRM Automation']
