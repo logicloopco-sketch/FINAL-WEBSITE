@@ -1078,6 +1078,268 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    slug: 'real-estate-crm-automation-follow-up-2025',
+    title: 'How Real Estate Agents Can Automate Lead Follow-Up and Never Lose a Deal Again',
+    excerpt: 'Real estate agents lose 70% of deals because follow-up is too slow or inconsistent. Here is the exact automation system we build for real estate teams.',
+    category: 'CRM Automation',
+    date: 'March 10, 2025',
+    readTime: '7 min read',
+    cover: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'The average real estate agent follows up with a new lead after 46 hours. The top agents follow up in under 5 minutes — automatically. We have built CRM automation for 10+ real estate teams. Here is the exact system.',
+      },
+      {
+        type: 'h2',
+        text: 'Why Real Estate Agents Lose Deals',
+      },
+      {
+        type: 'list',
+        items: [
+          'Slow follow-up — competitor responds first',
+          'Inconsistent nurturing — leads go cold',
+          'No system — everything in agent\'s head',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 1 — Instant Lead Response',
+      },
+      {
+        type: 'p',
+        text: 'New lead from any source → Immediate automated SMS within 60 seconds → Personalized email with property details → Agent notified on WhatsApp instantly. Sources we connect: MagicBricks, 99acres, Housing.com, Facebook Ads, Google Ads, website forms.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 2 — Lead Qualification Bot',
+      },
+      {
+        type: 'list',
+        items: [
+          'Budget range',
+          'Location preference',
+          'Property type',
+          'Timeline to buy',
+          'Only qualified leads reach the agent',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 3 — Nurture Sequences',
+      },
+      {
+        type: 'list',
+        items: [
+          'Weekly market updates',
+          'New property alerts',
+          'Price drop notifications',
+          'Investment tips',
+          'Automated 90-day sequence keeps you top of mind',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 4 — Site Visit Automation',
+      },
+      {
+        type: 'p',
+        text: 'Lead agrees to visit → Auto-schedule in calendar → Send confirmation + directions → Day before reminder → Post visit follow-up sequence.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 5 — Deal Pipeline Automation',
+      },
+      {
+        type: 'list',
+        items: [
+          'New → Contacted → Qualified → Site Visit → Negotiation → Closed',
+          'Auto-move stages based on actions',
+          'Never lose track of any deal',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 6 — Referral Automation',
+      },
+      {
+        type: 'p',
+        text: 'Deal closed → Wait 30 days → Send referral request → Track referrals in CRM → Send thank you gift reminder to agent.',
+      },
+      {
+        type: 'h2',
+        text: 'Real Client Result',
+      },
+      {
+        type: 'list',
+        items: [
+          'Real estate team in Indore',
+          'Before: 2 hour follow-up time average',
+          'After: 45 seconds automatic response',
+          'Result: 40% more site visits booked in first month',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'CRM We Use For Real Estate',
+      },
+      {
+        type: 'list',
+        items: [
+          'GoHighLevel — Best for real estate teams',
+          'HubSpot — Good for larger brokerages',
+          'Zoho CRM — Budget friendly option',
+          'All connected via Make.com or n8n',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want This Built For Your Real Estate Business?',
+      },
+      {
+        type: 'p',
+        text: 'Complete real estate automation setup in 2 weeks. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
+  {
+    slug: 'saas-onboarding-automation-reduce-churn-2025',
+    title: 'How SaaS Companies Can Automate Onboarding and Reduce Churn by 40%',
+    excerpt: 'Poor onboarding is the number one reason SaaS companies lose customers in the first 90 days. Here is the exact automation system that fixes it.',
+    category: 'AI Agents',
+    date: 'March 5, 2025',
+    readTime: '8 min read',
+    cover: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: '70% of SaaS churn happens in the first 90 days. The reason is almost always the same — poor onboarding and no engagement system. We have built onboarding automation for 12+ SaaS companies. Here is the exact playbook.',
+      },
+      {
+        type: 'h2',
+        text: 'Why SaaS Onboarding Fails',
+      },
+      {
+        type: 'list',
+        items: [
+          'One generic welcome email for everyone',
+          'No behavior-based triggers',
+          'Support team overwhelmed with basics',
+          'No product adoption tracking',
+          'Users never reach their aha moment',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 1 — Segmented Welcome Sequence',
+      },
+      {
+        type: 'list',
+        items: [
+          'New signup → Identify user type from signup data → Send role-specific onboarding email',
+          'Track for: Solo founders',
+          'Track for: Small teams',
+          'Track for: Enterprise accounts',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 2 — Behavior-Based Triggers',
+      },
+      {
+        type: 'list',
+        items: [
+          'Logged in but did not complete setup → Send help email with video guide',
+          'Used feature A but not feature B → Send feature B tutorial automatically',
+          'No login in 7 days → Send re-engagement email with tip',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 3 — Automated Check-ins',
+      },
+      {
+        type: 'list',
+        items: [
+          'Day 3: How is setup going email',
+          'Day 7: Tips based on their use case',
+          'Day 14: Case study from similar company',
+          'Day 30: Success check-in + upsell',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 4 — Support Automation',
+      },
+      {
+        type: 'list',
+        items: [
+          'Common questions answered by AI bot',
+          'Complex issues routed to human support',
+          'All support tickets logged in CRM',
+          'Response time SLA monitored automatically',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 5 — Health Score Automation',
+      },
+      {
+        type: 'list',
+        items: [
+          'Login frequency tracked daily',
+          'Features used tracked daily',
+          'Support tickets raised tracked daily',
+          'Low health score → Alert customer success team → Trigger save campaign automatically',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 6 — Expansion Revenue Automation',
+      },
+      {
+        type: 'p',
+        text: 'User hitting plan limits → Auto-send upgrade prompt at right moment → Offer relevant upgrade based on usage → Track conversion automatically.',
+      },
+      {
+        type: 'h2',
+        text: 'Real Client Result',
+      },
+      {
+        type: 'list',
+        items: [
+          'B2B SaaS company with 500 monthly signups',
+          'Before automation: 35% churn in 90 days',
+          'After automation: 21% churn in 90 days',
+          'Revenue impact: $18,000 additional MRR retained every month',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Tools We Use For SaaS Automation',
+      },
+      {
+        type: 'list',
+        items: [
+          'Make.com or n8n — Core automation',
+          'Customer.io — Behavioral email',
+          'Intercom — In-app messaging',
+          'HubSpot — CRM and pipeline',
+          'Segment — User tracking',
+          'Slack — Internal alerts',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want This Built For Your SaaS?',
+      },
+      {
+        type: 'p',
+        text: 'Complete onboarding automation in 2 weeks. Full setup, testing, and handoff. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
 ]
 
 export const categories = ['All', 'Make.com', 'Comparison', 'AI Agents', 'Case Study', 'Outreach', 'Strategy', 'CRM Automation']
