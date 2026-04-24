@@ -1435,7 +1435,7 @@ export const blogPosts = [
     category: 'AI Agents',
     date: 'February 20, 2025',
     readTime: '8 min read',
-    cover: 'https://images.unsplash.com/photo-1596526131083-e8c633064987?w=1400&q=80',
+    cover: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1400&q=80',
     content: [
       {
         type: 'intro',
