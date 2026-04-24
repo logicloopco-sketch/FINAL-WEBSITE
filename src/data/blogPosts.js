@@ -1340,6 +1340,219 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    slug: 'invoice-automation-xero-quickbooks-2025',
+    title: 'How to Automate Invoicing and Get Paid Faster Using Xero and QuickBooks in 2025',
+    excerpt: 'Most businesses spend 5+ hours weekly on invoicing and follow-ups. Here is how we automate the entire billing process so you get paid faster.',
+    category: 'Strategy',
+    date: 'February 28, 2025',
+    readTime: '6 min read',
+    cover: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'Late payments kill cash flow. The average small business waits 27 days to get paid on a 14-day invoice. We have automated billing for 20+ businesses. Here is the exact system.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 1 — Auto Invoice Creation',
+      },
+      {
+        type: 'p',
+        text: 'Project marked complete in CRM → Invoice auto-created in Xero/QuickBooks → Sent to client automatically → Logged in accounting system instantly. Zero manual invoice creation ever again.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 2 — Payment Reminder Sequence',
+      },
+      {
+        type: 'list',
+        items: [
+          'Invoice sent → No payment in 7 days → Auto reminder email sent',
+          'No payment in 14 days → SMS reminder sent',
+          'No payment in 21 days → Final notice with late fee warning',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 3 — Payment Reconciliation',
+      },
+      {
+        type: 'p',
+        text: 'Payment received → Auto-match to invoice → Mark as paid in accounting → Update CRM deal status → Notify finance team on Slack.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 4 — Recurring Invoice Automation',
+      },
+      {
+        type: 'p',
+        text: 'Retainer clients → Auto-generate invoice on 1st of month → Send automatically → Track payment status in dashboard.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 5 — Expense Tracking',
+      },
+      {
+        type: 'p',
+        text: 'Receipt photo via WhatsApp → AI extracts amount, vendor, category → Auto-logged in Xero/QuickBooks → Categorized for tax purposes.',
+      },
+      {
+        type: 'h2',
+        text: 'Tools We Connect',
+      },
+      {
+        type: 'p',
+        text: 'Xero, QuickBooks, Stripe, Razorpay, PayPal, HubSpot, Make.com, n8n, Google Sheets, Slack, WhatsApp',
+      },
+      {
+        type: 'h2',
+        text: 'Real Client Result',
+      },
+      {
+        type: 'list',
+        items: [
+          'Consulting firm with 50 monthly invoices',
+          'Before: 6 hours weekly on billing admin',
+          'After: 25 minutes weekly',
+          'Payment time reduced from 27 to 11 days',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want Your Billing Automated?',
+      },
+      {
+        type: 'p',
+        text: 'Complete invoice automation setup in 1 week. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
+  {
+    slug: 'ai-customer-support-automation-2025',
+    title: 'How to Build an AI Customer Support System That Handles 80% of Tickets Automatically',
+    excerpt: 'Hiring more support agents is not the answer. Building an AI support system is. Here is exactly how we do it for our clients.',
+    category: 'AI Agents',
+    date: 'February 20, 2025',
+    readTime: '8 min read',
+    cover: 'https://images.unsplash.com/photo-1596526131083-e8c633064987?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'Support costs scale with customers. AI support costs do not. We have built AI customer support systems for 15+ businesses. Here is the exact playbook.',
+      },
+      {
+        type: 'h2',
+        text: 'Why Traditional Support Fails at Scale',
+      },
+      {
+        type: 'list',
+        items: [
+          'Response time increases with volume',
+          'Quality inconsistent across agents',
+          'Same questions answered 100 times daily',
+          '24/7 coverage requires big team',
+          'Cost per ticket keeps rising',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 1 — Knowledge Base Setup',
+      },
+      {
+        type: 'list',
+        items: [
+          'Document all FAQs and processes',
+          'Build structured knowledge base',
+          'Train AI on product documentation',
+          'Include troubleshooting guides',
+          'This is the foundation everything is built on',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 2 — AI First Response',
+      },
+      {
+        type: 'p',
+        text: 'Customer submits ticket → AI analyzes question instantly → Searches knowledge base → Sends accurate answer in seconds → Resolves 60–70% of tickets immediately.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 3 — Smart Escalation',
+      },
+      {
+        type: 'p',
+        text: 'AI cannot resolve → Categorize by urgency and type → Route to right human agent → Provide agent with full context → Track resolution time automatically.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 4 — Ticket Automation',
+      },
+      {
+        type: 'list',
+        items: [
+          'New ticket → Auto-tag by category',
+          'Assign priority level',
+          'Set SLA timer',
+          'Alert if SLA about to breach',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 5 — Self-Service Portal',
+      },
+      {
+        type: 'p',
+        text: 'Common issues → Step-by-step guided resolution → Video tutorials triggered automatically → Customer resolves without human help.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 6 — Feedback Loop',
+      },
+      {
+        type: 'p',
+        text: 'Ticket resolved → Auto-send satisfaction survey → Low score → Alert support manager → Data used to improve AI responses.',
+      },
+      {
+        type: 'h2',
+        text: 'Tech Stack We Use',
+      },
+      {
+        type: 'list',
+        items: [
+          'OpenAI/Claude — AI responses',
+          'Intercom/Zendesk — Ticket management',
+          'Make.com/n8n — Automation flows',
+          'Notion/Confluence — Knowledge base',
+          'Slack — Internal escalations',
+          'HubSpot — CRM integration',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Real Client Result',
+      },
+      {
+        type: 'list',
+        items: [
+          'E-commerce brand with 800 support tickets monthly',
+          'Before: 4 support agents needed',
+          'After: 1 support agent + AI',
+          'Ticket resolution time: 4 hours → 8 minutes',
+          'Cost saving: $6,000 per month',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want AI Support Built For You?',
+      },
+      {
+        type: 'p',
+        text: 'Complete AI customer support system in 2 weeks. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
 ]
 
 export const categories = ['All', 'Make.com', 'Comparison', 'AI Agents', 'Case Study', 'Outreach', 'Strategy', 'CRM Automation']
