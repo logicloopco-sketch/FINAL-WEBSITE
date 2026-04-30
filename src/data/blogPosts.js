@@ -1553,6 +1553,228 @@ export const blogPosts = [
       },
     ],
   },
+  {
+    slug: 'linkedin-automation-lead-generation-2025',
+    title: 'How to Generate 50+ Qualified Leads Per Month From LinkedIn Using Automation in 2025',
+    excerpt: 'LinkedIn is the highest quality lead source for B2B businesses. Here is the exact automation system we use to generate 50+ qualified leads monthly.',
+    category: 'Outreach',
+    date: 'February 15, 2025',
+    readTime: '7 min read',
+    cover: 'https://images.unsplash.com/photo-1611944212129-29977ae1398c?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: 'LinkedIn has 900 million professionals. Your ideal clients are on there right now. The problem is most people do LinkedIn outreach manually — which is slow, inconsistent, and exhausting. We have built LinkedIn automation systems for 20+ clients. Here is the exact playbook.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 1 — ICP Definition',
+      },
+      {
+        type: 'list',
+        items: [
+          'Job title of decision maker',
+          'Company size range',
+          'Industry vertical',
+          'Geography',
+          'Tech stack they use',
+          'Wrong targeting = wasted effort. Right targeting = gold.',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 2 — Profile Optimization',
+      },
+      {
+        type: 'list',
+        items: [
+          'Banner shows clear value proposition',
+          'Headline has keywords your ICP searches',
+          'About section addresses their pain points',
+          'Featured section has case studies',
+          'Recent posts show expertise',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 3 — Lead List Building',
+      },
+      {
+        type: 'p',
+        text: 'Use Sales Navigator or Apollo.io to build targeted lead lists. Filter by all ICP criteria defined above. Export list with LinkedIn URLs. Enrich with email addresses via Apollo.',
+      },
+      {
+        type: 'h2',
+        text: 'Step 4 — Connection Request Automation',
+      },
+      {
+        type: 'list',
+        items: [
+          'Personalized connection requests sent daily',
+          'Limit: 20–25 per day to avoid restrictions',
+          'Message references something specific about their profile or company',
+          'Template: Hey [Name], saw you are building [Company]. We help [their industry] companies automate [specific pain point]. Would love to connect.',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 5 — Follow-up Sequence',
+      },
+      {
+        type: 'list',
+        items: [
+          'Connection accepted → Day 1: Thank you + value message',
+          'Day 4: Relevant case study or insight',
+          'Day 8: Direct ask for 15 min call',
+          'Day 14: Final follow-up with different angle',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Step 6 — CRM Integration',
+      },
+      {
+        type: 'list',
+        items: [
+          'All conversations logged automatically',
+          'Interested leads moved to pipeline',
+          'Follow-up reminders set automatically',
+          'Nothing falls through the cracks',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Tools We Use',
+      },
+      {
+        type: 'list',
+        items: [
+          'Apollo.io — Lead sourcing and enrichment',
+          'Make.com — Connecting everything',
+          'HubSpot/GHL — CRM tracking',
+          'Google Sheets — Lead tracking',
+          'Slack — Team notifications',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Real Client Result',
+      },
+      {
+        type: 'list',
+        items: [
+          'Marketing agency founder in UK',
+          'After our system: 50 targeted leads/month',
+          'Meetings booked: 12 per month',
+          'New clients from LinkedIn: 3 per month',
+          'Additional revenue: £8,000 per month',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want This System Built For You?',
+      },
+      {
+        type: 'p',
+        text: 'Complete LinkedIn lead generation automation in 2 weeks. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
+  {
+    slug: 'workflow-automation-mistakes-businesses-make',
+    title: '7 Workflow Automation Mistakes That Are Costing Your Business Time and Money',
+    excerpt: 'Most automation projects fail not because of the tools but because of these 7 common mistakes. Here is how to avoid them all.',
+    category: 'Strategy',
+    date: 'February 10, 2025',
+    readTime: '6 min read',
+    cover: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80',
+    content: [
+      {
+        type: 'intro',
+        text: '80% of automation projects fail to deliver expected results. After building 200+ automations for clients globally, we have seen the same mistakes made over and over. Here are the 7 biggest ones — and how to avoid them.',
+      },
+      {
+        type: 'h2',
+        text: 'Mistake 1 — Automating Broken Processes',
+      },
+      {
+        type: 'p',
+        text: 'If your manual process is broken, automating it just makes it break faster. Fix: Map and fix the process first. Then automate the fixed version.',
+      },
+      {
+        type: 'h2',
+        text: 'Mistake 2 — Starting Too Complex',
+      },
+      {
+        type: 'p',
+        text: 'Complex multi-system automations built without testing individual parts fail spectacularly. Fix: Start with one simple workflow. Test thoroughly. Then expand gradually.',
+      },
+      {
+        type: 'h2',
+        text: 'Mistake 3 — No Error Handling',
+      },
+      {
+        type: 'p',
+        text: 'Without error handling, your automation silently fails and you never know. Fix: Build error notifications into every automation from day one. Get alerted immediately when something breaks.',
+      },
+      {
+        type: 'h2',
+        text: 'Mistake 4 — Ignoring Edge Cases',
+      },
+      {
+        type: 'p',
+        text: 'Your automation works perfectly for 80% of cases. Edge cases break automations at the worst possible times. Fix: Map all edge cases before building. Test with real messy data, not clean test data.',
+      },
+      {
+        type: 'h2',
+        text: 'Mistake 5 — No Documentation',
+      },
+      {
+        type: 'p',
+        text: 'Automation built without documentation becomes a black box. Fix: Document every automation clearly. Include trigger, steps, expected output, and what to do when it breaks.',
+      },
+      {
+        type: 'h2',
+        text: 'Mistake 6 — Wrong Tool Choice',
+      },
+      {
+        type: 'p',
+        text: 'Using Zapier when you need Make.com. Using Make.com when you need custom code. Fix: Match tool complexity to workflow complexity. Get expert advice before committing to a platform.',
+      },
+      {
+        type: 'h2',
+        text: 'Mistake 7 — No Monitoring System',
+      },
+      {
+        type: 'p',
+        text: 'Automations break, APIs change, data formats shift. Without monitoring you find out from angry customers. Fix: Set up monitoring dashboard. Daily health checks on all automations. Instant alerts when anything fails.',
+      },
+      {
+        type: 'h2',
+        text: 'How We Avoid These Mistakes',
+      },
+      {
+        type: 'list',
+        items: [
+          'Process audit before building anything',
+          'Start simple, expand gradually',
+          'Error handling built in from day one',
+          'Edge case testing with real data',
+          'Full documentation delivered',
+          'Tool selection based on actual needs',
+          'Monitoring dashboard setup included',
+        ],
+      },
+      {
+        type: 'h2',
+        text: 'Want Automations Built The Right Way?',
+      },
+      {
+        type: 'p',
+        text: 'We have built 200+ automations without a single failed deployment. Book a free call at logicloopsai.com',
+      },
+    ],
+  },
 ]
 
 export const categories = ['All', 'Make.com', 'Comparison', 'AI Agents', 'Case Study', 'Outreach', 'Strategy', 'CRM Automation']
