@@ -3,119 +3,132 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import useScrollReveal from '../hooks/useScrollReveal'
 import FAQSection from '../components/FAQSection'
+import AutomationShowcase from '../components/AutomationShowcase'
 
 const portfolioFaqs = [
   {
     q: 'What exactly do I receive when an automation project is delivered?',
-    a: 'You receive a fully tested, live automation on your chosen platform (Make.com, n8n, or Zapier), a walkthrough video explaining how it works, documentation of the logic and connected tools, and a post-delivery support window to handle any adjustments needed after go-live.'
+    a: 'You receive a fully tested, live automation on your chosen platform (Make.com, n8n, or Zapier), a walkthrough video explaining how it works, complete documentation of the logic and connected tools, and a post-delivery support window to handle any adjustments needed after go-live.'
   },
   {
-    q: 'Can I request a custom automation based on a portfolio project I have seen?',
-    a: 'Absolutely. Every portfolio project can be adapted for your specific tools, data structure, and business logic. Share the project you have seen and describe your workflow — we will scope exactly what changes are needed.'
+    q: 'Can I request a custom automation that is not listed here?',
+    a: 'Absolutely. Every automation we\'ve built can be adapted for your specific tools, data structure, and business logic. We also scope entirely custom workflows from scratch — just share your process and we\'ll design the right solution.'
   },
   {
-    q: 'Are all the portfolio projects real, production automations?',
-    a: 'Yes. Every project shown is a live automation built for a real client. Names and identifying details may be omitted for confidentiality, but the workflows, tools, and results are genuine.'
+    q: 'Are these real, production automations that Logic Loops AI built?',
+    a: 'Yes. Every automation in this showcase reflects a real workflow we have built and deployed for clients. Names and identifying details may be omitted for confidentiality, but the workflows, tools, and results are genuine.'
   },
   {
-    q: 'How do I know which type of automation is right for my business?',
-    a: 'That is exactly what our free discovery call is for. We will map your current workflow, identify the highest-impact automation opportunities, and recommend the right approach — no generic templates, only purpose-built solutions.'
+    q: 'How long does it take to deploy one of these automations for my business?',
+    a: 'Simple single-workflow automations go live within 3–5 business days. Multi-system or AI agent workflows typically take 1–2 weeks. We prioritise fast, clean delivery — you get a clear timeline before any work begins.'
+  },
+  {
+    q: 'Which automation tool is right for me — Make.com, n8n, or Zapier?',
+    a: 'It depends on your budget, technical comfort, and complexity. Zapier is the easiest to maintain; Make.com handles complex logic better; n8n is self-hosted and cheapest at scale. We recommend the right one for your situation on the discovery call — we have no incentive to upsell a more expensive platform.'
   },
   {
     q: 'Will I be able to manage the automation myself after delivery?',
-    a: 'Yes. We build on visual platforms like Make.com and n8n that are designed for non-technical users. We also provide documentation and a walkthrough so you can monitor the automation, understand its logic, and make simple edits if needed.'
+    a: 'Yes. We build on visual no-code platforms like Make.com and n8n that are designed for non-technical users. We also provide documentation and a recorded walkthrough so you can monitor, understand, and make simple edits without needing a developer.'
   },
 ]
 
-const projects = [
-  { key: 'zoom', thumb: ['/images/zoom1.png', '/images/zoom2.png'], cat: 'Meeting Intelligence', h: 'Zoom Meeting AI Processing Pipeline', p: 'Auto-transcribes, summarizes, and stores every Zoom meeting by type — delivered to your inbox in minutes.', tools: ['Zoom', 'OpenAI', 'Pinecone', 'Gmail'] },
-  { key: 'lead', thumb: ['/images/lead1.png'], cat: 'CRM Automation', h: 'AI Lead Management & CRM Automation', p: 'Leads auto-logged, AI-qualified, entered into Pipedrive with smart routing and instant team notifications.', tools: ['Pipedrive', 'OpenAI', 'MS Teams', 'Outlook'] },
-  { key: 'email', thumb: ['/images/email1.png'], cat: 'Outreach Automation', h: 'AI Cold Email Outreach Pipeline', p: 'Researches companies with Perplexity, generates personalized emails with ChatGPT, runs Instantly campaigns.', tools: ['Perplexity AI', 'ChatGPT', 'Instantly'] },
-  { key: 'qualify', thumb: ['/images/qualify1.png'], cat: 'Lead Qualification', h: 'AI-Powered Lead Qualification System', p: 'OpenAI qualifies every lead, routes to Pipedrive with deals, notes, and multi-channel alerts in seconds.', tools: ['OpenAI', 'Pipedrive', 'MS Teams'] },
-  { key: 'hotel', thumb: ['/images/hotel1.png', '/images/hotel2.png'], cat: 'Property Management', h: 'Fully Automated Hotel Management System', p: 'Handles Airbnb bookings, payments, QuickBooks invoicing across multiple properties — 24/7 automated.', tools: ['Airbnb', 'QuickBooks', 'Gather'] },
-  { key: 'ghl', thumb: ['/images/ghl1.png'], cat: 'Marketing Automation', h: 'Zoom → GoHighLevel Campaign Automation', p: 'Meeting end triggers automated GHL email & SMS campaigns, turning meetings into nurture sequences.', tools: ['Zoom', 'GoHighLevel', 'SMS'] },
-  { key: 'seo', thumb: ['/images/seo1.png'], cat: 'Content Automation', h: 'AI SEO Content Automation Pipeline', p: 'Monitors RSS feeds, generates SEO keywords & descriptions with ChatGPT, updates Sheets, notifies Slack.', tools: ['RSS', 'ChatGPT', 'Sheets', 'Slack'] },
-  { key: 'xero', thumb: ['/images/xero1.png'], cat: 'Finance Automation', h: 'Xero Invoice Automation via Google Sheets', p: 'Reads invoicing rules, creates Xero invoices automatically, updates Google Sheets with URLs.', tools: ['Xero', 'Google Sheets', 'Opereto'] },
-  { key: 'apollo', thumb: ['/images/apollo1.png'], cat: 'Lead Generation', h: 'AI Lead Generation — Apollo + Apify → CRM', p: 'Searches Apollo by job title & location, enriches with Apify, auto-creates leads in Pipedrive CRM.', tools: ['Apollo.io', 'Apify', 'Pipedrive'] },
-]
-
-export default function Portfolio({ openModal }) {
+export default function Portfolio() {
   useScrollReveal()
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <>
       <Helmet>
-        <title>Portfolio | Logic Loops AI</title>
-        <meta name="description" content="View Logic Loops AI automation projects: Zoom AI Pipeline, CRM automation, cold email outreach, lead generation systems built for real businesses." />
+        <title>AI Automation Portfolio | Logic Loops AI — Make.com, n8n, Zapier Workflows</title>
+        <meta name="description" content="Browse Logic Loops AI's automation portfolio: 45 live AI workflows across sales, finance, CRM, marketing, support, HR, and IT — built on Make.com, n8n, and Zapier." />
         <link rel="canonical" href="https://logicloopsai.com/portfolio" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="AI Automation Portfolio | Logic Loops AI" />
-        <meta property="og:description" content="Real automation projects: Zoom AI pipeline, CRM automation, cold email outreach, hotel management, invoice automation, and more." />
+        <meta property="og:description" content="45 live AI automation workflows across sales, finance, CRM, marketing, support, HR, and IT — built on Make.com, n8n, and Zapier. Saving 130+ hours a week for real clients." />
         <meta property="og:url" content="https://logicloopsai.com/portfolio" />
+        <meta property="og:site_name" content="Logic Loops AI" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI Automation Portfolio | Logic Loops AI" />
+        <meta name="twitter:description" content="45 live AI automation workflows built on Make.com, n8n, and Zapier. Browse sales, finance, CRM, marketing, support, HR, and IT automations." />
+
+        {/* Structured Data — BreadcrumbList */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://logicloopsai.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://logicloopsai.com/portfolio" },
+          ]
+        })}</script>
+
+        {/* Structured Data — Service */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "AI Automation Portfolio — Logic Loops AI",
+          "description": "Live AI automation workflows built for real clients on Make.com, n8n, and Zapier.",
+          "url": "https://logicloopsai.com/portfolio",
+          "numberOfItems": 45,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Lead Router AI — Sales CRM Automation" },
+            { "@type": "ListItem", "position": 2, "name": "Contract Generator AI — E-Signature Automation" },
+            { "@type": "ListItem", "position": 3, "name": "Deal-Won Orchestrator AI — Post-Sale Workflow Automation" },
+            { "@type": "ListItem", "position": 4, "name": "Win-Back Campaign AI — Lost Deal Recovery Automation" },
+            { "@type": "ListItem", "position": 5, "name": "Sales Dashboard AI — Automated Reporting" },
+          ]
+        })}</script>
       </Helmet>
-      {/* PAGE HERO */}
-      <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
-        <div className="mw">
+
+      {/* ── Page Hero ── */}
+      <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        {/* Decorative corner lines */}
+        <div style={{ position: 'absolute', top: 100, left: '5%', width: 60, height: 60, borderTop: '1px solid rgba(201,150,58,0.3)', borderLeft: '1px solid rgba(201,150,58,0.3)' }} />
+        <div style={{ position: 'absolute', bottom: 40, right: '5%', width: 60, height: 60, borderBottom: '1px solid rgba(201,150,58,0.3)', borderRight: '1px solid rgba(201,150,58,0.3)' }} />
+        <div className="mw fu">
           <div className="lbl" style={{ color: 'var(--gl)' }}>Our Portfolio</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(2.8rem,4.8vw,4.2rem)', fontWeight: 700, color: 'var(--cream)', lineHeight: 1.1, marginBottom: '20px' }}>
             Real Automations. <em style={{ color: 'var(--gl)', fontStyle: 'italic' }}>Real Results.</em>
           </h1>
-          <p style={{ color: 'rgba(253,248,240,0.7)', fontSize: '1.07rem', lineHeight: 1.8, maxWidth: '560px', margin: '0 auto', fontWeight: 300 }}>
-            Every project is a live automation deployed for real clients. Click any card to explore the full workflow.
+          <p style={{ color: 'rgba(253,248,240,0.7)', fontSize: '1.07rem', lineHeight: 1.8, maxWidth: '600px', margin: '0 auto 36px', fontWeight: 300 }}>
+            45 live AI automation workflows across 10 business categories — sales, finance, CRM, marketing, support, HR, IT, and more — built on Make.com, n8n, and Zapier. Click any category to explore what's inside.
           </p>
-        </div>
-      </section>
-
-      {/* PROJECTS */}
-      <section style={{ background: 'var(--cream)', padding: '108px 5%' }}>
-        <div className="mw">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '26px' }} className="proj-resp">
-            {projects.map((proj) => (
-              <article key={proj.key} className="proj-c fu" onClick={() => openModal(proj.key)}
-                style={{ background: 'var(--white)', border: '1px solid var(--bdr)', borderRadius: '20px', overflow: 'hidden', cursor: 'pointer', transition: 'all 0.32s', boxShadow: 'var(--sh)' }}>
-                <div style={{ position: 'relative', height: '208px', overflow: 'hidden', background: 'var(--c2)' }}>
-                  {proj.thumb.length === 2 ? (
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height: '100%' }}>
-                      <img src={proj.thumb[0]} alt={proj.h} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.45s' }} />
-                      <img src={proj.thumb[1]} alt={proj.h} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.45s' }} />
-                    </div>
-                  ) : (
-                    <img src={proj.thumb[0]} alt={proj.h} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.45s' }} />
-                  )}
-                  <div className="proj-ov" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top,rgba(80,16,16,0.82) 0%,transparent 55%)', opacity: 0, transition: 'opacity 0.3s', display: 'flex', alignItems: 'flex-end', padding: '18px' }}>
-                    <div style={{ background: 'var(--gold)', color: 'var(--md)', padding: '9px 20px', borderRadius: '9px', fontWeight: 700, fontSize: '0.8rem' }}>View Details →</div>
-                  </div>
-                </div>
-                <div style={{ padding: '24px' }}>
-                  <div style={{ fontSize: '0.66rem', fontWeight: 700, letterSpacing: '2.5px', color: 'var(--gold)', textTransform: 'uppercase', marginBottom: '8px' }}>{proj.cat}</div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1.1rem', fontWeight: 700, marginBottom: '9px', lineHeight: 1.35 }}>{proj.h}</h3>
-                  <p style={{ color: 'var(--mut)', fontSize: '0.82rem', lineHeight: 1.65, marginBottom: '14px', fontWeight: 300 }}>{proj.p}</p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
-                    {proj.tools.map(t => <span key={t} style={{ background: 'rgba(122,28,28,0.06)', border: '1px solid rgba(122,28,28,0.11)', color: 'var(--maroon)', padding: '2px 9px', borderRadius: '100px', fontSize: '0.67rem', fontWeight: 600 }}>{t}</span>)}
-                  </div>
-                </div>
-              </article>
+          {/* Key stats */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
+            {[['130+','hrs saved / week'],['45','live automations'],['10','business categories']].map(([n,l]) => (
+              <div key={l}>
+                <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '2.2rem', fontWeight: 700, color: 'var(--gl)', lineHeight: 1 }}>{n}</div>
+                <div style={{ fontSize: '0.72rem', color: 'rgba(253,248,240,0.45)', marginTop: 5, letterSpacing: '0.5px', textTransform: 'uppercase' }}>{l}</div>
+              </div>
             ))}
           </div>
         </div>
-        <style>{`
-          .proj-c:hover{box-shadow:var(--shl)!important;transform:translateY(-7px)!important;border-color:rgba(122,28,28,0.24)!important;}
-          .proj-c:hover .proj-ov{opacity:1!important;}
-          @media(max-width:1100px){.proj-resp{grid-template-columns:repeat(2,1fr)!important;}}
-          @media(max-width:768px){.proj-resp{grid-template-columns:1fr!important;}}
-        `}</style>
       </section>
 
-      {/* FAQ */}
-      <FAQSection faqs={portfolioFaqs} title={<>About Our <em>Project Deliverables</em></>} bg="var(--cream)" />
+      {/* ── Automation Showcase (journey + category grid + detail overlays) ── */}
+      <AutomationShowcase />
 
-      {/* CTA */}
+      {/* ── FAQ ── */}
+      <FAQSection
+        faqs={portfolioFaqs}
+        title={<>Questions About Our <em>Automation Deliverables</em></>}
+        bg="var(--cream)"
+      />
+
+      {/* ── CTA ── */}
       <section style={{ background: 'var(--md)', padding: '108px 5%', textAlign: 'center' }}>
         <div className="mw fu">
           <div className="lbl" style={{ color: 'var(--gl)' }}>Want Something Similar?</div>
-          <h2 className="sh" style={{ color: 'var(--cream)', margin: '0 auto 17px' }}>Let's Build Your <em style={{ color: 'var(--gl)' }}>Custom Automation</em></h2>
-          <p className="sub" style={{ color: 'rgba(253,248,240,0.54)', margin: '0 auto 40px' }}>Tell us your workflow and we'll design the perfect automation solution for your business.</p>
-          <Link to="/contact" className="btn-gold">🚀 Book Free Consultation</Link>
+          <h2 className="sh" style={{ color: 'var(--cream)', margin: '0 auto 17px' }}>
+            Let's Build Your <em style={{ color: 'var(--gl)' }}>Custom Automation</em>
+          </h2>
+          <p className="sub" style={{ color: 'rgba(253,248,240,0.54)', margin: '0 auto 40px' }}>
+            Tell us your workflow and we'll design the perfect automation — scoped, built, and live within 2 weeks.
+          </p>
+          <Link to="/contact" className="btn-gold">🚀 Book Free Discovery Call</Link>
         </div>
       </section>
     </>

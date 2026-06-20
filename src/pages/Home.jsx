@@ -140,6 +140,111 @@ function PlatformChip({ slug, name }) {
   )
 }
 
+/* ─── Agent mini-card for the scrolling ticker ───────────── */
+const TICKER_AGENTS = [
+  { id:'lead-router-ai',           firstName:'Arjun',     role:'Lead Router AI',            blurb:'Assigns every new lead to the next available rep — instantly, fairly, every time.',            time:'4 hrs/week',  cost:'£640/mo',    color:'#7a1c1c' },
+  { id:'win-back-campaign-ai',     firstName:'Meera',     role:'Win-Back Campaign AI',       blurb:'Fires an automatic follow-up sequence the moment a deal is lost.',                             time:'3 hrs/week',  cost:'£480/mo',    color:'#7a1c1c' },
+  { id:'deal-recovery-ai',         firstName:'Vikram',    role:'Deal Recovery AI',           blurb:'Reopens and reassigns cancelled or rejected deals for a second chance.',                       time:'2 hrs/week',  cost:'£320/mo',    color:'#7a1c1c' },
+  { id:'renewal-reminder-ai',      firstName:'Ananya',    role:'Renewal Reminder AI',        blurb:'Flags contracts nearing renewal and routes them to a rep automatically.',                      time:'4 hrs/week',  cost:'£640/mo',    color:'#c9963a' },
+  { id:'upsell-builder-ai',        firstName:'Rishi',     role:'Upsell Builder AI',          blurb:"Builds a renewal deal from a customer's order history, ready for a rep to action.",           time:'3 hrs/week',  cost:'£480/mo',    color:'#c9963a' },
+  { id:'email-tracker-ai',         firstName:'Kavya',     role:'Email Tracker AI',           blurb:'Logs every call and email into the CRM automatically the moment it happens.',                 time:'2 hrs/week',  cost:'£320/mo',    color:'#7a1c1c' },
+  { id:'contract-generator-ai',    firstName:'Siddharth', role:'Contract Generator AI',      blurb:'Generates a pre-filled contract PDF the moment a deal is won and sends it for e-signature.',  time:'6 hrs/week',  cost:'£960/mo',    color:'#c9963a' },
+  { id:'document-filing-ai',       firstName:'Priya',     role:'Document Filing AI',         blurb:'Saves every signed document to the correct client folder — automatically, zero manual filing.',time:'2 hrs/week',  cost:'£320/mo',    color:'#c9963a' },
+  { id:'order-form-builder-ai',    firstName:'Rohan',     role:'Order Form Builder AI',      blurb:'Generates a pre-filled order form and sends it to the customer the moment a deal is won.',    time:'5 hrs/week',  cost:'£800/mo',    color:'#c9963a' },
+  { id:'review-collector-ai',      firstName:'Neha',      role:'Review Collector AI',        blurb:'Sends a review request automatically at the right moment — after delivery, not forgotten.',    time:'3 hrs/week',  cost:'£480/mo',    color:'#c9963a' },
+  { id:'onboarding-ai',            firstName:'Aryan',     role:'Onboarding AI',              blurb:'Triggers the full onboarding sequence the moment a new customer is added to the CRM.',        time:'1 hr/week',   cost:'£160/mo',    color:'#c9963a' },
+  { id:'sales-dashboard-ai',       firstName:'Shreya',    role:'Sales Dashboard AI',         blurb:'Compiles call volumes, revenue, and pipeline data into a report delivered every morning.',    time:'5 hrs/week',  cost:'£800/mo',    color:'#a07828' },
+  { id:'data-sync-ai',             firstName:'Kiran',     role:'Data Sync AI',               blurb:'Keeps your CRM and every connected tool in sync — contacts, deals, and statuses updated live.',time:'6 hrs/week', cost:'£960/mo',    color:'#5c3d2e' },
+  { id:'field-update-tracker-ai',  firstName:'Aditya',    role:'Field Update Tracker AI',    blurb:'Logs every field change in the CRM with a timestamp and the user who made it.',               time:'4 hrs/week',  cost:'£640/mo',    color:'#5c3d2e' },
+  { id:'deal-won-orchestrator-ai', firstName:'Dhruv',     role:'Deal-Won Orchestrator AI',   blurb:'Fires every next step at once the moment any deal is marked won on any pipeline.',            time:'7 hrs/week',  cost:'£1,120/mo',  color:'#5c3d2e' },
+  { id:'invoice-generator-ai',     firstName:'Tanvi',     role:'Invoice Generator AI',       blurb:'Builds and sends the invoice the moment the order form is signed — no manual billing.',       time:'4 hrs/week',  cost:'£640/mo',    color:'#9b2c2c' },
+  { id:'payment-reminder-ai',      firstName:'Karan',     role:'Payment Reminder AI',        blurb:'Chases overdue invoices automatically, before they become a write-off.',                      time:'3 hrs/week',  cost:'£480/mo',    color:'#9b2c2c' },
+  { id:'payment-reconciliation-ai',firstName:'Diya',      role:'Payment Reconciliation AI',  blurb:'Matches every incoming payment to the right invoice and closes it automatically.',            time:'3 hrs/week',  cost:'£480/mo',    color:'#9b2c2c' },
+  { id:'recurring-billing-ai',     firstName:'Rahul',     role:'Recurring Billing AI',       blurb:'Generates and sends the recurring invoice automatically, every cycle, on time.',              time:'2 hrs/week',  cost:'£320/mo',    color:'#9b2c2c' },
+  { id:'expense-approval-ai',      firstName:'Pooja',     role:'Expense Approval AI',        blurb:'Routes every expense claim to the right approver and logs the outcome automatically.',        time:'2 hrs/week',  cost:'£320/mo',    color:'#9b2c2c' },
+  { id:'duplicate-cleaner-ai',     firstName:'Nikhil',    role:'Duplicate Cleaner AI',       blurb:'Finds and merges duplicate CRM records before they split your pipeline reporting.',           time:'3 hrs/week',  cost:'£480/mo',    color:'#8b6f5e' },
+  { id:'data-enrichment-ai',       firstName:'Ishaan',    role:'Data Enrichment AI',         blurb:'Enriches every new lead with company and contact details the second it lands.',               time:'2 hrs/week',  cost:'£320/mo',    color:'#8b6f5e' },
+  { id:'pipeline-health-ai',       firstName:'Simran',    role:'Pipeline Health AI',         blurb:'Flags deals that have gone quiet and alerts the rep before they go cold.',                    time:'2 hrs/week',  cost:'£320/mo',    color:'#8b6f5e' },
+  { id:'field-mapping-ai',         firstName:'Varun',     role:'Field Mapping AI',           blurb:'Keeps custom fields and dropdown IDs in sync across every connected system.',                 time:'3 hrs/week',  cost:'£480/mo',    color:'#8b6f5e' },
+  { id:'forecast-sync-ai',         firstName:'Anjali',    role:'Forecast Sync AI',           blurb:'Recalculates your pipeline forecast automatically every time a deal moves stage.',            time:'3 hrs/week',  cost:'£480/mo',    color:'#8b6f5e' },
+  /* ── Marketing Automation ── */
+  { id:'social-post-scheduler-ai',  firstName:'Aarav',     role:'Social Post Scheduler AI',   blurb:'Schedules and publishes every social post on time, across every channel, from one calendar.',   time:'3 hrs/week',  cost:'£480/mo',    color:'#b5651d' },
+  { id:'ad-spend-optimiser-ai',     firstName:'Bhumi',     role:'Ad Spend Optimiser AI',      blurb:"Shifts ad budget toward what's converting and pauses what's bleeding spend, daily.",             time:'4 hrs/week',  cost:'£640/mo',    color:'#b5651d' },
+  { id:'email-campaign-builder-ai', firstName:'Chirag',    role:'Email Campaign Builder AI',  blurb:'Builds and sends the email campaign the moment new content or an offer goes live.',              time:'3 hrs/week',  cost:'£480/mo',    color:'#b5651d' },
+  { id:'lead-magnet-delivery-ai',   firstName:'Devika',    role:'Lead Magnet Delivery AI',    blurb:'Delivers the right lead magnet the second someone opts in, no manual email needed.',            time:'1 hr/week',   cost:'£160/mo',    color:'#b5651d' },
+  { id:'review-response-ai',        firstName:'Esha',      role:'Review Response AI',         blurb:'Drafts a response to every new review so nothing sits unanswered for days.',                    time:'2 hrs/week',  cost:'£320/mo',    color:'#b5651d' },
+  /* ── Customer Support Automation ── */
+  { id:'ticket-router-ai',          firstName:'Gaurav',    role:'Ticket Router AI',           blurb:'Routes every support ticket to the right team based on issue type, the moment it lands.',       time:'3 hrs/week',  cost:'£480/mo',    color:'#6f4e37' },
+  { id:'faq-responder-ai',          firstName:'Harini',    role:'FAQ Responder AI',           blurb:'Answers common support questions instantly, before a human even opens the ticket.',              time:'2 hrs/week',  cost:'£320/mo',    color:'#6f4e37' },
+  { id:'csat-survey-ai',            firstName:'Indira',    role:'CSAT Survey AI',             blurb:'Sends the satisfaction survey the moment a ticket closes and flags low scores for follow-up.',  time:'1 hr/week',   cost:'£160/mo',    color:'#6f4e37' },
+  { id:'escalation-alert-ai',       firstName:'Jaya',      role:'Escalation Alert AI',        blurb:'Flags any ticket open past SLA and alerts the right manager before the customer has to chase.', time:'2 hrs/week',  cost:'£320/mo',    color:'#6f4e37' },
+  { id:'churn-risk-ai',             firstName:'Kabir',     role:'Churn Risk AI',              blurb:'Flags customers showing churn signals — repeated complaints, falling usage — for outreach.',    time:'3 hrs/week',  cost:'£480/mo',    color:'#6f4e37' },
+  /* ── HR & Recruitment Automation ── */
+  { id:'candidate-screener-ai',     firstName:'Lakshmi',   role:'Candidate Screener AI',      blurb:'Screens every CV against the job spec and ranks candidates before a human reviews them.',       time:'4 hrs/week',  cost:'£640/mo',    color:'#8a6d3a' },
+  { id:'interview-scheduler-ai',    firstName:'Madhav',    role:'Interview Scheduler AI',     blurb:'Finds a slot, books the interview, and sends the calendar invite — no email back-and-forth.',   time:'2 hrs/week',  cost:'£320/mo',    color:'#8a6d3a' },
+  { id:'onboarding-checklist-ai',   firstName:'Nandini',   role:'Onboarding Checklist AI',    blurb:"Triggers every onboarding step — IT access, paperwork, welcome email — the moment someone's hired.", time:'3 hrs/week', cost:'£480/mo', color:'#8a6d3a' },
+  { id:'leave-approval-ai',         firstName:'Om',        role:'Leave Approval AI',          blurb:'Routes leave requests to the right manager and updates the team calendar once approved.',        time:'1 hr/week',   cost:'£160/mo',    color:'#8a6d3a' },
+  { id:'employee-feedback-ai',      firstName:'Pranav',    role:'Employee Feedback AI',       blurb:'Sends the pulse survey on schedule and flags any concerning response for HR to see immediately.', time:'2 hrs/week', cost:'£320/mo',   color:'#8a6d3a' },
+  /* ── IT & Security Automation ── */
+  { id:'ticket-triage-ai',          firstName:'Radhika',   role:'Ticket Triage AI',           blurb:'Triages incoming IT tickets by urgency and routes them to the right engineer.',                 time:'3 hrs/week',  cost:'£480/mo',    color:'#4a2c2a' },
+  { id:'access-revoke-ai',          firstName:'Saurabh',   role:'Access Revoke AI',           blurb:"Revokes system access the moment someone's marked as left, across every connected tool.",        time:'2 hrs/week',  cost:'£320/mo',    color:'#4a2c2a' },
+  { id:'uptime-alert-ai',           firstName:'Tara',      role:'Uptime Alert AI',            blurb:'Alerts the right person the second a monitored system goes down — no waiting for someone to notice.', time:'2 hrs/week', cost:'£320/mo', color:'#4a2c2a' },
+  { id:'patch-reminder-ai',         firstName:'Uday',      role:'Patch Reminder AI',          blurb:'Tracks which systems are overdue for a security patch and flags them before they become a risk.', time:'2 hrs/week', cost:'£320/mo',  color:'#4a2c2a' },
+  { id:'backup-verification-ai',    firstName:'Vidya',     role:'Backup Verification AI',     blurb:'Checks every scheduled backup actually completed and flags failures the same day.',              time:'1 hr/week',   cost:'£160/mo',    color:'#4a2c2a' },
+]
+
+function AgentMiniCard({ ag }) {
+  return (
+    <Link
+      to={`/portfolio#${ag.id}`}
+      style={{
+        display:'block', width:262, flexShrink:0,
+        borderRadius:16, overflow:'hidden',
+        border:'1px solid rgba(122,28,28,0.13)',
+        boxShadow:'0 4px 20px rgba(80,16,16,0.1)',
+        background:'var(--white)', textDecoration:'none',
+        transition:'transform 0.22s ease, box-shadow 0.22s ease',
+      }}
+      onMouseEnter={e=>{ e.currentTarget.style.transform='translateY(-5px)'; e.currentTarget.style.boxShadow=`0 18px 44px ${ag.color}28` }}
+      onMouseLeave={e=>{ e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='0 4px 20px rgba(80,16,16,0.1)' }}
+    >
+      {/* Thumbnail */}
+      <div style={{ width:'100%', aspectRatio:'16/9', position:'relative', background:`linear-gradient(135deg,${ag.color}18,${ag.color}08)`, border:`1px dashed ${ag.color}30`, borderWidth:'0 0 1px 0', overflow:'hidden' }}>
+        <img
+          src={`/employees/${ag.id}.png`}
+          alt={ag.firstName}
+          onError={e => { e.currentTarget.style.display='none'; if(e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display='flex' }}
+          style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }}
+        />
+        <div style={{ display:'none', position:'absolute', inset:0, alignItems:'center', justifyContent:'center', flexDirection:'column', gap:5 }}>
+          <div style={{ width:48, height:48, borderRadius:'50%', background:`linear-gradient(135deg,${ag.color},${ag.color}99)`, display:'flex', alignItems:'center', justifyContent:'center', fontFamily:"'Cormorant Garamond',serif", fontWeight:700, fontSize:22, color:'#fff' }}>{ag.firstName.charAt(0)}</div>
+          <span style={{ fontSize:10, fontWeight:700, color:ag.color, fontFamily:"'DM Sans',sans-serif", letterSpacing:'0.5px' }}>AI AUTOMATION AGENT</span>
+        </div>
+        {/* Name badge */}
+        <div style={{ position:'absolute', bottom:8, left:10, background:'rgba(44,24,16,0.72)', backdropFilter:'blur(4px)', color:'#fff', fontSize:11, fontWeight:700, padding:'4px 11px', borderRadius:50, display:'flex', alignItems:'center', gap:5, fontFamily:"'DM Sans',sans-serif" }}>
+          <span style={{ width:6, height:6, borderRadius:'50%', background:'#4ade80', flexShrink:0 }}/>
+          {ag.firstName}
+        </div>
+      </div>
+      {/* Body */}
+      <div style={{ padding:'14px 16px 16px' }}>
+        <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.05rem', fontWeight:700, color:'var(--text)', lineHeight:1.25, marginBottom:6 }}>{ag.role}</h3>
+        <p style={{ fontSize:'0.78rem', color:'var(--mut)', lineHeight:1.65, fontWeight:300, fontFamily:"'DM Sans',sans-serif", marginBottom:12, display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', overflow:'hidden' }}>{ag.blurb}</p>
+        <div style={{ borderTop:'1px solid var(--bdr)', paddingTop:10, display:'grid', gridTemplateColumns:'1fr 1fr', gap:6 }}>
+          <div>
+            <div style={{ fontSize:'0.56rem', fontWeight:700, color:'var(--mut)', letterSpacing:'0.8px', textTransform:'uppercase', marginBottom:2, fontFamily:"'DM Sans',sans-serif" }}>TIME SAVED</div>
+            <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'0.95rem', fontWeight:700, color:'var(--text)' }}>{ag.time}</div>
+          </div>
+          <div>
+            <div style={{ fontSize:'0.56rem', fontWeight:700, color:'var(--mut)', letterSpacing:'0.8px', textTransform:'uppercase', marginBottom:2, fontFamily:"'DM Sans',sans-serif" }}>COST SAVED</div>
+            <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'0.95rem', fontWeight:700, color:ag.color }}>{ag.cost}</div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
 /* ─── HOME PAGE ──────────────────────────────────────────── */
 export default function Home({ openModal }) {
   useReveal()
@@ -410,25 +515,32 @@ export default function Home({ openModal }) {
             </p>
           </div>
 
-          <div className="srv-grid-resp" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:22 }}>
+          {/* ── AI Agent Card Ticker ── */}
+          <>
+            <style>{`
+              @keyframes tickL { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+              @keyframes tickR { from{transform:translateX(-50%)} to{transform:translateX(0)} }
+            `}</style>
             {[
-              ['⚡','Workflow Automation','End-to-end workflows on Make.com, n8n, and Zapier. Custom logic, error handling, multi-step pipelines built to scale.',['Make.com','n8n','Zapier'],'0.05s'],
-              ['🤖','AI Agent Development','Intelligent AI agents powered by OpenAI and Anthropic that reason, decide, and act on your behalf 24/7.',['OpenAI','LangChain','AI Agents'],'0.15s'],
-              ['📊','CRM & Lead Automation','Automate your entire lead pipeline. Smart CRM entry, AI follow-up sequences, deal management on autopilot.',['Pipedrive','GoHighLevel','HubSpot'],'0.25s'],
-              ['📹','Meeting Intelligence','Auto-transcribe, summarize, and store every Zoom meeting. AI insights delivered to your inbox within minutes.',['Zoom','Whisper AI','Pinecone'],'0.35s'],
-              ['📧','AI Cold Email Outreach','Research prospects with Perplexity, generate personalized emails with ChatGPT, run Instantly campaigns automatically.',['Apollo.io','Instantly','Perplexity AI'],'0.45s'],
-              ['💰','Finance & Invoice Automation','Auto-create invoices in Xero and QuickBooks triggered from any event. Streamline billing entirely.',['Xero','QuickBooks','Google Sheets'],'0.55s'],
-            ].map(([ic,h,p,tags,delay]) => (
-              <article key={h} className={`reveal srv3d tilt3d`} style={{ transitionDelay:delay, background:'var(--cream)', border:'1px solid var(--bdr)', borderRadius:18, padding:'34px 30px', position:'relative', overflow:'hidden' }}>
-                <div style={{ width:52, height:52, borderRadius:13, background:'linear-gradient(135deg,rgba(122,28,28,0.08),rgba(201,150,58,0.1))', border:'1px solid rgba(122,28,28,0.1)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.35rem', marginBottom:20 }}>{ic}</div>
-                <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.22rem', fontWeight:700, marginBottom:11 }}>{h}</h3>
-                <p style={{ color:'var(--mut)', fontSize:'0.86rem', lineHeight:1.73, fontWeight:300 }}>{p}</p>
-                <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginTop:16 }}>
-                  {tags.map(t=><span key={t} style={{ background:'rgba(122,28,28,0.06)', border:'1px solid rgba(122,28,28,0.13)', color:'var(--maroon)', padding:'3px 10px', borderRadius:100, fontSize:'0.68rem', fontWeight:600 }}>{t}</span>)}
+              { agents: TICKER_AGENTS.slice(0, 23),  anim:'tickL', dur:'100s' },
+              { agents: TICKER_AGENTS.slice(23),      anim:'tickR', dur:'88s'  },
+            ].map(({ agents, anim, dur }, ri) => (
+              <div key={ri} style={{ overflow:'hidden', marginBottom: ri === 0 ? 18 : 0 }}>
+                <div
+                  style={{ display:'flex', alignItems:'stretch', gap:16, width:'max-content', animation:`${anim} ${dur} linear infinite` }}
+                  onMouseEnter={e => e.currentTarget.style.animationPlayState='paused'}
+                  onMouseLeave={e => e.currentTarget.style.animationPlayState='running'}
+                  onTouchStart={e => e.currentTarget.style.animationPlayState='paused'}
+                  onTouchEnd={e => e.currentTarget.style.animationPlayState='running'}
+                  onTouchCancel={e => e.currentTarget.style.animationPlayState='running'}
+                >
+                  {[...agents, ...agents].map((ag, i) => (
+                    <AgentMiniCard key={`${ag.id}-${i}`} ag={ag} />
+                  ))}
                 </div>
-              </article>
+              </div>
             ))}
-          </div>
+          </>
 
           <div className="reveal delay-3" style={{ textAlign:'center', marginTop:52 }}>
             <Link to="/services" style={{ background:'linear-gradient(135deg,var(--gold),var(--gl))', color:'var(--md)', padding:'15px 38px', borderRadius:12, fontWeight:700, fontSize:'0.97rem', textDecoration:'none', display:'inline-flex', alignItems:'center', gap:9, transition:'all 0.2s', boxShadow:'0 8px 30px rgba(201,150,58,0.28)' }}
@@ -503,48 +615,185 @@ export default function Home({ openModal }) {
             <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(2.2rem,3.6vw,3.2rem)', fontWeight:700, color:'var(--text)', lineHeight:1.1 }}>
               Real Automations. <em style={{ fontStyle:'italic', color:'var(--maroon)' }}>Real Results.</em>
             </h2>
+            <p style={{ color:'var(--mut)', fontSize:'0.97rem', lineHeight:1.8, maxWidth:540, margin:'14px auto 0', fontWeight:300 }}>
+              45 live AI workflows across 10 business areas — click any to see the automation, the team member it replaced, and the exact time saved.
+            </p>
           </div>
 
           <div className="proj-grid-resp" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:24 }}>
             {[
-              { key:'zoom',    img:'/images/zoom1.png',   img2:'/images/zoom2.png', cat:'Meeting Intelligence', h:'Zoom Meeting AI Pipeline',        tools:['Zoom','OpenAI','Pinecone'],    delay:'0.05s' },
-              { key:'lead',    img:'/images/lead1.png',   img2:null,                cat:'CRM Automation',       h:'AI Lead Management & CRM',         tools:['Pipedrive','OpenAI','Teams'],   delay:'0.15s' },
-              { key:'email',   img:'/images/email1.png',  img2:null,                cat:'Outreach Automation',  h:'AI Cold Email Outreach Pipeline',  tools:['Perplexity AI','ChatGPT'],     delay:'0.25s' },
-              { key:'hotel',   img:'/images/hotel1.png',  img2:'/images/hotel2.png',cat:'Property Management',  h:'Automated Hotel Management',       tools:['Airbnb','QuickBooks'],         delay:'0.35s' },
-              { key:'seo',     img:'/images/seo1.png',    img2:null,                cat:'Content Automation',   h:'AI SEO Content Pipeline',          tools:['RSS','ChatGPT','Slack'],       delay:'0.45s' },
-              { key:'apollo',  img:'/images/apollo1.png', img2:null,                cat:'Lead Generation',      h:'Apollo + Apify → CRM Pipeline',    tools:['Apollo.io','Apify','Pipedrive'],delay:'0.55s' },
-            ].map(({ key, img, img2, cat, h, tools, delay }) => (
-              <article key={key} className="reveal proj3d tilt3d" style={{ transitionDelay:delay, background:'var(--white)', border:'1px solid var(--bdr)', borderRadius:20, overflow:'hidden', boxShadow:'var(--sh)' }}
-                onClick={() => openModal(key)}>
-                <div style={{ position:'relative', height:200, overflow:'hidden', background:'var(--c2)' }}>
-                  {img2 ? (
-                    <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', height:'100%' }}>
-                      <img src={img}  alt={h} style={{ width:'100%', height:'100%', objectFit:'cover', transition:'transform 0.45s' }}/>
-                      <img src={img2} alt={h} style={{ width:'100%', height:'100%', objectFit:'cover', transition:'transform 0.45s' }}/>
+              {
+                label:'SALES & CRM · AI AUTOMATION', icon:'📈', count:6,
+                title:'Sales Automation',   sub:'Lead to close — fully automatic.',
+                descPre:"From the moment a lead comes in to the moment it's followed up — ",
+                descEm:'assigned, tracked, and recovered automatically.',
+                tags:['Lead Router','Win-Back Campaign','Deal Recovery','Renewal Reminder','Upsell Builder','Email Tracker'],
+                time:'18 hrs/week', cost:'£2,880/mo', delay:'0.05s',
+              },
+              {
+                label:'CUSTOMER JOURNEY · AI AUTOMATION', icon:'🚀', count:5,
+                title:'Customer Journey',   sub:'Win to delivery — zero manual steps.',
+                descPre:'From signed contract to onboarding to review request — ',
+                descEm:'the entire post-sale chain handled automatically.',
+                tags:['Contract Generator','Document Filing','Order Form Builder','Review Collector','Onboarding'],
+                time:'17 hrs/week', cost:'£2,720/mo', delay:'0.15s',
+              },
+              {
+                label:'FINANCE · AI AUTOMATION', icon:'💰', count:0,
+                title:'Finance Automation',  sub:'Invoices sent before you remember to.',
+                descPre:'Billing, invoicing, and payment tracking — ',
+                descEm:'kept on schedule without anyone chasing it manually.',
+                tags:[],
+                time:null, cost:'From £200/user · £1,000 min', delay:'0.25s',
+              },
+              {
+                label:'REPORTING · AI AUTOMATION', icon:'📊', count:1,
+                title:'Reporting & Dashboards', sub:'Numbers in your inbox every morning.',
+                descPre:'Call activity, revenue figures, and operations data compiled overnight — ',
+                descEm:'ready before the office opens.',
+                tags:['Sales Dashboard'],
+                time:'5 hrs/week', cost:'£800/mo', delay:'0.35s',
+              },
+              {
+                label:'CRM · AI AUTOMATION', icon:'🛠️', count:0,
+                title:'CRM Optimisation',  sub:'Clean data. Clear pipeline. Real forecasts.',
+                descPre:'Audit, restructure, or set up your CRM from scratch — ',
+                descEm:'so your pipeline data actually works for you.',
+                tags:[],
+                time:null, cost:'From £150/user · £750 min', delay:'0.45s',
+              },
+              {
+                label:'BESPOKE · AI AUTOMATION', icon:'🧩', count:3,
+                title:'Workflow & Bespoke',  sub:'Any process. Any system. Automated.',
+                descPre:"Custom workflows and system integration for anything that doesn't fit a standard category — ",
+                descEm:'built exactly to your spec.',
+                tags:['Data Sync','Field Update Tracker','Deal-Won Orchestrator'],
+                time:'17 hrs/week', cost:'£2,720/mo', delay:'0.55s',
+              },
+            ].map(({ label, icon, count, title, sub, descPre, descEm, tags, time, cost, delay }) => (
+              <Link
+                key={title}
+                to="/portfolio"
+                className="reveal"
+                style={{
+                  transitionDelay:delay,
+                  borderRadius:20,
+                  overflow:'hidden',
+                  boxShadow:'0 4px 28px rgba(80,16,16,0.13)',
+                  border:'1px solid rgba(122,28,28,0.14)',
+                  textDecoration:'none',
+                  display:'flex',
+                  flexDirection:'column',
+                  transition:'transform 0.24s ease, box-shadow 0.24s ease',
+                  background:'var(--cream)',
+                }}
+                onMouseEnter={e=>{ e.currentTarget.style.transform='translateY(-7px)'; e.currentTarget.style.boxShadow='0 28px 64px rgba(80,16,16,0.22)' }}
+                onMouseLeave={e=>{ e.currentTarget.style.transform='none'; e.currentTarget.style.boxShadow='0 4px 28px rgba(80,16,16,0.13)' }}
+              >
+                {/* ── Dark maroon header ── */}
+                <div style={{
+                  background:'radial-gradient(ellipse at 70% 30%, #7a1c1c 0%, #501010 100%)',
+                  padding:'26px 26px 24px',
+                  position:'relative', overflow:'hidden',
+                }}>
+                  {/* Dot texture overlay */}
+                  <div style={{
+                    position:'absolute', inset:0, pointerEvents:'none',
+                    backgroundImage:'radial-gradient(circle, rgba(253,248,240,0.07) 1px, transparent 1px)',
+                    backgroundSize:'16px 16px',
+                  }}/>
+                  {/* Category label */}
+                  <div style={{
+                    fontSize:'0.59rem', fontWeight:700, letterSpacing:'2.5px',
+                    color:'rgba(253,248,240,0.42)', textTransform:'uppercase',
+                    marginBottom:18, position:'relative', fontFamily:"'DM Sans',sans-serif",
+                  }}>{label}</div>
+                  {/* Icon + Title row */}
+                  <div style={{ display:'flex', alignItems:'center', gap:14, position:'relative' }}>
+                    <div style={{
+                      width:52, height:52, borderRadius:13, flexShrink:0,
+                      background:'rgba(253,248,240,0.1)', border:'1px solid rgba(253,248,240,0.16)',
+                      display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.5rem',
+                    }}>{icon}</div>
+                    <div>
+                      <h3 style={{
+                        fontFamily:"'Cormorant Garamond',serif", fontSize:'1.55rem', fontWeight:700,
+                        color:'var(--cream)', lineHeight:1.1, marginBottom:5,
+                      }}>{title}</h3>
+                      <p style={{
+                        fontSize:'0.78rem', color:'rgba(253,248,240,0.52)', fontWeight:300,
+                        fontFamily:"'DM Sans',sans-serif",
+                      }}>{sub}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── Cream body ── */}
+                <div style={{ padding:'22px 26px 0', flex:1, display:'flex', flexDirection:'column' }}>
+                  {/* Description with italic emphasis */}
+                  <p style={{ fontSize:'0.87rem', color:'var(--t2)', lineHeight:1.75, marginBottom:18, fontWeight:300, fontFamily:"'DM Sans',sans-serif" }}>
+                    {descPre}
+                    <em style={{ fontStyle:'italic', color:'var(--maroon)', fontWeight:400 }}>{descEm}</em>
+                  </p>
+
+                  {/* Automation name pills — neutral outlined style */}
+                  <div style={{ display:'flex', flexWrap:'wrap', gap:7, marginBottom:20 }}>
+                    {tags.length > 0
+                      ? tags.map(t => (
+                        <span key={t} style={{
+                          fontSize:'0.74rem', fontWeight:500, color:'var(--text)',
+                          background:'var(--white)', border:'1px solid rgba(44,24,16,0.16)',
+                          padding:'5px 12px', borderRadius:100, fontFamily:"'DM Sans',sans-serif",
+                        }}>{t}</span>
+                      ))
+                      : <span style={{ fontSize:'0.8rem', color:'var(--mut)', fontStyle:'italic', fontFamily:"'DM Sans',sans-serif" }}>Custom-scoped for your business</span>
+                    }
+                  </div>
+
+                  {/* Divider */}
+                  <div style={{ height:1, background:'rgba(44,24,16,0.1)', marginBottom:16, marginTop:'auto' }} />
+
+                  {/* Stats */}
+                  {time ? (
+                    <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10, marginBottom:18 }}>
+                      <div>
+                        <div style={{ fontSize:'0.59rem', fontWeight:700, color:'var(--mut)', letterSpacing:'0.8px', textTransform:'uppercase', marginBottom:4, fontFamily:"'DM Sans',sans-serif" }}>TIME SAVED</div>
+                        <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.15rem', fontWeight:700, color:'var(--text)' }}>{time}</div>
+                      </div>
+                      <div>
+                        <div style={{ fontSize:'0.59rem', fontWeight:700, color:'var(--mut)', letterSpacing:'0.8px', textTransform:'uppercase', marginBottom:4, fontFamily:"'DM Sans',sans-serif" }}>COST SAVED</div>
+                        <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.15rem', fontWeight:700, color:'var(--maroon)' }}>{cost}</div>
+                      </div>
                     </div>
                   ) : (
-                    <img src={img} alt={h} style={{ width:'100%', height:'100%', objectFit:'cover', transition:'transform 0.45s' }}/>
+                    <div style={{ fontSize:'0.84rem', fontWeight:700, color:'var(--maroon)', marginBottom:18, fontFamily:"'DM Sans',sans-serif" }}>{cost}</div>
                   )}
-                  <div className="proj-ov-inner" style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(80,16,16,0.88) 0%,transparent 55%)', opacity:0, transition:'opacity 0.3s', display:'flex', alignItems:'flex-end', padding:18 }}>
-                    <span style={{ background:'var(--gold)', color:'var(--md)', padding:'9px 20px', borderRadius:9, fontWeight:700, fontSize:'0.79rem' }}>View Details →</span>
+                </div>
+
+                {/* ── Full-width dark CTA button ── */}
+                <div style={{ padding:'0 16px 16px' }}>
+                  <div style={{
+                    background:'linear-gradient(135deg,#501010,#7a1c1c)',
+                    borderRadius:12, padding:'13px 18px',
+                    display:'flex', alignItems:'center', justifyContent:'space-between',
+                  }}>
+                    <span style={{ fontSize:'0.86rem', fontWeight:600, color:'var(--cream)', fontFamily:"'DM Sans',sans-serif" }}>
+                      View all automations
+                    </span>
+                    <span style={{ fontSize:'0.83rem', fontWeight:700, color:'var(--gl)', fontFamily:"'DM Sans',sans-serif" }}>
+                      {count > 0 ? `${count} included →` : 'Talk to us →'}
+                    </span>
                   </div>
                 </div>
-                <div style={{ padding:22 }}>
-                  <div style={{ fontSize:'0.64rem', fontWeight:700, letterSpacing:'2.5px', color:'var(--gold)', textTransform:'uppercase', marginBottom:8 }}>{cat}</div>
-                  <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.08rem', fontWeight:700, marginBottom:12, lineHeight:1.35 }}>{h}</h3>
-                  <div style={{ display:'flex', flexWrap:'wrap', gap:5 }}>
-                    {tools.map(t=><span key={t} style={{ background:'rgba(122,28,28,0.06)', border:'1px solid rgba(122,28,28,0.11)', color:'var(--maroon)', padding:'2px 9px', borderRadius:100, fontSize:'0.66rem', fontWeight:600 }}>{t}</span>)}
-                  </div>
-                </div>
-              </article>
+              </Link>
             ))}
           </div>
 
           <div className="reveal delay-3" style={{ textAlign:'center', marginTop:52 }}>
-            <Link to="/portfolio" style={{ background:'transparent', color:'var(--maroon)', padding:'14px 36px', borderRadius:12, fontWeight:700, fontSize:'0.95rem', textDecoration:'none', border:'2px solid var(--maroon)', display:'inline-flex', alignItems:'center', gap:9, transition:'all 0.2s' }}
-              onMouseEnter={e=>{e.currentTarget.style.background='var(--maroon)';e.currentTarget.style.color='var(--cream)'}}
-              onMouseLeave={e=>{e.currentTarget.style.background='transparent';e.currentTarget.style.color='var(--maroon)'}}>
-              View Full Portfolio →
+            <Link to="/portfolio" style={{ background:'linear-gradient(135deg,var(--gold),var(--gl))', color:'var(--md)', padding:'14px 36px', borderRadius:12, fontWeight:700, fontSize:'0.95rem', textDecoration:'none', border:'none', display:'inline-flex', alignItems:'center', gap:9, transition:'all 0.2s', boxShadow:'0 8px 28px rgba(201,150,58,0.3)' }}
+              onMouseEnter={e=>e.currentTarget.style.transform='translateY(-3px)'}
+              onMouseLeave={e=>e.currentTarget.style.transform='none'}>
+              View Full Automation Showcase →
             </Link>
           </div>
         </div>
@@ -586,37 +835,73 @@ export default function Home({ openModal }) {
             <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(2.2rem,3.6vw,3.2rem)', fontWeight:700, color:'var(--text)', lineHeight:1.1 }}>
               Measurable Outcomes for <em style={{ fontStyle:'italic', color:'var(--maroon)' }}>Real Clients</em>
             </h2>
+            <p style={{ color:'var(--mut)', fontSize:'0.97rem', lineHeight:1.8, maxWidth:520, margin:'14px auto 0', fontWeight:300 }}>
+              Numbers from the 45 live automation workflows in our showcase — across sales, finance, CRM, marketing, support, HR, and IT.
+            </p>
           </div>
 
           <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:22 }} className="stats-cards-resp">
             {[
-              { n:'3 hrs', l:'Saved Weekly', tag:'Meeting Intelligence', desc:'SaaS team — post-meeting work fully automated with Zoom AI pipeline', img:'/images/zoom3.png', delay:'0.05s' },
-              { n:'20 hrs', l:'Saved Weekly', tag:'Property Management', desc:'Hotel — bookings, payments, invoicing across Airbnb & QuickBooks fully eliminated', img:'/images/hotel1.png', delay:'0.2s' },
-              { n:'2×', l:'Pipeline Visibility', tag:'CRM Automation', desc:'Digital agency — zero-touch lead management with instant AI routing to CRM', img:'/images/lead1.png', delay:'0.35s' },
-            ].map(({ n, l, tag, desc, img, delay }) => (
-              <div key={l} className="reveal scale-in tilt3d" style={{ transitionDelay:delay, borderRadius:20, overflow:'hidden', border:'1px solid var(--bdr)', boxShadow:'var(--sh)', background:'var(--cream)' }}>
-                {/* Image */}
-                <div style={{ position:'relative', height:180, overflow:'hidden' }}>
-                  <img src={img} alt={l} style={{ width:'100%', height:'100%', objectFit:'cover', transition:'transform 0.45s' }}/>
-                  <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom, transparent 40%, rgba(80,16,16,0.55) 100%)' }}/>
-                  <div style={{ position:'absolute', bottom:14, left:16, fontSize:'0.63rem', fontWeight:700, letterSpacing:'2px', color:'var(--gl)', textTransform:'uppercase', background:'rgba(80,16,16,0.65)', backdropFilter:'blur(6px)', padding:'4px 12px', borderRadius:100 }}>{tag}</div>
-                </div>
-                {/* Text */}
-                <div style={{ padding:'24px 26px 28px' }}>
-                  <div style={{ display:'flex', alignItems:'baseline', gap:8, marginBottom:6 }}>
-                    <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'3rem', fontWeight:700, color:'var(--maroon)', lineHeight:1 }}>{n}</span>
-                    <span style={{ fontSize:'0.72rem', fontWeight:700, letterSpacing:'1.5px', color:'var(--gold)', textTransform:'uppercase' }}>{l}</span>
+              {
+                n:'130', suffix:'hrs', l:'Saved Every Week',
+                tag:'Full Automation Stack',
+                icon:'⏱',
+                color:'#7a1c1c',
+                desc:'Across 45 live automation workflows — sales, invoicing, CRM, marketing, support, HR, IT, and more.',
+                items:['Lead Router AI','Invoice Generator AI','Ticket Router AI'],
+                delay:'0.05s',
+              },
+              {
+                n:'£20,800', suffix:'', l:'Saved Every Month',
+                tag:'Admin & Operations Hours',
+                icon:'💰',
+                color:'#c9963a',
+                desc:'Manual admin hours freed from tasks that add zero value once automated — redirected to revenue-generating work.',
+                items:['Deal-Won Orchestrator','Payment Reminder AI','Candidate Screener AI'],
+                delay:'0.2s',
+              },
+              {
+                n:'45', suffix:'', l:'Live AI Automations',
+                tag:'10 Business Categories',
+                icon:'🤖',
+                color:'#9b2c2c',
+                desc:'From sales CRM to IT security — 45 AI agents handling tasks 24/7 without human input.',
+                items:['Sales Automation','Marketing Automation','IT & Security'],
+                delay:'0.35s',
+              },
+            ].map(({ n, suffix, l, tag, icon, color, desc, items, delay }) => (
+              <div key={l} className="reveal scale-in tilt3d" style={{ transitionDelay:delay, borderRadius:20, overflow:'hidden', border:'1px solid var(--bdr)', boxShadow:'var(--sh)', background:'var(--cream)', display:'flex', flexDirection:'column' }}>
+                {/* Colour header */}
+                <div style={{ background:`linear-gradient(135deg,${color},${color}bb)`, padding:'28px 26px 24px' }}>
+                  <div style={{ fontSize:'0.63rem', fontWeight:700, letterSpacing:'2.5px', color:'rgba(253,248,240,0.6)', textTransform:'uppercase', marginBottom:10 }}>{tag}</div>
+                  <div style={{ display:'flex', alignItems:'baseline', gap:6 }}>
+                    <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'3.4rem', fontWeight:700, color:'var(--cream)', lineHeight:1 }}>{n}</span>
+                    {suffix && <span style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.6rem', fontWeight:700, color:'rgba(253,248,240,0.7)', lineHeight:1 }}>{suffix}</span>}
                   </div>
-                  <p style={{ color:'var(--mut)', fontSize:'0.84rem', lineHeight:1.65, fontWeight:300, margin:0 }}>{desc}</p>
+                  <div style={{ fontSize:'0.72rem', fontWeight:700, letterSpacing:'1.5px', color:'rgba(253,248,240,0.65)', textTransform:'uppercase', marginTop:4 }}>{l}</div>
+                </div>
+                {/* Body */}
+                <div style={{ padding:'22px 26px 26px', flex:1 }}>
+                  <p style={{ color:'var(--mut)', fontSize:'0.84rem', lineHeight:1.7, fontWeight:300, margin:'0 0 16px' }}>{desc}</p>
+                  <div style={{ display:'flex', flexWrap:'wrap', gap:5 }}>
+                    {items.map(t=><span key={t} style={{ background:`${color}0d`, border:`1px solid ${color}22`, color, padding:'3px 10px', borderRadius:100, fontSize:'0.67rem', fontWeight:600 }}>{t}</span>)}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="reveal delay-3" style={{ textAlign:'center', marginTop:52 }}>
-            <Link to="/case-studies" style={{ background:'linear-gradient(135deg,var(--gold),var(--gl))', color:'var(--md)', padding:'15px 38px', borderRadius:12, fontWeight:700, fontSize:'0.97rem', textDecoration:'none', display:'inline-flex', alignItems:'center', gap:9, transition:'all 0.2s', boxShadow:'0 8px 30px rgba(201,150,58,0.28)' }}
-              onMouseEnter={e=>e.currentTarget.style.transform='translateY(-3px)'}
-              onMouseLeave={e=>e.currentTarget.style.transform='none'}>
+          {/* Aggregate stats bar */}
+          <div className="reveal delay-2" style={{ marginTop:36, background:'linear-gradient(135deg,rgba(122,28,28,0.04),rgba(201,150,58,0.06))', border:'1px solid rgba(201,150,58,0.2)', borderRadius:16, padding:'24px 36px', display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:20 }}>
+            <div style={{ display:'flex', gap:40, flexWrap:'wrap' }}>
+              {[['£249,600','Saved / Year'],['2 weeks','Live Delivery'],['24/7','Workflows Running']].map(([v,l])=>(
+                <div key={l}>
+                  <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'1.6rem', fontWeight:700, color:'var(--maroon)' }}>{v}</div>
+                  <div style={{ fontSize:'0.67rem', color:'var(--mut)', fontWeight:600, letterSpacing:'0.5px', textTransform:'uppercase' }}>{l}</div>
+                </div>
+              ))}
+            </div>
+            <Link to="/case-studies" style={{ background:'linear-gradient(135deg,var(--gold),var(--gl))', color:'var(--md)', padding:'12px 26px', borderRadius:11, fontWeight:700, fontSize:'0.88rem', textDecoration:'none', flexShrink:0, boxShadow:'0 6px 20px rgba(201,150,58,0.3)' }}>
               Read Full Case Studies →
             </Link>
           </div>
