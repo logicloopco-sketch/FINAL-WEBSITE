@@ -40,20 +40,20 @@ export default function Portfolio() {
     <>
       <Helmet>
         <title>AI Automation Portfolio | Logic Loops AI — Make.com, n8n, Zapier Workflows</title>
-        <meta name="description" content="Browse Logic Loops AI's automation portfolio: 45 live AI workflows across sales, finance, CRM, marketing, support, HR, and IT — built on Make.com, n8n, and Zapier." />
+        <meta name="description" content="Browse Logic Loops AI's automation portfolio: 100 live AI workflows across sales, finance, CRM, marketing, support, HR, and IT — built on Make.com, n8n, and Zapier." />
         <link rel="canonical" href="https://logicloopsai.com/portfolio" />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="AI Automation Portfolio | Logic Loops AI" />
-        <meta property="og:description" content="45 live AI automation workflows across sales, finance, CRM, marketing, support, HR, and IT — built on Make.com, n8n, and Zapier. Saving 130+ hours a week for real clients." />
+        <meta property="og:description" content="100 live AI automation workflows across sales, finance, CRM, marketing, support, HR, and IT — built on Make.com, n8n, and Zapier. Saving 295+ hours a week for real clients." />
         <meta property="og:url" content="https://logicloopsai.com/portfolio" />
         <meta property="og:site_name" content="Logic Loops AI" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="AI Automation Portfolio | Logic Loops AI" />
-        <meta name="twitter:description" content="45 live AI automation workflows built on Make.com, n8n, and Zapier. Browse sales, finance, CRM, marketing, support, HR, and IT automations." />
+        <meta name="twitter:description" content="100 live AI automation workflows built on Make.com, n8n, and Zapier. Browse sales, finance, CRM, marketing, support, HR, and IT automations." />
 
         {/* Structured Data — BreadcrumbList */}
         <script type="application/ld+json">{JSON.stringify({
@@ -72,7 +72,7 @@ export default function Portfolio() {
           "name": "AI Automation Portfolio — Logic Loops AI",
           "description": "Live AI automation workflows built for real clients on Make.com, n8n, and Zapier.",
           "url": "https://logicloopsai.com/portfolio",
-          "numberOfItems": 45,
+          "numberOfItems": 100,
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Lead Router AI — Sales CRM Automation" },
             { "@type": "ListItem", "position": 2, "name": "Contract Generator AI — E-Signature Automation" },
@@ -94,11 +94,11 @@ export default function Portfolio() {
             Real Automations. <em style={{ color: 'var(--gl)', fontStyle: 'italic' }}>Real Results.</em>
           </h1>
           <p style={{ color: 'rgba(253,248,240,0.7)', fontSize: '1.07rem', lineHeight: 1.8, maxWidth: '600px', margin: '0 auto 36px', fontWeight: 300 }}>
-            45 live AI automation workflows across 10 business categories — sales, finance, CRM, marketing, support, HR, IT, and more — built on Make.com, n8n, and Zapier. Click any category to explore what's inside.
+            100 live AI automation workflows across 10 business categories — sales, finance, CRM, marketing, support, HR, IT, and more — built on Make.com, n8n, and Zapier. Click any category to explore what's inside.
           </p>
           {/* Key stats */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
-            {[['130+','hrs saved / week'],['45','live automations'],['10','business categories']].map(([n,l]) => (
+            {[['295+','hrs saved / week'],['100','live automations'],['10','business categories']].map(([n,l]) => (
               <div key={l}>
                 <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '2.2rem', fontWeight: 700, color: 'var(--gl)', lineHeight: 1 }}>{n}</div>
                 <div style={{ fontSize: '0.72rem', color: 'rgba(253,248,240,0.45)', marginTop: 5, letterSpacing: '0.5px', textTransform: 'uppercase' }}>{l}</div>
