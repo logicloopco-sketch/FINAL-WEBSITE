@@ -109,7 +109,7 @@ const AUTOMATIONS = {
     time: '2 hrs/week', cost: '£320/mo',
   },
   'contract-generator-ai': {
-    id: 'contract-generator-ai', firstName: 'Siddharth', role: 'Contract Generator AI', industry: 'Telecom & Subscription',
+    id: 'contract-generator-ai', firstName: 'Sasha', role: 'Contract Generator AI', industry: 'Telecom & Subscription',
     blurb: 'Builds the contract and sends it for e-signature the second a deal is won.',
     intro: 'Automatically generate a contract from CRM deal data and send it for e-signature the instant a deal is marked won — no templates, no copy-pasting, no delay.',
     roleDescription: "Traditionally, once a deal is won, someone has to open a template, manually fill in the customer's details, double-check everything, and send it out for signature. That gap between 'yes' and paperwork is where deals quietly stall.\n\nSiddharth closes that gap. The second a deal is marked won in the CRM, Siddharth pulls every relevant field, builds the contract, and sends it straight to the customer for e-signature — logging the outcome back into the CRM automatically.\n\nThe business value: contracts go out in minutes instead of hours, with zero data-entry errors, and every signed deal is tracked without anyone chasing it manually.",
