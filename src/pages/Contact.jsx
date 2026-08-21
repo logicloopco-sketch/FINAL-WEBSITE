@@ -1,251 +1,108 @@
-import { useState, useEffect, useRef } from 'react'
-import { Helmet } from 'react-helmet-async'
+import { useState } from 'react'
+import { Phone, Mail, MessageCircle, Calendar, Send, Clock, Globe, Check } from 'lucide-react'
+import SEO from '../components/SEO'
+import PageHero from '../components/PageHero'
 import useScrollReveal from '../hooks/useScrollReveal'
-import FAQSection from '../components/FAQSection'
-
-const contactFaqs = [
-  {
-    q: 'What happens immediately after I submit the contact form?',
-    a: 'Your submission is received instantly via our automated pipeline. You will get a confirmation email within minutes and a personal reply from our team within 24 hours to schedule your free 30-minute consultation call.'
-  },
-  {
-    q: 'Is the discovery call genuinely free with no obligation?',
-    a: 'Yes, completely free and no obligation. We will discuss your workflow, identify automation opportunities, and explain what is possible — you decide afterwards if you want to proceed. No pressure, no hard sell.'
-  },
-  {
-    q: 'What should I prepare before the consultation call?',
-    a: 'Just think through your current process: what tools you use, which tasks are repetitive or manual, and what outcome you want to achieve. A rough idea of volume (e.g. how many leads per day, invoices per month) is helpful but not required. We guide the conversation.'
-  },
-  {
-    q: 'Can I start with a small pilot project before committing to a larger engagement?',
-    a: 'Absolutely. A small pilot is often the smartest first step. It lets you experience our process and quality with minimal investment, and gives us a chance to understand your business deeply before tackling larger workflows.'
-  },
-  {
-    q: 'Do you work with clients who are not technical and have never used automation before?',
-    a: 'Yes — the majority of our clients come to us with no automation experience. You do not need to know anything about Make.com, n8n, or APIs. We handle all the technical work and explain everything in plain language throughout the project.'
-  },
-]
-
-const WEBHOOK_URL = 'https://hook.eu2.make.com/u29nnwprpsk7c3zujr4aih8pbj32ntuj'
-
-const inputStyle = {
-  background: 'var(--white)',
-  border: '1px solid var(--bdr)',
-  borderRadius: '10px',
-  padding: '12px 14px',
-  color: 'var(--text)',
-  fontFamily: "'DM Sans',sans-serif",
-  fontSize: '0.88rem',
-  outline: 'none',
-  width: '100%',
-}
-const labelStyle = { fontSize: '0.79rem', fontWeight: 600, color: 'var(--text)' }
-const fieldWrap = { display: 'flex', flexDirection: 'column', gap: '7px', marginBottom: '16px' }
-
-function Field({ label, name, type = 'text', placeholder, required = false, disabled }) {
-  return (
-    <div style={fieldWrap}>
-      <label style={labelStyle}>{label}{required ? ' *' : ''}</label>
-      <input
-        name={name} type={type} placeholder={placeholder} required={required} disabled={disabled}
-        style={{ ...inputStyle, opacity: disabled ? 0.7 : 1 }}
-        onFocus={e => { e.target.style.borderColor = 'var(--maroon)'; e.target.style.boxShadow = '0 0 0 3px rgba(122,28,28,0.08)' }}
-        onBlur={e => { e.target.style.borderColor = 'var(--bdr)'; e.target.style.boxShadow = 'none' }}
-      />
-    </div>
-  )
-}
-
-function SelectField({ label, name, required = false, disabled, children }) {
-  return (
-    <div style={fieldWrap}>
-      <label style={labelStyle}>{label}{required ? ' *' : ''}</label>
-      <select name={name} required={required} disabled={disabled} style={{ ...inputStyle, opacity: disabled ? 0.7 : 1 }}>
-        {children}
-      </select>
-    </div>
-  )
-}
+import { SITE, waLink } from '../data/site'
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const formRef = useRef(null)
-
   useScrollReveal()
-  useEffect(() => { window.scrollTo(0, 0) }, [])
+  const [status, setStatus] = useState('idle') // idle | sending | ok | error
 
-  const handleSubmit = async (e) => {
+  async function onSubmit(e) {
     e.preventDefault()
-    setLoading(true)
-    setError(null)
-
-    const fd = new FormData(formRef.current)
-    const data = {
-      firstName:         fd.get('firstName'),
-      lastName:          fd.get('lastName'),
-      email:             fd.get('email'),
-      phone:             fd.get('phone') || '',
-      company:           fd.get('company'),
-      preferredPlatform: fd.get('preferredPlatform') || '',
-      useCase:           fd.get('useCase'),
-      budget:            fd.get('budget') || '',
-      workflow:          fd.get('workflow'),
-      submittedAt:       new Date().toISOString(),
-      source:            'logicloopsai.com — Contact Form',
-    }
-
+    setStatus('sending')
+    const data = new FormData(e.target)
     try {
-      await fetch(WEBHOOK_URL, {
+      const res = await fetch(SITE.formEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: data,
+        headers: { Accept: 'application/json' },
       })
-      setSubmitted(true)
-    } catch (err) {
-      setError('Something went wrong. Please try again.')
-    } finally {
-      setLoading(false)
+      if (res.ok) { setStatus('ok'); e.target.reset() }
+      else setStatus('error')
+    } catch {
+      setStatus('error')
     }
   }
 
   return (
-    <>
-      <Helmet>
-        <title>Contact | Book Free Call | Logic Loops AI</title>
-        <meta name="description" content="Book a free 30-minute discovery call with Logic Loops AI. We will audit your workflow and show you exactly where automation gives highest ROI." />
-        <link rel="canonical" href="https://logicloopsai.com/contact" />
-        <meta property="og:title" content="Contact Logic Loops AI | Free Automation Audit" />
-        <meta property="og:description" content="Book a free 30-min call. We'll identify your top 3 automation opportunities and give you an ROI estimate — before any commitment." />
-        <meta property="og:url" content="https://logicloopsai.com/contact" />
-      </Helmet>
-      {/* PAGE HERO */}
-      <section style={{ background: 'linear-gradient(158deg,var(--md) 0%,var(--maroon) 100%)', padding: '160px 5% 90px', textAlign: 'center' }}>
-        <div className="mw">
-          <div className="lbl" style={{ color: 'var(--gl)' }}>Get Started</div>
-          <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 'clamp(2.8rem,4.8vw,4.2rem)', fontWeight: 700, color: 'var(--cream)', lineHeight: 1.1, marginBottom: '20px' }}>
-            Book Your <em style={{ color: 'var(--gl)', fontStyle: 'italic' }}>Free Consultation</em>
-          </h1>
-          <p style={{ color: 'rgba(253,248,240,0.7)', fontSize: '1.07rem', lineHeight: 1.8, maxWidth: '560px', margin: '0 auto', fontWeight: 300 }}>
-            Tell us about your business and we'll show you exactly how we can automate it.
-          </p>
+    <main id="main">
+      <SEO
+        title="Contact Us | Book a Free AI Automation Call — Logic Loops AI"
+        description="Get in touch with Logic Loops AI. Book a free 30-minute call, send a message, or WhatsApp us. UK, US, Australia, Canada."
+        path="/contact"
+        keywords="contact Logic Loops AI, book automation call, AI automation consultation"
+      />
+
+      <PageHero
+        tag="Contact"
+        title={<>Let's talk <span className="em">automation</span></>}
+        sub="Tell us what's slowing your team down. We'll show you what we can automate, host, and manage for you — free, in 30 minutes."
+      >
+        <div className="hv-methods">
+          <div className="hv-method"><span className="hv-ico"><Phone /></span> Book a call</div>
+          <div className="hv-method"><span className="hv-ico"><Mail /></span> Send a message</div>
+          <div className="hv-method"><span className="hv-ico"><MessageCircle /></span> WhatsApp us</div>
+          <div className="hv-method hv-method-badge"><Clock size={15} /> Replies in under 4h</div>
         </div>
-      </section>
+      </PageHero>
 
-      {/* CONTACT */}
-      <section style={{ background: 'var(--white)', padding: '108px 5%' }}>
-        <div className="mw">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.7fr', gap: '60px', alignItems: 'start' }} className="contact-resp">
-
-            {/* LEFT */}
-            <div className="fu">
-              <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '8px' }}>Why Book a Call?</h3>
-              <p className="sub" style={{ maxWidth: '100%', marginBottom: 0 }}>In 30 minutes, we'll map out exactly what's automatable in your business — free, no strings attached.</p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '36px' }}>
-                {[
-                  ['📞', 'Free 30-Minute Call', "We listen, analyse your workflow, and show what's possible. No hard sells."],
-                  ['⚡', '24-Hour Response', 'Submit your enquiry and our team responds within one business day.'],
-                  ['🌍', 'Global Clients', 'We work with businesses across North America, Europe, Middle East, and Asia.'],
-                  ['🔒', 'Confidentiality First', 'NDAs available upon request before any discovery conversation begins.'],
-                ].map(([ico, h, p]) => (
-                  <div key={h} style={{ display: 'flex', gap: '15px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '44px', height: '44px', borderRadius: '11px', background: 'linear-gradient(135deg,rgba(122,28,28,0.08),rgba(201,150,58,0.08))', border: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem', flexShrink: 0 }}>{ico}</div>
-                    <div>
-                      <h4 style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: 700, marginBottom: '4px' }}>{h}</h4>
-                      <p style={{ color: 'var(--mut)', fontSize: '0.84rem', fontWeight: 300, lineHeight: 1.6 }}>{p}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+      {/* 3 contact columns (cream) */}
+      <section className="section section-light">
+        <div className="container">
+          <div className="grid grid-3 contact-grid">
+            {/* Book a call */}
+            <div className="card contact-col fu">
+              <span className="deliver-icon"><Calendar /></span>
+              <h3 className="h3">Book a call</h3>
+              <p>A free 30-minute discovery call. We map your workflows and show you what's worth automating — no pitch.</p>
+              <a href={SITE.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-navy mt-auto">Pick a time <Calendar size={16} /></a>
+              <span className="contact-note">Opens our Calendly — pick any 30-minute slot.</span>
             </div>
 
-            {/* FORM CARD */}
-            <div className="fu" style={{ background: 'var(--cream)', border: '1px solid var(--bdr)', borderRadius: '24px', padding: '46px', boxShadow: 'var(--shl)', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg,var(--maroon),var(--gold))' }} />
-
-              {submitted ? (
-                <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-                  <div style={{ fontSize: '3rem' }}>🎉</div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: '2rem', color: 'var(--maroon)', margin: '16px 0 10px' }}>Request Received!</h3>
-                  <p style={{ color: 'var(--mut)' }}>We'll reach out within 24 hours to schedule your free consultation!</p>
-                </div>
+            {/* Send a message */}
+            <div className="card contact-col contact-form-col fu" style={{ '--d': '90ms' }}>
+              <span className="deliver-icon"><Send /></span>
+              <h3 className="h3">Send a message</h3>
+              {status === 'ok' ? (
+                <div className="form-success"><Check /> Thanks — we'll reply within 4 hours.</div>
               ) : (
-                <form ref={formRef} onSubmit={handleSubmit}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 16px' }} className="frow-resp">
-                    <Field label="First Name" name="firstName" placeholder="John" required disabled={loading} />
-                    <Field label="Last Name" name="lastName" placeholder="Smith" required disabled={loading} />
-                    <Field label="Business Email" name="email" type="email" placeholder="john@company.com" required disabled={loading} />
-                    <Field label="Phone Number" name="phone" type="tel" placeholder="+1 (555) 000-0000" disabled={loading} />
-                    <Field label="Company Name" name="company" placeholder="Your Company" required disabled={loading} />
-                    <SelectField label="Preferred Platform" name="preferredPlatform" disabled={loading}>
-                      <option value="">Select...</option>
-                      <option>Make.com</option>
-                      <option>n8n</option>
-                      <option>Zapier</option>
-                      <option>Not Sure</option>
-                    </SelectField>
-                    <SelectField label="Use Case" name="useCase" required disabled={loading}>
-                      <option value="">Select...</option>
-                      <option>CRM &amp; Lead Automation</option>
-                      <option>Meeting Intelligence</option>
-                      <option>AI Cold Email Outreach</option>
-                      <option>Finance &amp; Invoice Automation</option>
-                      <option>Hotel/Property Management</option>
-                      <option>SEO Content Automation</option>
-                      <option>Custom AI Agent</option>
-                      <option>Other</option>
-                    </SelectField>
-                    <SelectField label="Monthly Budget" name="budget" disabled={loading}>
-                      <option value="">Select...</option>
-                      <option>Under $500</option>
-                      <option>$500–$1,500</option>
-                      <option>$1,500–$5,000</option>
-                      <option>$5,000+</option>
-                    </SelectField>
-                    <div style={{ ...fieldWrap, gridColumn: '1 / -1' }}>
-                      <label style={labelStyle}>Describe Your Workflow *</label>
-                      <textarea
-                        name="workflow" required disabled={loading}
-                        placeholder="What do you want to automate? What tools do you use? What manual task costs you the most time?"
-                        style={{ ...inputStyle, resize: 'vertical', minHeight: '110px', opacity: loading ? 0.7 : 1 }}
-                        onFocus={e => { e.target.style.borderColor = 'var(--maroon)'; e.target.style.boxShadow = '0 0 0 3px rgba(122,28,28,0.08)' }}
-                        onBlur={e => { e.target.style.borderColor = 'var(--bdr)'; e.target.style.boxShadow = 'none' }}
-                      />
-                    </div>
-                  </div>
-
-                  {error && (
-                    <div style={{ background: 'rgba(122,28,28,0.07)', border: '1px solid rgba(122,28,28,0.22)', borderRadius: '10px', padding: '12px 16px', marginBottom: '16px', color: 'var(--maroon)', fontSize: '0.87rem', textAlign: 'center' }}>
-                      ⚠️ {error}
-                    </div>
-                  )}
-
-                  <button
-                    type="submit" disabled={loading}
-                    style={{ width: '100%', marginTop: '6px', background: loading ? 'rgba(80,16,16,0.55)' : 'linear-gradient(135deg,var(--md),var(--maroon))', color: 'var(--cream)', padding: '15px 40px', borderRadius: '12px', fontWeight: 700, fontSize: '0.94rem', border: 'none', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: "'DM Sans',sans-serif", transition: 'transform 0.2s,box-shadow 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
-                    onMouseEnter={e => { if (!loading) { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 34px rgba(80,16,16,0.38)' }}}
-                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none' }}
-                  >
-                    {loading ? <><span className="spinner" /> Sending...</> : '🚀 Book My Free Consultation →'}
+                <form className="contact-form" onSubmit={onSubmit}>
+                  <label>Name<input name="name" type="text" required autoComplete="name" /></label>
+                  <label>Email<input name="email" type="email" required autoComplete="email" /></label>
+                  <label>Company<input name="company" type="text" autoComplete="organization" /></label>
+                  <label>Message<textarea name="message" rows="3" required /></label>
+                  <button className="btn btn-navy" type="submit" disabled={status === 'sending'}>
+                    {status === 'sending' ? 'Sending…' : <>Send message <Send size={16} /></>}
                   </button>
-                  <p style={{ textAlign: 'center', marginTop: '13px', fontSize: '0.76rem', color: 'var(--mut)' }}>✅ Free 30-min call · No commitment · Reply within 24 hours</p>
+                  {status === 'error' && <span className="form-error">Something went wrong — please email us directly.</span>}
                 </form>
               )}
+            </div>
+
+            {/* WhatsApp */}
+            <div className="card contact-col fu" style={{ '--d': '180ms' }}>
+              <span className="deliver-icon"><MessageCircle /></span>
+              <h3 className="h3">WhatsApp us</h3>
+              <p>Prefer to chat? Message us on WhatsApp and we'll get straight back to you during business hours.</p>
+              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn btn-navy mt-auto">Chat on WhatsApp <MessageCircle size={16} /></a>
+              <span className="contact-note">{SITE.email}</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <FAQSection faqs={contactFaqs} title={<>Before You <em>Reach Out</em></>} bg="var(--cream)" />
-
-      <style>{`
-        @media(max-width:1100px){.contact-resp{grid-template-columns:1fr!important;}}
-        @media(max-width:768px){.frow-resp{grid-template-columns:1fr!important;}}
-        .spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(253,248,240,0.3);border-top-color:var(--cream);border-radius:50%;animation:spin 0.7s linear infinite;}
-        @keyframes spin{to{transform:rotate(360deg)}}
-      `}</style>
-    </>
+      {/* Response promise (navy) */}
+      <section className="section section-dark">
+        <div className="container">
+          <div className="promise-grid">
+            <div className="promise-item fu"><span className="promise-ico"><Clock /></span><b>Under 4 hours</b><span>Typical first response</span></div>
+            <div className="promise-item fu" style={{ '--d': '80ms' }}><span className="promise-ico"><Globe /></span><b>UK · US · AU · CA</b><span>Timezone-friendly support</span></div>
+            <div className="promise-item fu" style={{ '--d': '160ms' }}><span className="promise-ico"><Check /></span><b>No pressure</b><span>Just honest advice</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }

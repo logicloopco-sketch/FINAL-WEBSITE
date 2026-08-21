@@ -1,34 +1,29 @@
-import { lazy, Suspense, useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { lazy, Suspense, useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Modal from './components/Modal'
+import FloatingWhatsApp from './components/FloatingWhatsApp'
 
-// Lazy-loaded pages — each page is a separate JS chunk (better Core Web Vitals)
-const Home        = lazy(() => import('./pages/Home'))
-const Services    = lazy(() => import('./pages/Services'))
-const Portfolio   = lazy(() => import('./pages/Portfolio'))
-const CaseStudies = lazy(() => import('./pages/CaseStudies'))
-const About       = lazy(() => import('./pages/About'))
-const FAQ         = lazy(() => import('./pages/FAQ'))
-const Contact     = lazy(() => import('./pages/Contact'))
-const Blog        = lazy(() => import('./pages/Blog'))
-const BlogPost    = lazy(() => import('./pages/BlogPost'))
+const Home          = lazy(() => import('./pages/Home'))
+const Services      = lazy(() => import('./pages/Services'))
+const ManagedHosting = lazy(() => import('./pages/ManagedHosting'))
+const Pricing       = lazy(() => import('./pages/Pricing'))
+const CaseStudies   = lazy(() => import('./pages/CaseStudies'))
+const Contact       = lazy(() => import('./pages/Contact'))
 
-// Minimal loading fallback — matches the site background so there's no flash
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
+
 function PageLoader() {
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'var(--md, #501010)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
+    <div style={{ minHeight: '100vh', background: '#071d33', display: 'grid', placeItems: 'center' }}>
       <div style={{
-        width: 36, height: 36,
-        border: '2px solid rgba(201,150,58,0.2)',
-        borderTop: '2px solid #D4AF37',
+        width: 34, height: 34,
+        border: '2px solid rgba(243,228,201,0.2)',
+        borderTop: '2px solid #F3E4C9',
         borderRadius: '50%',
         animation: 'spin 0.75s linear infinite',
       }} />
@@ -38,26 +33,23 @@ function PageLoader() {
 }
 
 export default function App() {
-  const [modalKey, setModalKey] = useState(null)
-
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/"             element={<Home openModal={setModalKey} />} />
-          <Route path="/services"     element={<Services />} />
-          <Route path="/portfolio"    element={<Portfolio openModal={setModalKey} />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/about"        element={<About />} />
-          <Route path="/faq"          element={<FAQ />} />
-          <Route path="/contact"      element={<Contact />} />
-          <Route path="/blog"         element={<Blog />} />
-          <Route path="/blog/:slug"   element={<BlogPost />} />
+          <Route path="/"                element={<Home />} />
+          <Route path="/services"        element={<Services />} />
+          <Route path="/managed-hosting" element={<ManagedHosting />} />
+          <Route path="/pricing"         element={<Pricing />} />
+          <Route path="/case-studies"    element={<CaseStudies />} />
+          <Route path="/contact"         element={<Contact />} />
+          <Route path="*"                element={<Home />} />
         </Routes>
       </Suspense>
       <Footer />
-      {modalKey && <Modal projectKey={modalKey} onClose={() => setModalKey(null)} />}
+      <FloatingWhatsApp />
     </>
   )
 }

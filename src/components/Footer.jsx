@@ -1,61 +1,57 @@
 import { Link } from 'react-router-dom'
+import { Mail, MessageCircle, Globe } from 'lucide-react'
+import { SITE, waLink } from '../data/site'
+
+const LOGO = '/images/Copy_of_Untitled_Design__3_-removebg-preview.png'
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="footer-inner">
-        <div className="footer-top">
-          <div className="fb">
-            <Link to="/" className="logo">
-              <img src="/images/Copy_of_Untitled_Design__3_-removebg-preview.png" alt="Logic Loops AI" style={{ height: '80px', width: '80px', borderRadius: '8px' }} />
-              <div className="logo-txt">
-                <span className="logo-name">Logic Loops AI</span>
-                <span className="logo-tag">Where Logic Meets Limitless AI</span>
-              </div>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="foot-brand">
+            <Link to="/" className="logo" aria-label="Logic Loops AI home">
+              <img className="logo-img" src={LOGO} alt="Logic Loops AI" width="48" height="48" />
+              <span className="logo-name">Logic Loops&nbsp;AI</span>
             </Link>
-            <p>We build intelligent automation workflows that eliminate manual work and scale your business using Make.com, n8n, Zapier, and AI agents.</p>
-            <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', marginTop: '22px', background: 'linear-gradient(135deg,var(--gold),var(--gl))', color: 'var(--md)', padding: '11px 24px', borderRadius: '9px', fontWeight: '700', fontSize: '0.85rem', textDecoration: 'none' }}>
-              Book Free Call →
-            </Link>
+            <p>We build, host, and manage AI automations for growing businesses.</p>
           </div>
-          <div className="fc">
+
+          <div className="foot-col">
             <h4>Services</h4>
             <ul>
-              <li><Link to="/services">Workflow Automation</Link></li>
-              <li><Link to="/services">AI Agent Development</Link></li>
-              <li><Link to="/services">CRM Automation</Link></li>
-              <li><Link to="/services">Meeting Intelligence</Link></li>
-              <li><Link to="/services">Cold Email Outreach</Link></li>
-              <li><Link to="/services">Finance Automation</Link></li>
+              <li><Link to="/services">Lead Automation</Link></li>
+              <li><Link to="/services">Ops Automation</Link></li>
+              <li><Link to="/services">AI Agents</Link></li>
+              <li><Link to="/managed-hosting">Managed Hosting</Link></li>
             </ul>
           </div>
-          <div className="fc">
+
+          <div className="foot-col">
             <h4>Company</h4>
             <ul>
-              <li><Link to="/portfolio">Portfolio</Link></li>
               <li><Link to="/case-studies">Case Studies</Link></li>
-              <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/faq">FAQ</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/pricing">Pricing</Link></li>
               <li><Link to="/contact">Contact</Link></li>
-              <li><a href="https://www.logicloopsai.com" target="_blank" rel="noreferrer">logicloopsai.com</a></li>
             </ul>
           </div>
-          <div className="fc">
-            <h4>Top Platforms</h4>
-            <ul>
-              <li><a href="#platforms">Make.com</a></li>
-              <li><a href="#platforms">n8n</a></li>
-              <li><a href="#platforms">Zapier</a></li>
-              <li><a href="#platforms">GoHighLevel</a></li>
-              <li><a href="#platforms">Pipedrive</a></li>
-              <li><a href="#platforms">OpenAI</a></li>
+
+          <div className="foot-col">
+            <h4>Get in touch</h4>
+            <ul className="foot-contact">
+              <li><Mail /> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+              <li><MessageCircle /> <a href={waLink()} target="_blank" rel="noopener noreferrer">WhatsApp us</a></li>
+              <li><Globe /> UK · US · AU · CA</li>
             </ul>
           </div>
         </div>
-        <div className="footer-bot">
-          <span>© 2025 Logic Loops AI. All rights reserved.</span>
-          <span>AI Automation Agency · Make.com · n8n · Zapier · Where Logic Meets Limitless AI</span>
+
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Logic Loops AI. All rights reserved.</span>
+          <nav aria-label="Legal">
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/terms">Terms</Link>
+          </nav>
         </div>
       </div>
     </footer>
