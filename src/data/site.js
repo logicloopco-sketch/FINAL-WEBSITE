@@ -8,8 +8,8 @@ export const SITE = {
   whatsappMsg: "Hi, I'd like to know more about your AI automation services.",
   // Calendly booking link.
   bookingUrl: 'https://calendly.com/logicloop-co/30min',
-  // PLACEHOLDER Formspree endpoint — replace xxxxxxxx with your real form ID.
-  formEndpoint: 'https://formspree.io/f/xxxxxxxx',
+  // Make.com webhook that receives contact-form submissions.
+  webhookUrl: 'https://hook.eu2.make.com/u29nnwprpsk7c3zujr4aih8pbj32ntuj',
   regions: ['UK', 'US', 'AU', 'CA'],
 }
 

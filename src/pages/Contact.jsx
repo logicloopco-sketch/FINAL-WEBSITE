@@ -8,21 +8,40 @@ import { SITE, waLink } from '../data/site'
 export default function Contact() {
   useScrollReveal()
   const [status, setStatus] = useState('idle') // idle | sending | ok | error
+  const [name, setName] = useState('')
 
   async function onSubmit(e) {
     e.preventDefault()
     setStatus('sending')
     const data = new FormData(e.target)
+    const payload = {
+      name: data.get('name') || '',
+      email: data.get('email') || '',
+      company: data.get('company') || '',
+      message: data.get('message') || '',
+      source: 'logicloopsai.com/contact',
+      submittedAt: new Date().toISOString(),
+    }
+    setName(payload.name)
+    // URL-encoded body = a "simple" cross-origin request (no CORS preflight),
+    // so it reaches the webhook even without CORS headers. Make.com / n8n parse
+    // these into fields: name, email, company, message, source, submittedAt.
+    const body = new URLSearchParams(payload)
+
     try {
-      const res = await fetch(SITE.formEndpoint, {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      })
-      if (res.ok) { setStatus('ok'); e.target.reset() }
-      else setStatus('error')
-    } catch {
+      // Primary: normal POST so we can read the response status.
+      const res = await fetch(SITE.webhookUrl, { method: 'POST', body })
+      if (res.ok) { setStatus('ok'); e.target.reset(); return }
       setStatus('error')
+    } catch {
+      // Fallback: if the webhook blocks cross-origin reads, fire-and-forget so
+      // the data still lands, then optimistically confirm.
+      try {
+        await fetch(SITE.webhookUrl, { method: 'POST', mode: 'no-cors', body })
+        setStatus('ok'); e.target.reset()
+      } catch {
+        setStatus('error')
+      }
     }
   }
 
@@ -66,7 +85,12 @@ export default function Contact() {
               <span className="deliver-icon"><Send /></span>
               <h3 className="h3">Send a message</h3>
               {status === 'ok' ? (
-                <div className="form-success"><Check /> Thanks — we'll reply within 4 hours.</div>
+                <div className="form-success">
+                  <span className="fs-check"><Check /></span>
+                  <h4>Thanks{name ? `, ${name.split(' ')[0]}` : ''}! Message received.</h4>
+                  <p>We'll reply within 4 hours. Want to skip the wait? Book your free 30-minute call now.</p>
+                  <a href={SITE.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-navy">Book your call now <Calendar size={16} /></a>
+                </div>
               ) : (
                 <form className="contact-form" onSubmit={onSubmit}>
                   <label>Name<input name="name" type="text" required autoComplete="name" /></label>
