@@ -1,18 +1,9 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
-import App from './App.jsx'
+import { ViteReactSSG } from 'vite-react-ssg'
+import { routes } from './routes'
 import './styles/global.css'
 import './styles/home.css'
 import './styles/pages.css'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </HelmetProvider>
-  </StrictMode>,
-)
+/* vite-react-ssg mounts on the client (hydrating the prerendered HTML) and is
+   also used by the build to render each route to static HTML. Same React app. */
+export const createRoot = ViteReactSSG({ routes })

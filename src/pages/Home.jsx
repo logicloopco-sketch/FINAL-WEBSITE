@@ -12,35 +12,8 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import useCountUp from '../hooks/useCountUp'
 import { TOOLS } from '../data/content'
 
-const homeSchema = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': 'https://logicloopsai.com/#organization',
-      name: 'Logic Loops AI',
-      url: 'https://logicloopsai.com',
-      logo: 'https://logicloopsai.com/images/Copy_of_Untitled_Design__3_-removebg-preview.png',
-      description:
-        'Logic Loops AI builds, hosts, and manages AI-powered business automations for SMEs across the UK, US, Australia, and Canada.',
-      sameAs: [],
-      contactPoint: {
-        '@type': 'ContactPoint',
-        email: 'admin@logicloopsai.com',
-        telephone: '+91-96699-96748',
-        contactType: 'sales',
-        areaServed: ['GB', 'US', 'AU', 'CA'],
-      },
-    },
-    {
-      '@type': 'WebSite',
-      '@id': 'https://logicloopsai.com/#website',
-      name: 'Logic Loops AI',
-      url: 'https://logicloopsai.com',
-      publisher: { '@id': 'https://logicloopsai.com/#organization' },
-    },
-  ],
-}
+/* Organization + WebSite + Service JSON-LD lives statically in index.html
+   (crawlable without JS) — see the <head>. No per-page schema needed on Home. */
 
 /* Split a string into animated words for the hero entrance.
    Words are inline-block and separated by real spaces so the headline wraps naturally. */
@@ -73,7 +46,6 @@ export default function Home() {
         description="Logic Loops AI builds AI-powered business automations, hosts them on our servers, and keeps them running 24/7. Save 20+ hours a week. Book a free call."
         path="/"
         keywords="business automation, AI automation, managed automation, managed n8n hosting, Make.com automation, workflow automation, AI agents"
-        schema={homeSchema}
       />
 
       {/* ─── SECTION 1 · HERO ─────────────────────────── */}

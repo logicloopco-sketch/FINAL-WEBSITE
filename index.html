@@ -8,10 +8,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ═══ PRIMARY SEO TAGS ═══════════════════════════════════════ -->
-    <title>AI Automation Services | Built, Hosted &amp; Managed — Logic Loops AI</title>
-    <meta name="description" content="Logic Loops AI builds AI automations, hosts them on our servers, and keeps them running 24/7. Save 20+ hours a week. Book a free call." />
-    <meta name="keywords" content="AI automation agency, Make.com experts, n8n automation, Zapier experts, workflow automation, AI agents, CRM automation, Indore, India, AI automation India, Make.com India, no-code automation, business process automation, AI workflow, GoHighLevel automation, HubSpot automation, Pipedrive automation, OpenAI integration, AI agent development, automation consultant India" />
+    <!-- ═══ INVARIANT HEAD TAGS ════════════════════════════════════
+         Per-page <title>, description, keywords, canonical, and the varying
+         OG/Twitter tags are prerendered per route by vite-react-ssg <Head>
+         (src/components/SEO.jsx). Only page-invariant tags live here. -->
     <meta name="author" content="Logic Loops AI" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
@@ -24,33 +24,62 @@
     <link rel="shortcut icon" type="image/png" href="/images/Copy_of_Untitled_Design__3_-removebg-preview.png" />
     <link rel="apple-touch-icon" href="/images/Copy_of_Untitled_Design__3_-removebg-preview.png" />
 
-    <!-- ═══ OPEN GRAPH (LinkedIn, Facebook) ═══════════════════════ -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://logicloopsai.com" />
+    <!-- ═══ INVARIANT OPEN GRAPH / TWITTER ════════════════════════ -->
     <meta property="og:site_name" content="Logic Loops AI" />
-    <meta property="og:title" content="AI Automation Services | Built, Hosted & Managed — Logic Loops AI" />
-    <meta property="og:description" content="We build AI-powered business automations, host them on our servers, and manage them 24/7. Save 20+ hours a week. Serving the UK, US, Australia, and Canada." />
-    <meta property="og:image" content="https://logicloopsai.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Logic Loops AI — business automation, built, hosted and managed" />
     <meta property="og:locale" content="en_GB" />
-
-    <!-- ═══ TWITTER CARD ══════════════════════════════════════════ -->
-    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@logicloopsai" />
     <meta name="twitter:creator" content="@logicloopsai" />
-    <meta name="twitter:title" content="AI Automation Services — Logic Loops AI" />
-    <meta name="twitter:description" content="We build, host, and manage AI-powered business automations. Save 20+ hours a week. UK · US · AU · CA." />
-    <meta name="twitter:image" content="https://logicloopsai.com/og-image.png" />
 
     <!-- ═══ FONTS ══════════════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- JSON-LD structured data (Organization, WebSite, Service, FAQ) is injected
-         per-page via react-helmet-async — see src/components/SEO.jsx and pages. -->
+    <!-- ═══ STATIC JSON-LD (crawlable without JS) ═══════════════ -->
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://logicloopsai.com/#organization",
+          "name": "Logic Loops AI",
+          "url": "https://logicloopsai.com",
+          "logo": "https://logicloopsai.com/images/Copy_of_Untitled_Design__3_-removebg-preview.png",
+          "description": "Logic Loops AI builds AI-powered business automations, hosts them on managed servers, and keeps them running 24/7 for SMEs across the UK, US, Australia, and Canada.",
+          "email": "admin@logicloopsai.com",
+          "telephone": "+91-96699-96748",
+          "areaServed": ["GB", "US", "AU", "CA"],
+          "knowsAbout": ["AI automation", "workflow automation", "managed automation hosting", "Make.com", "n8n", "Zapier", "AI agents", "CRM automation"],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "admin@logicloopsai.com",
+            "telephone": "+91-96699-96748",
+            "areaServed": ["GB", "US", "AU", "CA"],
+            "availableLanguage": ["English"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://logicloopsai.com/#website",
+          "name": "Logic Loops AI",
+          "url": "https://logicloopsai.com",
+          "publisher": { "@id": "https://logicloopsai.com/#organization" }
+        },
+        {
+          "@type": "Service",
+          "name": "Managed AI Automation",
+          "serviceType": "Business process automation",
+          "provider": { "@id": "https://logicloopsai.com/#organization" },
+          "areaServed": ["GB", "US", "AU", "CA"],
+          "description": "We build, host, and manage AI-powered business automations for you — lead automation, operations automation, AI agents, and CRM integration on Make.com, n8n, and Zapier.",
+          "offers": { "@type": "Offer", "price": "800", "priceCurrency": "GBP", "url": "https://logicloopsai.com/pricing" }
+        }
+      ]
+    }</script>
 
     <!-- ═══ MICROSOFT CLARITY TRACKING CODE ══════════════════════ -->
     <script type="text/javascript">

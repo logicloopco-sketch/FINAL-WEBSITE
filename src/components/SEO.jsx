@@ -1,15 +1,29 @@
-import { Helmet } from 'react-helmet-async'
+import { useEffect } from 'react'
+import { Head } from 'vite-react-ssg'
 
 const BASE = 'https://logicloopsai.com'
 
 /**
- * Per-page SEO. Sets title, description, canonical, Open Graph, Twitter card,
- * and optional JSON-LD schema.
+ * Per-page SEO. <Head> prerenders title/description/canonical/OG into the static
+ * HTML at build time (what crawlers read). The effect keeps the browser tab title
+ * and canonical in sync on client-side (SPA) navigation, for UX + analytics.
  */
 export default function SEO({ title, description, path = '/', keywords, schema, image = `${BASE}/og-image.png` }) {
   const url = `${BASE}${path}`
+
+  useEffect(() => {
+    if (title) document.title = title
+    let link = document.querySelector('link[rel="canonical"]')
+    if (!link) {
+      link = document.createElement('link')
+      link.rel = 'canonical'
+      document.head.appendChild(link)
+    }
+    link.href = url
+  }, [title, url])
+
   return (
-    <Helmet>
+    <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
@@ -27,6 +41,6 @@ export default function SEO({ title, description, path = '/', keywords, schema, 
       <meta name="twitter:image" content={image} />
 
       {schema && <script type="application/ld+json">{JSON.stringify(schema)}</script>}
-    </Helmet>
+    </Head>
   )
 }

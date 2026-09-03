@@ -10,14 +10,12 @@ export default defineConfig({
 
     rollupOptions: {
       output: {
-        // Split vendor libraries into separate cached chunks
-        manualChunks: {
-          // React core — changes rarely, stays cached between deploys
-          'vendor-react': ['react', 'react-dom'],
-          // Router — separate so page code doesn't bust router cache
-          'vendor-router': ['react-router-dom'],
-          // Helmet — tiny, but isolated for clarity
-          'vendor-helmet': ['react-helmet-async'],
+        // Split vendor libraries into separate cached chunks. Function form so the
+        // SSR build (which externalises react/react-dom/router) is left untouched.
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return
+          if (id.includes('react-router') || id.includes('@remix-run')) return 'vendor-router'
+          if (id.includes('/react-dom/') || id.includes('/react/') || id.includes('/scheduler/')) return 'vendor-react'
         },
       },
     },
