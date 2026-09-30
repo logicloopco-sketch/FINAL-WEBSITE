@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Head } from 'vite-react-ssg'
 
-const BASE = 'https://logicloopsai.com'
+const BASE = 'https://www.logicloopsai.com'
 
 /**
  * Per-page SEO. <Head> prerenders title/description/canonical/OG into the static
