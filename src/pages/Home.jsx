@@ -55,7 +55,7 @@ export default function Home() {
           <div className="hero-copy">
             <p className="tag reveal-el" style={{ '--i': '80ms' }}>AI-Powered Business Automation</p>
             <h1>
-              <RevealWords text="We Build &amp; Manage Automations That" start={150} />
+              <RevealWords text="We Build &amp; Manage Automations That" start={150} />{' '}
               <RevealWords text="Run Your Business" start={470} cls="em" />
             </h1>
             <p className="hero-sub reveal-el" style={{ '--i': '640ms' }}>
