@@ -62,7 +62,7 @@ export default function Services() {
                   <span className="wf-dots"><i /><i /><i /></span>
                   <span className="wf-label">{s.tag.toLowerCase().replace(/\s+/g, '-')}.workflow</span>
                 </div>
-                <img src={s.img} alt={s.imgAlt} loading="lazy" />
+                <img src={s.img} alt={s.imgAlt} width={s.imgW} height={s.imgH} loading="lazy" />
                 <figcaption>A real automation we built, host &amp; manage.</figcaption>
               </figure>
             </div>
@@ -81,7 +81,7 @@ export default function Services() {
           <div className="tools-grid fu">
             {TOOLS.map((t) => (
               <div key={t.slug} className="tool-cell" title={t.name}>
-                <img src={`/logos/${t.slug}.svg`} alt={`${t.name} logo`} loading="lazy" />
+                <img src={`/logos/${t.slug}.svg`} alt={`${t.name} logo`} width={t.w} height={t.h} loading="lazy" />
               </div>
             ))}
           </div>

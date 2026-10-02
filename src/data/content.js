@@ -58,6 +58,8 @@ export const SERVICES = [
     tools: ['Make.com', 'Pipedrive', 'HubSpot', 'WhatsApp'],
     img: '/automations/ai-lead-nurture-ai.png',
     imgAlt: 'Real lead nurture automation built by Logic Loops AI',
+    imgW: 697,
+    imgH: 509,
   },
   {
     id: 'ops',
@@ -68,6 +70,8 @@ export const SERVICES = [
     tools: ['n8n', 'Airtable', 'Google Workspace', 'Xero'],
     img: '/automations/airtable-hubspot-sync-ai.png',
     imgAlt: 'Real Airtable-to-HubSpot data sync automation built by Logic Loops AI',
+    imgW: 783,
+    imgH: 585,
   },
   {
     id: 'agents',
@@ -78,6 +82,8 @@ export const SERVICES = [
     tools: ['OpenAI', 'Anthropic', 'Slack', 'n8n'],
     img: '/automations/email-responder-ai.png',
     imgAlt: 'Real AI email responder agent built by Logic Loops AI',
+    imgW: 783,
+    imgH: 585,
   },
   {
     id: 'crm',
@@ -88,20 +94,22 @@ export const SERVICES = [
     tools: ['Pipedrive', 'HubSpot', 'GoHighLevel', 'Salesforce'],
     img: '/automations/deal-distributor-ai.png',
     imgAlt: 'Real CRM deal distribution automation built by Logic Loops AI',
+    imgW: 783,
+    imgH: 585,
   },
 ]
 
 export const TOOLS = [
-  { name: 'Make.com', slug: 'make' },
-  { name: 'n8n', slug: 'n8n' },
-  { name: 'Zapier', slug: 'zapier' },
-  { name: 'Airtable', slug: 'airtable' },
-  { name: 'Pipedrive', slug: 'pipedrive' },
-  { name: 'HubSpot', slug: 'hubspot' },
-  { name: 'Google Workspace', slug: 'google' },
-  { name: 'Slack', slug: 'slack' },
-  { name: 'WhatsApp', slug: 'whatsapp' },
-  { name: 'OpenAI', slug: 'openai' },
+  { name: 'Make.com', slug: 'make', w: 24, h: 24 },
+  { name: 'n8n', slug: 'n8n', w: 24, h: 24 },
+  { name: 'Zapier', slug: 'zapier', w: 512, h: 139 },
+  { name: 'Airtable', slug: 'airtable', w: 256, h: 215 },
+  { name: 'Pipedrive', slug: 'pipedrive', w: 512, h: 117 },
+  { name: 'HubSpot', slug: 'hubspot', w: 512, h: 149 },
+  { name: 'Google Workspace', slug: 'google', w: 256, h: 262 },
+  { name: 'Slack', slug: 'slack', w: 256, h: 256 },
+  { name: 'WhatsApp', slug: 'whatsapp', w: 256, h: 258 },
+  { name: 'OpenAI', slug: 'openai', w: 256, h: 260 },
 ]
 
 export const CASES = [
@@ -112,6 +120,8 @@ export const CASES = [
     solution: 'We built and now host an automation that syncs every order, triggers fulfilment, updates inventory, and notifies customers — with error handling and 24/7 monitoring.',
     results: [{ n: '18h', l: 'Saved per week' }, { n: '94%', l: 'Fewer errors' }],
     img: '/automations/order-fulfil-ai.png',
+    imgW: 783,
+    imgH: 585,
   },
   {
     industry: 'SaaS',
@@ -120,6 +130,8 @@ export const CASES = [
     solution: 'An AI agent now qualifies every inbound lead, scores it, books demos automatically, and routes hot leads to sales instantly — hosted and managed by us.',
     results: [{ n: '3×', l: 'Qualified leads' }, { n: '60%', l: 'Faster response' }],
     img: '/automations/lead-router-gpt-ai.png',
+    imgW: 697,
+    imgH: 509,
   },
   {
     industry: 'Property',
@@ -128,5 +140,7 @@ export const CASES = [
     solution: 'We automated contract generation, CRM updates, and client follow-ups into one monitored workflow that runs on our servers.',
     results: [{ n: '22h', l: 'Saved per week' }, { n: '£2,400', l: 'Saved per month' }],
     img: '/automations/contract-generator-ai.png',
+    imgW: 2402,
+    imgH: 1222,
   },
 ]

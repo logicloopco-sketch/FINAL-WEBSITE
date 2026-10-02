@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Mail, MessageCircle, Globe } from 'lucide-react'
 import { SITE, waLink } from '../data/site'
 
-const LOGO = '/images/Copy_of_Untitled_Design__3_-removebg-preview.png'
+const LOGO = '/images/logic-loops-ai-logo.webp'
 
 export default function Footer() {
   return (
@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="foot-brand">
             <Link to="/" className="logo" aria-label="Logic Loops AI home">
-              <img className="logo-img" src={LOGO} alt="Logic Loops AI" width="48" height="48" />
+              <img className="logo-img" src={LOGO} alt="Logic Loops AI" width="48" height="48" loading="lazy" />
               <span className="logo-name">Logic Loops&nbsp;AI</span>
             </Link>
             <p>We build, host, and manage AI automations for growing businesses.</p>

@@ -46,7 +46,7 @@ export default function CaseStudies() {
             {CASES.map((c, i) => (
               <article key={c.title} className="card case-card fu" style={{ '--d': `${i * 90}ms` }}>
                 <div className="case-thumb">
-                  <img src={c.img} alt={`Real ${c.industry.toLowerCase()} automation built by Logic Loops AI`} loading="lazy" />
+                  <img src={c.img} alt={`Real ${c.industry.toLowerCase()} automation built by Logic Loops AI`} width={c.imgW} height={c.imgH} loading="lazy" />
                 </div>
                 <span className="case-industry">{c.industry}</span>
                 <h3 className="h3">{c.title}</h3>

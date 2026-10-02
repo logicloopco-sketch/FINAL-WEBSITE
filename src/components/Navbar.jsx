@@ -9,7 +9,7 @@ const LINKS = [
   { to: '/contact', label: 'Contact' },
 ]
 
-const LOGO = '/images/Copy_of_Untitled_Design__3_-removebg-preview.png'
+const LOGO = '/images/logic-loops-ai-logo.webp'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
