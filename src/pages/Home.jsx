@@ -177,7 +177,7 @@ export default function Home() {
             <div className="logo-chips">
               {TOOLS.map((t) => (
                 <span className="logo-chip" key={t.slug} title={t.name}>
-                  <img src={`/logos/${t.slug}.svg`} alt={`${t.name} logo`} loading="lazy" />
+                  <img src={`/logos/${t.slug}.svg`} alt={`${t.name} logo`} width={t.w} height={t.h} loading="lazy" />
                 </span>
               ))}
             </div>
