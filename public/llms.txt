@@ -1,0 +1,10 @@
+# Logic Loops AI
+
+Logic Loops AI builds AI-powered business automations and hosts them on managed servers, keeping them running 24/7 for SMEs across the UK, US, Australia, and Canada. We handle lead automation, operations automation, AI agents, and CRM integration on Make.com, n8n, and Zapier.
+
+- [Home](https://www.logicloopsai.com/)
+- [Services](https://www.logicloopsai.com/services)
+- [Managed Hosting](https://www.logicloopsai.com/managed-hosting)
+- [Pricing](https://www.logicloopsai.com/pricing)
+- [Case Studies](https://www.logicloopsai.com/case-studies)
+- [Contact](https://www.logicloopsai.com/contact)

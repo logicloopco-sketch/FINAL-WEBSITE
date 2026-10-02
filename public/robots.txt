@@ -16,4 +16,7 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
 Sitemap: https://www.logicloopsai.com/sitemap.xml
